@@ -20,6 +20,18 @@ class CreateUsers extends Seeder
                 'status' => '2',
                 'password' => bcrypt('1234')
             ],
+            [
+                'name' => 'admin',
+                'email' => 'admin@gmail.com',
+                'status' => '1',
+                'password' => bcrypt('1234')
+            ],
+            [
+                'name' => 'customer',
+                'email' => 'customer@gmail.com',
+                'status' => '0',
+                'password' => bcrypt('1234')
+            ],
         ];
         foreach ($users as $user) {
             DB::table('users')->insert($user);
