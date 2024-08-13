@@ -65,8 +65,6 @@ class AdminManagement extends Controller
 
 
 
-
-
     public function UpdateEmployee(Request $req, $id)
     {
         try {

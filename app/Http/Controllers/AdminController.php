@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Product;
 use Illuminate\Support\Facades\Log;
 use Exception;
+use App\Models\Repir;
+
 
 class AdminController extends Controller
 {
@@ -61,30 +63,30 @@ class AdminController extends Controller
         }
     }
     public function UpdateProduct(Request $req, $id)
-{
-    try {
-        $validatedData = $req->validate([
-            'product_name' => 'required|string|max:100',
-            'product_detail' => 'required|string',
-            'product_qty' => 'required|integer|min:0',
-            'product_price' => 'required|numeric|min:0',
-        ]);
+    {
+        try {
+            $validatedData = $req->validate([
+                'product_name' => 'required|string|max:100',
+                'product_detail' => 'required|string',
+                'product_qty' => 'required|integer|min:0',
+                'product_price' => 'required|numeric|min:0',
+            ]);
 
-        $product = Product::findOrFail($id);
-        $product->update([
-            'product_name' => $validatedData['product_name'],
-            'product_detail' => $validatedData['product_detail'],
-            'product_qty' => $validatedData['product_qty'],
-            'product_price' => $validatedData['product_price'],
-        ]);
+            $product = Product::findOrFail($id);
+            $product->update([
+                'product_name' => $validatedData['product_name'],
+                'product_detail' => $validatedData['product_detail'],
+                'product_qty' => $validatedData['product_qty'],
+                'product_price' => $validatedData['product_price'],
+            ]);
 
-        return redirect()->route('product.list')->with('success', 'Product updated successfully.');
+            return redirect()->route('product.list')->with('success', 'Product updated successfully.');
 
-    } catch (Exception $e) {
-        Log::error('Error updating product: ' . $e->getMessage());
-        return redirect()->back()->withErrors(['error' => 'Error updating product.']);
+        } catch (Exception $e) {
+            Log::error('Error updating product: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'Error updating product.']);
+        }
     }
-}
 
     public function ListProduct()
     {
@@ -96,4 +98,5 @@ class AdminController extends Controller
         $employees = User::where('status', 2)->get();
         return view('employees.employeeview', compact('employees'));
     }
+
 }

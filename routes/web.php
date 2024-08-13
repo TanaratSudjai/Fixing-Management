@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\ManagaementRepirController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminManagement;
 use App\Http\Controllers\RegistorController;
+use App\Http\Controllers\RepirController;
 use Illuminate\Support\Facades\Route;
 
 // Registration Routes
@@ -36,12 +38,19 @@ Route::middleware('admin')->group(function () {
     Route::get('/product/edit/{id}', [AdminManagement::class, 'EditProduct'])->name('product.edit');
     Route::put('/product/update/{id}', [AdminManagement::class, 'UpdateProduct'])->name('product.update');
     Route::delete('/product/delete/{id}', [AdminManagement::class, 'DeleteProduct'])->name('product.delete');
+
+    Route::get('/listrepair/req', [ManagaementRepirController::class, 'RepirList'])->name('customer.repir');
+    Route::get('/repair/selectemployee/{id}', [ManagaementRepirController::class, 'selectemployee'])->name('repair.selectemployee');
+    Route::put('/repair/update/{id}', [ManagaementRepirController::class, 'update'])->name('repair.update');
 });
 
 // Customer Routes
 Route::middleware('customer')->group(function () {
     Route::get('/pagerepir', [PageController::class, 'PageCustomer'])->name('customer.dashboard');
     Route::get('/formrepir', [PageController::class, 'PageAddRepirCustomer'])->name('customer.addrepir');
+    // Store a new repair request
+    Route::get('/listrepair', [RepirController::class, 'RepirList'])->name('repairs.list');
+    Route::post('/repairs', [RepirController::class, 'AddRepir'])->name('repairs.store');
 });
 
 // Employee Routes
