@@ -3,6 +3,7 @@
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,7 +36,7 @@ Route::get('/inactive', function () {
 
 Route::get('/admin-add-employee', [PageController::class, 'adminPageAddEmployee'])->name('employee.add')->middleware('admin');
 Route::get('/admin-add-product', [PageController::class, 'adminPageAddProduct'])->name('product.add')->middleware('admin');
-
+Route::post('/admin/add-employee', [AdminController::class, 'addEmployee'])->name('admin.addEmployee')->middleware('admin');
 
 Route::get('/pagerepir', [PageController::class, 'PageCustomer'])->name('customer.dashboard')->middleware('customer');
 Route::get('/formrepir', [PageController::class, 'PageAddRepirCustomer'])->name('customer.addrepir')->middleware('customer');
