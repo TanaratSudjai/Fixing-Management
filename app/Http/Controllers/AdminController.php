@@ -60,12 +60,39 @@ class AdminController extends Controller
             return redirect()->back()->withErrors(['error' => 'เกิดข้อผิดพลาดในการเพิ่มอะไหล่สินค้าครับ']);
         }
     }
+    public function UpdateProduct(Request $req, $id)
+{
+    try {
+        $validatedData = $req->validate([
+            'product_name' => 'required|string|max:100',
+            'product_detail' => 'required|string',
+            'product_qty' => 'required|integer|min:0',
+            'product_price' => 'required|numeric|min:0',
+        ]);
 
-    public function ListProduct(){
+        $product = Product::findOrFail($id);
+        $product->update([
+            'product_name' => $validatedData['product_name'],
+            'product_detail' => $validatedData['product_detail'],
+            'product_qty' => $validatedData['product_qty'],
+            'product_price' => $validatedData['product_price'],
+        ]);
+
+        return redirect()->route('product.list')->with('success', 'Product updated successfully.');
+
+    } catch (Exception $e) {
+        Log::error('Error updating product: ' . $e->getMessage());
+        return redirect()->back()->withErrors(['error' => 'Error updating product.']);
+    }
+}
+
+    public function ListProduct()
+    {
         $products = Product::all();
         return view('products.productview', compact('products'));
     }
-    public function ListEmployee(){
+    public function ListEmployee()
+    {
         $employees = User::where('status', 2)->get();
         return view('employees.employeeview', compact('employees'));
     }

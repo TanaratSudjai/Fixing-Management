@@ -19,6 +19,16 @@
                         <td>{{ $employee->id }}</td>
                         <td>{{ $employee->name }}</td>
                         <td>{{ $employee->email }}</td>
+                        <td>
+                            <a href="{{ route('employee.edit', $employee->id) }}" class="btn btn-warning">Edit</a>
+
+                            <form action="{{ route('employee.delete', $employee->id) }}" method="POST"
+                                style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

@@ -33,7 +33,19 @@
                             <td>{{ $product->product_name }}</td>
                             <td>{{ $product->product_detail }}</td>
                             <td>{{ $product->product_qty }}</td>
-                            <td>${{ number_format($product->product_price / 100, 2) }}</td>
+                            <td>${{ number_format($product->product_price) }}</td>
+                            <td>
+                           
+                                <a href="{{ route('product.edit', $product->product_id) }}" class="btn btn-warning">Edit</a>
+
+                      
+                                <form action="{{ route('product.delete', $product->product_id) }}" method="POST"
+                                    style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
