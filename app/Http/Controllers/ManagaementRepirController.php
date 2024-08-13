@@ -23,18 +23,23 @@ class ManagaementRepirController extends Controller
         }
     }
 
-
     public function selectemployee($id)
-    {
-        try {
-            // $repair = Repir::findOrFail($id);
-            // $employees = User::where('status', 2)->get();
-            return view('admin.edit-repair');
-        } catch (Exception $e) {
-            Log::error('Error fetching repair record for editing: ' . $e->getMessage());
-            return redirect()->back()->withErrors(['error' => 'Failed to fetch repair record for editing.']);
-        }
+{
+    try {
+        // Fetch the repair record using Eloquent
+        $repair = Repir::findOrFail($id);
+
+        // Fetch employees with status = 2
+        $employees = User::where('status', 2)->get();
+
+        return view('admin.edit-repair', compact('repair', 'employees'));
+    } catch (Exception $e) {
+        Log::error('Error fetching repair record for editing: ' . $e->getMessage());
+        return redirect()->back()->withErrors(['error' => 'Failed to fetch repair record for editing.']);
     }
+}
+
+
 
     public function update(Request $request, $id)
     {

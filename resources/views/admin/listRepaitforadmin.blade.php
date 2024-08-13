@@ -40,6 +40,12 @@
 </head>
 
 <body>
+    @if (session('error'))
+        <div class="alert alert-success">
+            {{ session('error') }}
+        </div>
+    @endif
+    
     <h1>Repairs List</h1>
     <table>
         <thead>

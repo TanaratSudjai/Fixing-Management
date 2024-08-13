@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Repir extends Model
 {
+
+    protected $primaryKey = 'repair_id'; // Specify the primary key
+    
     use HasFactory;
     // Specify the table associated with the model
     protected $table = 'repir';
