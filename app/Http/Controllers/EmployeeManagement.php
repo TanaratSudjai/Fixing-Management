@@ -63,17 +63,18 @@ class EmployeeManagement extends Controller
         }
     }
 
-    // public function updateStatus(Request $request, $id)
-    // {
-    //     try {
-    //         $repair = Repir::findOrFail($id);
-    //         $repair->status = 2 ; 
-    //         $repair->save();
-    //         return redirect()->route('employee.work')->with('success', 'Product updated successfully.');
-    //     } catch (Exception $e) {
-    //         Log::error('Error updating product for repair: ' . $e->getMessage());
-    //         return redirect()->back()->withErrors(['error' => 'Failed to update product for repair.']);
-    //     }
-    // }
+    public function updateStatus(Request $request, $id)
+    {
+        try {
+            $repair = Repir::findOrFail($id);
+            $repair->status_id = $request->input('status_id');
+            $repair->save();
+
+            return redirect()->route('employee.work')->with('status', 'Repair status updated successfully!');
+        } catch (Exception $e) {
+            Log::error('Error updating repair status: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'Failed to update repair status.']);
+        }
+    }
 
 }

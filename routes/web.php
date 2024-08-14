@@ -61,6 +61,6 @@ Route::middleware('employee')->group(function () {
     Route::get('/repair/repair/{id}', [EmployeeManagement::class, 'selectProduct'])->name('repair.selectproduct');
     Route::put('/repair/{id}/updateProduct', [EmployeeManagement::class, 'updateProduct'])->name('repair.updateProduct');
     Route::get('/repair/warningstatus/{id}', [EmployeeManagement::class, 'statuswarning'])->name('repair.warning');
-    Route::put('/repair/{id}/statusupdate', [EmployeeManagement::class, 'updateProduct'])->name('repair.updateStatus');
+    Route::put('/repair/{id}/statusupdate', [EmployeeManagement::class, 'updateStatus'])->name('repair.updateStatus');
 
 });
