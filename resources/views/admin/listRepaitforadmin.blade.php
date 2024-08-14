@@ -45,7 +45,9 @@
             {{ session('error') }}
         </div>
     @endif
-    
+    @extends('layouts.admin')
+
+    @section('content')
     <h1>Repairs List</h1>
     <table>
         <thead>
@@ -75,6 +77,8 @@
             @endforeach
         </tbody>
     </table>
+    
+    @endsection
 </body>
 
 </html>
