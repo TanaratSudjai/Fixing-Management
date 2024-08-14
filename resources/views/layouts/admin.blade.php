@@ -10,8 +10,8 @@
     <div>
         @include('layouts.adminnavbar')
     </div>
-    
-    <div class="container mt-4">
+
+    <div>
         @yield('content')
     </div>
 </body>
