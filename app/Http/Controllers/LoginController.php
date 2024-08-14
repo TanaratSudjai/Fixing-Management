@@ -32,7 +32,7 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
             $userId = Auth::id();
-            session()->put('message', 'Welcome back, ' . $user->name . '! UID ' . $userId);
+            session()->put('message', 'Welcome back, ' . $user->name);
 
             if ($user->status == 1) {
 
