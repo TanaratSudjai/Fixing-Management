@@ -15,6 +15,8 @@
         </div>
     @endif
     <a href="{{ route('customer.addrepir') }}">เเจ้งซ่อม</a>
+    <a href="{{ route('repairs.list') }}">รายการเเจ้งซ่อม</a>
+
 </body>
 
 </html>

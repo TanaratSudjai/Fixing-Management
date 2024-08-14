@@ -15,6 +15,8 @@
             </div>
         @endif
     </h1>
+    <a href="{{ route('customer.repir') }}" class="btn-yellow">list req repair!</a>
+
     <a href="{{ route('employee.add') }}" class="btn-yellow">Go Add Employee</a>
     <a href="{{ route('product.add') }}" class="btn-yellow">Go Add Product</a>
     <a href="{{ route('products.view') }}" class="btn-yellow">Go view Product</a>
