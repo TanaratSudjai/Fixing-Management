@@ -33,12 +33,13 @@
                         <td>{{ $repair->repair_id }}</td>
                         <td>{{ $repair->customer->name }}</td>
                         <td>{{ $repair->repair_detail }}</td>
+                        <td>{{ $repair->status->status_name }}</td>
                         <td>{{ $repair->product->product_name ?? 'ยังไม่เบิกสินค้า'  }}</td>
-                        <td>{{ $repair->status_id }}</td>
                         <td>{{ $repair->created_at }}</td>
                         <td>{{ $repair->updated_at }}</td>
                         <td>
                             <a href="{{ route('repair.selectproduct', $repair->repair_id) }}" class="btn btn-warning">เบิกอะไหล่</a>
+                            <a href="{{ route('repair.updateStatus', $repair->repair_id) }}" class="btn btn-warning">เเจ้งลูกค้า</a>
                         </td>
                     </tr>
                 @endforeach

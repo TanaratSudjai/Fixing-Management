@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,7 @@
             gap: 20px;
             margin-top: 20px;
         }
+
         .card {
             border: 1px solid #ccc;
             border-radius: 8px;
@@ -21,18 +22,22 @@
             text-align: center;
             transition: transform 0.2s ease-in-out;
         }
+
         .card.selected {
             border-color: #007bff;
             background-color: #e9f7ff;
         }
+
         .card:hover {
             transform: scale(1.05);
         }
+
         .hidden {
             display: none;
         }
     </style>
 </head>
+
 <body>
     <h1>Select Product for Repair</h1>
 
@@ -45,12 +50,12 @@
         @method('PUT')
 
         <div class="card-container">
-            @foreach($product as $item)
+            @foreach ($product as $item)
                 <div class="card" data-id="{{ $item->product_id }}">
                     <h3>{{ $item->product_name }}</h3>
                     <p>Product ID: {{ $item->product_id }}</p>
-                    <input type="radio" name="product_id" value="{{ $item->product_id }}" class="hidden" 
-                           {{ $repair->product_id == $item->product_id ? 'checked' : '' }}>
+                    <input type="radio" name="product_id" value="{{ $item->product_id }}" class="hidden"
+                        {{ $repair->product_id == $item->product_id ? 'checked' : '' }}>
                 </div>
             @endforeach
         </div>
@@ -59,12 +64,12 @@
     </form>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.card');
             const hiddenInputs = document.querySelectorAll('.hidden');
 
             cards.forEach(card => {
-                card.addEventListener('click', function () {
+                card.addEventListener('click', function() {
                     // Deselect all cards
                     cards.forEach(c => c.classList.remove('selected'));
                     hiddenInputs.forEach(input => input.checked = false);
@@ -84,4 +89,5 @@
         });
     </script>
 </body>
+
 </html>

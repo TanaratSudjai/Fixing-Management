@@ -14,7 +14,7 @@ class EmployeeManagement extends Controller
     //
     public function listwork()
     {
-        $workrepair = Repir::with('customer')->get();
+        $workrepair = Repir::with('customer', 'status')->get();
 
         return view('work.work', compact('workrepair'));
     }
@@ -32,18 +32,48 @@ class EmployeeManagement extends Controller
         }
     }
 
+    public function statuswarning($id)
+    {
+        try {
+            $repair = Repir::findOrFail($id);
+            $product = Product::all();
+            return view('work.productselect', compact('repair', 'product'));
+
+        } catch (Exception $e) {
+            Log::error('Error fetching repair record for editing: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'Failed to fetch repair record for editing.']);
+        }
+    }
+
     public function updateProduct(Request $request, $id)
     {
         try {
             $repair = Repir::findOrFail($id);
-            $repair->product_id = $request->input('product_id');
+            if ($repair->product_id == null) {
+                $repair->product_id = $request->input('product_id');
+            } else {
+                $repair->status = 2;
+            }
             $repair->save();
 
-            return redirect()->route('repair.index')->with('success', 'Product updated successfully.');
+            return redirect()->route('employee.work')->with('success', 'Product updated successfully.');
         } catch (Exception $e) {
             Log::error('Error updating product for repair: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => 'Failed to update product for repair.']);
         }
     }
+
+    // public function updateStatus(Request $request, $id)
+    // {
+    //     try {
+    //         $repair = Repir::findOrFail($id);
+    //         $repair->status = 2 ; 
+    //         $repair->save();
+    //         return redirect()->route('employee.work')->with('success', 'Product updated successfully.');
+    //     } catch (Exception $e) {
+    //         Log::error('Error updating product for repair: ' . $e->getMessage());
+    //         return redirect()->back()->withErrors(['error' => 'Failed to update product for repair.']);
+    //     }
+    // }
 
 }
