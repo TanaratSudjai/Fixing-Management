@@ -8,7 +8,7 @@
 </head>
 <body>
     <div>
-        @include('layouts.navbar')
+        @include('layouts.adminnavbar')
     </div>
     
     <div class="container mt-4">
