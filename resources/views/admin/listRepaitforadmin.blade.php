@@ -85,7 +85,6 @@
                     <td>{{ $repair->repair_detail }}</td>
                     <td>{{ $repair->employee->name ?? 'Requires Employee' }}</td>
                     <td>{{ $repair->status->status_name ?? 'N/A' }}</td>
-
                     <td>
                         @if ($repair->status_id == 3)
                             <a href="" class="btn btn-success">DONE</a>
@@ -96,7 +95,6 @@
                                 class="btn btn-warning">PLANING</a>
                         @endif
                     </td>
-
                 </tr>
             @endforeach
         </tbody>
