@@ -10,10 +10,6 @@
 
 <body>
     <h1>Work Repair List</h1>
-
-    @if ($workrepair->isEmpty())
-        <p>No repairs found.</p>
-    @else
         <table border="1">
             <thead>
                 <tr>
@@ -55,7 +51,45 @@
                 @endforeach
             </tbody>
         </table>
-    @endif
+
+        <br>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Repair ID</th>
+                    <th>Customer Name</th>
+                    <th>Repair Detail</th>
+                    <th>Status ID</th>
+                    <th>Product</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($inprogress as $repairInpogress)
+                    <tr>
+                        <td>{{ $repairInpogress->repair_id }}</td>
+                        <td>{{ $repairInpogress->customer->name }}</td>
+                        <td>{{ $repairInpogress->repair_detail }}</td>
+                        <td>{{ $repairInpogress->status->status_name }}</td>
+                        <td>{{ $repairInpogress->product->product_name ?? 'ยังไม่เบิกสินค้า' }}</td>
+                        <td>{{ $repairInpogress->created_at }}</td>
+                        <td>{{ $repairInpogress->updated_at }}</td>
+                        <td>
+                            <form action="{{ route('repair.done', $repairInpogress->repair_id) }}"
+                                method="POST" style="display:inline;">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="status_id" value="3">
+                                <button type="submit" class="btn btn-danger">ซ่อมสำเร็จ</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
 </body>
 
 </html>
