@@ -15,9 +15,13 @@ class RepirController extends Controller
     public function RepirList(Request $req)
     {
         try {
+            $customerId = auth()->id();
+            $repairs = Repir::with('customer', 'status')
+                ->where('customer_id', $customerId)
+                ->get();
 
-            $repairs = Repir::with('customer', 'status')->get();
             return view('repir.listRepait', compact('repairs'));
+
 
         } catch (Exception $e) {
             Log::error('Error fetching repair list: ' . $e->getMessage());

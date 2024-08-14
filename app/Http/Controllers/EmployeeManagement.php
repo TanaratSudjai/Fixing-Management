@@ -14,7 +14,8 @@ class EmployeeManagement extends Controller
     //
     public function listwork()
     {
-        $workrepair = Repir::with('customer', 'status')->get();
+        $employee = auth()->id();
+        $workrepair = Repir::with('customer', 'status')->where('employee_id', $employee)->get();
 
         return view('work.work', compact('workrepair'));
     }

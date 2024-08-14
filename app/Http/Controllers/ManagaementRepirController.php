@@ -55,7 +55,7 @@ class ManagaementRepirController extends Controller
             $repair->status_id = 1;
             $repair->save();
 
-            return redirect()->route('customer.dashboard')->with('success', 'Repair record updated successfully.');
+            return redirect()->route('customer.repir')->with('success', 'Repair record updated successfully.');
         } catch (Exception $e) {
             Log::error('Error updating repair record: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => 'Failed to update repair record.']);
