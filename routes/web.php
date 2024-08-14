@@ -58,4 +58,8 @@ Route::middleware('customer')->group(function () {
 Route::middleware('employee')->group(function () {
     Route::get('/employeeWorkList', [PageController::class, 'PageEmployee'])->name('employee.dashboard');
     Route::get('/work_employee', [EmployeeManagement::class, 'listwork'])->name('employee.work');
+    Route::get('/repair/repair/{id}', [EmployeeManagement::class, 'selectProduct'])->name('repair.selectproduct');
+    Route::put('/repair/{id}/updateProduct', [EmployeeManagement::class, 'updateProduct'])->name('repair.updateProduct');
+
+
 });

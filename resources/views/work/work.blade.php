@@ -18,11 +18,10 @@
             <thead>
                 <tr>
                     <th>Repair ID</th>
-                    <th>Customer ID</th>
+                    <th>Customer Name</th>
                     <th>Repair Detail</th>
-                    <th>Employee ID</th>
-                    <th>Product ID</th>
                     <th>Status ID</th>
+                    <th>Product</th>
                     <th>Created At</th>
                     <th>Updated At</th>
                     <th>Action</th>
@@ -32,15 +31,14 @@
                 @foreach ($workrepair as $repair)
                     <tr>
                         <td>{{ $repair->repair_id }}</td>
-                        <td>{{ $repair->customer_id }}</td>
+                        <td>{{ $repair->customer->name }}</td>
                         <td>{{ $repair->repair_detail }}</td>
-                        <td>{{ $repair->employee_id }}</td>
-                        <td>{{ $repair->product_id }}</td>
+                        <td>{{ $repair->product->product_name ?? 'ยังไม่เบิกสินค้า'  }}</td>
                         <td>{{ $repair->status_id }}</td>
                         <td>{{ $repair->created_at }}</td>
                         <td>{{ $repair->updated_at }}</td>
                         <td>
-                            เบิกอะไหล่
+                            <a href="{{ route('repair.selectproduct', $repair->repair_id) }}" class="btn btn-warning">เบิกอะไหล่</a>
                         </td>
                     </tr>
                 @endforeach
