@@ -15,9 +15,17 @@ class EmployeeManagement extends Controller
     public function listwork()
     {
         $employee = auth()->id();
-        $workrepair = Repir::with('customer', 'status')->where('employee_id', $employee)->get();
+        $workrepair = Repir::with('customer', 'status')
+            ->where('employee_id', $employee)
+            ->where('status_id', 1)
+            ->get();
 
-        return view('work.work', compact('workrepair'));
+        $inprogress = Repir::with('customer', 'status')
+            ->where('employee_id', $employee)
+            ->where('status_id', 2)
+            ->get();
+
+        return view('work.work', compact('workrepair', 'inprogress'));
     }
 
     public function selectProduct($id)
@@ -65,6 +73,20 @@ class EmployeeManagement extends Controller
     }
 
     public function updateStatus(Request $request, $id)
+    {
+        try {
+            $repair = Repir::findOrFail($id);
+            $repair->status_id = $request->input('status_id');
+            $repair->save();
+
+            return redirect()->route('employee.work')->with('status', 'Repair status updated successfully!');
+        } catch (Exception $e) {
+            Log::error('Error updating repair status: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'Failed to update repair status.']);
+        }
+    }
+
+    public function done(Request $request, $id)
     {
         try {
             $repair = Repir::findOrFail($id);
