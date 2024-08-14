@@ -16,6 +16,8 @@
     @endif
 
     พนักงาน
+
+    <a href="{{ route('employee.work') }}">เบิกสินค้า</a>
 </body>
 
 </html>

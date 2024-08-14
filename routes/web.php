@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeManagement;
 use App\Http\Controllers\ManagaementRepirController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\LoginController;
@@ -56,4 +57,5 @@ Route::middleware('customer')->group(function () {
 // Employee Routes
 Route::middleware('employee')->group(function () {
     Route::get('/employeeWorkList', [PageController::class, 'PageEmployee'])->name('employee.dashboard');
+    Route::get('/work_employee', [EmployeeManagement::class, 'listwork'])->name('employee.work');
 });
