@@ -7,10 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @vite('resources/css/app.css')
+    <style>
+        nav{
+            font-family: Arial, sans-serif;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="bg-[#E1F7F5] font-family: Arial, sans-serif shadow-md">
+    <nav class="bg-[#E1F7F5] shadow-xl">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -38,42 +43,34 @@
                         <img src="logo.png" alt="Logo" class="w-10 h-8" alt="Your Company">
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
-                        <div class="flex space-x-4">
+                        <div class="flex space-x-4 focus:outline-none justify-center mt-1">
                             <a href="{{ route('active') }}"
-                                class="relative rounded-md px-3 py-2 text-sm font-medium text-black hover:text-[#0E46A3]">
+                                class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#0E46A3] hover:border-b-2 border-[#0E46A3]">
                                 Dashboard
-                                <span
-                                    class="absolute left-0 bottom-0 h-0.5 w-full bg-[#0E46A3] scale-x-0 transition-transform duration-300 ease-in-out origin-left hover:scale-x-100"></span>
                             </a>
                             <a href="{{ route('customer.repir') }}"
-                                class="relative rounded-md px-3 py-2 text-sm font-medium text-black hover:text-[#0E46A3]">
+                                class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#0E46A3] hover:border-b-2 border-[#0E46A3]">
                                 รายการแจ้งซ่อม
-                                <span
-                                    class="absolute left-0 bottom-0 h-0.5 w-full bg-[#0E46A3] scale-x-0 transition-transform duration-300 ease-in-out origin-left hover:scale-x-100"></span>
+                                
                             </a>
                             <a href="{{ route('employee.add') }}"
-                                class="relative rounded-md px-3 py-2 text-sm font-medium text-black hover:text-[#0E46A3]">
+                                class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#0E46A3] hover:border-b-2 border-[#0E46A3] ">
                                 เพิ่มพนักงาน
-                                <span
-                                    class="absolute left-0 bottom-0 h-0.5 w-full bg-[#0E46A3] scale-x-0 transition-transform duration-300 ease-in-out origin-left hover:scale-x-100"></span>
                             </a>
                             <a href="{{ route('product.add') }}"
-                                class="relative rounded-md px-3 py-2 text-sm font-medium text-black hover:text-[#0E46A3]">
+                                class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#0E46A3] hover:border-b-2 border-[#0E46A3]">
                                 เพิ่มสินค้า
-                                <span
-                                    class="absolute left-0 bottom-0 h-0.5 w-full bg-[#0E46A3] scale-x-0 transition-transform duration-300 ease-in-out origin-left hover:scale-x-100"></span>
+                                
                             </a>
                             <a href="{{ route('products.view') }}"
-                                class="relative rounded-md px-3 py-2 text-sm font-medium text-black hover:text-[#0E46A3]">
+                                class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#0E46A3] hover:border-b-2 border-[#0E46A3]">
                                 รายการสินค้า
-                                <span
-                                    class="absolute left-0 bottom-0 h-0.5 w-full bg-[#0E46A3] scale-x-0 transition-transform duration-300 ease-in-out origin-left hover:scale-x-100"></span>
+                                
                             </a>
                             <a href="{{ route('employee.list') }}"
-                                class="relative rounded-md px-3 py-2 text-sm font-medium text-black hover:text-[#0E46A3]">
+                                class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#0E46A3] hover:border-b-2 border-[#0E46A3]">
                                 รายชื่อพนักงาน
-                                <span
-                                    class="absolute left-0 bottom-0 h-0.5 w-full bg-[#0E46A3] scale-x-0 transition-transform duration-300 ease-in-out origin-left hover:scale-x-100"></span>
+                                
                             </a>
                         </div>
                     </div>

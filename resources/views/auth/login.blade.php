@@ -18,7 +18,7 @@
     @endif
     <div class="bg-white p-6 md:p-8 lg:p-10 rounded-lg shadow-lg w-11/12 sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4">
         <div class="flex justify-center mb-4">
-            <img src="logo.png" alt="Logo" class="w-20 h-20">
+            <img src="logo.png" alt="Logo" class="w-23 h-20">
         </div>
         <h2 class="text-xl md:text-2xl font-semibold text-center mb-6">Sign in to your account</h2>
         <form method="POST" action="{{ route('login') }} " class="flex flex-col">
