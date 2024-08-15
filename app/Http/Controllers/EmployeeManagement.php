@@ -58,14 +58,32 @@ class EmployeeManagement extends Controller
     {
         try {
             $repair = Repir::findOrFail($id);
+            $selectedProductId = $request->input('product_id');
+            $unitAmounts = $request->input('unit_amount');
+
+            $product = Product::findOrFail($selectedProductId);
             if ($repair->product_id == null) {
-                $repair->product_id = $request->input('product_id');
+                $repair->product_id = $selectedProductId;
+                $repair->unit_amount = $unitAmounts[$selectedProductId];
+                $product = Product::findOrFail($selectedProductId);
+
+                if ($product->product_qty < 1) {
+                    return redirect()->back()->with('error', 'สินค้าไม่มี');
+                }
+                if ($product->product_qty < $repair->unit_amount) {
+                    return redirect()->back()->with('error', 'สินค้าไม่พอจำนวนที่เบิก');
+                }
+
+                $product->product_qty -= $repair->unit_amount;
+                $product->save();
             } else {
                 $repair->status = 2;
             }
+
             $repair->save();
 
             return redirect()->route('employee.work')->with('success', 'Product updated successfully.');
+            
         } catch (Exception $e) {
             Log::error('Error updating product for repair: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => 'Failed to update product for repair.']);

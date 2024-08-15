@@ -52,8 +52,9 @@ Route::middleware('customer')->group(function () {
     // Store a new repair request
     Route::get('/listrepair', [RepirController::class, 'RepirList'])->name('repairs.list');
     Route::post('/repairs', [RepirController::class, 'AddRepir'])->name('repairs.store');
+    Route::get('/repairs/{id}', [RepirController::class, 'edit'])->name('repairs.edit');
+    Route::put('/repairsupdate/{id}/req', [RepirController::class, 'update'])->name('repairs.update');
 });
-
 // Employee Routes
 Route::middleware('employee')->group(function () {
     Route::get('/employeeWorkList', [PageController::class, 'PageEmployee'])->name('employee.dashboard');

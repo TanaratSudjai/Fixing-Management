@@ -54,8 +54,11 @@
                 <div class="card" data-id="{{ $item->product_id }}">
                     <h3>{{ $item->product_name }}</h3>
                     <p>Product ID: {{ $item->product_id }}</p>
+                    <p>Available Quantity: {{ $item->product_qty }}</p>
                     <input type="radio" name="product_id" value="{{ $item->product_id }}" class="hidden"
                         {{ $repair->product_id == $item->product_id ? 'checked' : '' }}>
+                    <input type="number" name="unit_amount[{{ $item->product_id }}]" placeholder="จำนวนต้องการเบิก"
+                        min="1" max="{{ $item->product_qty }}">
                 </div>
             @endforeach
         </div>
