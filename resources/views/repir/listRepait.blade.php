@@ -23,6 +23,16 @@
                     <td>{{ $repair->customer->name ?? 'N/A' }}</td>
                     <td>{{ $repair->repair_detail }}</td>
                     <td>{{ $repair->status->status_name ?? 'N/A' }}</td>
+                    <td>
+
+                        @if ($repair->status_id == 1)
+                            <a href="{{ route('repairs.edit', $repair->repair_id) }}">แก้ไข</a>
+                        @elseif ($repair->status_id == 2)
+                            <a href="#">รายการนี้กำลังดำเนินการ</a>
+                        @else
+                            <a href="#">รายการนี้ซ่อมเรียบร้อยเเล้ว</a>
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         </tbody>

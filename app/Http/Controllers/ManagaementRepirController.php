@@ -26,10 +26,8 @@ class ManagaementRepirController extends Controller
     public function selectemployee($id)
     {
         try {
-            // Fetch the repair record using Eloquent
             $repair = Repir::findOrFail($id);
 
-            // Fetch employees with status = 2
             $employees = User::where('status', 2)->get();
 
             return view('admin.edit-repair', compact('repair', 'employees'));

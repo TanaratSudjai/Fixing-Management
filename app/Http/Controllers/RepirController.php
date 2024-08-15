@@ -83,6 +83,26 @@ class RepirController extends Controller
             return redirect()->back()->withErrors(['error' => 'Failed to update repair record.']);
         }
     }
+    public function edit($id)
+    {
+        $repair = Repir::findOrFail($id);
+        return view('repir.editRepir', compact('repair'));
+    }
+    public function update(Request $request, $id)
+    {
+        $repair = Repir::findOrFail($id);
+        if ($repair->status_id == 0) {
+            $request->validate([
+                'repair_detail' => 'required|string|max:255',
+            ]);
+            $repair->repair_detail = $request->input('repair_detail');
+            $repair->save();
+        } else {
+            return redirect()->back()->withErrors(['error' => 'รายการนี้ไม่สามารถแก้ไขได้เพราะรับเเจ้งไปแล้ว']);
+        }
+
+        return redirect()->route('repairs.list')->with('success', 'Repair updated successfully.');
+    }
 
     public function destroy($id)
     {

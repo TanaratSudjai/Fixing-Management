@@ -36,16 +36,22 @@
                     <td>{{ $repair->created_at }}</td>
                     <td>{{ $repair->updated_at }}</td>
                     <td>
-                        <a href="{{ route('repair.selectproduct', $repair->repair_id) }}"
-                            class="btn btn-warning">เบิกอะไหล่</a>
 
-                        <form action="{{ route('repair.updateStatus', $repair->repair_id) }}" method="POST"
-                            style="display:inline;">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" name="status_id" value="2">
-                            <button type="submit" class="btn btn-danger">เเจ้งลูกค้า</button>
-                        </form>
+                        @if ($repair->product != null)
+                            <form action="{{ route('repair.updateStatus', $repair->repair_id) }}" method="POST"
+                                style="display:inline;">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="status_id" value="2">
+                                <button type="submit" class="btn btn-danger">เเจ้งลูกค้า</button>
+                            </form>
+                        @else
+                            {
+                            <a href="{{ route('repair.selectproduct', $repair->repair_id) }}"
+                                class="btn btn-warning">เบิกอะไหล่</a>
+
+                            }
+                        @endif
                     </td>
                 </tr>
             @endforeach
