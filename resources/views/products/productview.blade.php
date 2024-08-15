@@ -9,6 +9,10 @@
 </head>
 
 <body>
+    @extends('layouts.admin')
+
+
+    @section('content')
     product for admin
     <div class="container">
         <h1>All Products</h1>
@@ -52,6 +56,7 @@
             </table>
         @endif
     </div>
+    @endsection
 </body>
 
 </html>

@@ -9,6 +9,10 @@
 </head>
 
 <body>
+    @extends('layouts.admin')
+
+
+    @section('content')
     <div class="container">
         <h1>Add New Product</h1>
 
@@ -48,6 +52,7 @@
             <button type="submit" class="btn btn-primary">Add Product</button>
         </form>
     </div>
+    @endsection
 </body>
 
 </html>

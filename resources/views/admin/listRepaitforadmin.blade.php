@@ -7,6 +7,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            
         }
 
         table {
@@ -46,15 +47,7 @@
             /* เปลี่ยนสีตัวอักษรเป็นสีดำ */
         }
 
-        .alert-success {
-            color: green;
-            background-color: #d4edda;
-            border-color: #c3e6cb;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid transparent;
-            border-radius: 4px;
-        }
+        
     </style>
 </head>
 
@@ -64,7 +57,10 @@
             {{ session('error') }}
         </div>
     @endif
+    @extends('layouts.admin')
 
+
+    @section('content')
     <h1>Repairs List</h1>
     <table>
         <thead>
@@ -99,6 +95,7 @@
             @endforeach
         </tbody>
     </table>
+    @endsection
 </body>
 
 </html>

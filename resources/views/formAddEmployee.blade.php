@@ -9,6 +9,10 @@
 </head>
 
 <body>
+    @extends('layouts.admin')
+
+
+    @section('content')
     <form action="{{ route('admin.addEmployee') }}" method="POST">
         @csrf
         <input type="text" name="name" placeholder="Name" required>
@@ -17,6 +21,7 @@
         <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
         <button type="submit">Add Employee</button>
     </form>
+    @endsection
 </body>
 
 </html>
