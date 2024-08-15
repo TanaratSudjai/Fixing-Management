@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('repair_detail');
             $table->unsignedBigInteger('employee_id')->nullable();
             $table->unsignedBigInteger('product_id')->nullable();
+            $table->bigInteger('unit_amount')->nullable();
             $table->unsignedBigInteger('status_id')->nullable();
             $table->timestamps();
             $table->foreign('customer_id')->references('id')->on('users')->onDelete('set null');

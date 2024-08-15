@@ -56,8 +56,9 @@
                     <p>Product ID: {{ $item->product_id }}</p>
                     <input type="radio" name="product_id" value="{{ $item->product_id }}" class="hidden"
                         {{ $repair->product_id == $item->product_id ? 'checked' : '' }}>
+                    <p>{{ $item->product_qty }}</p>
                 </div>
-            @endforeach
+                <input type="number" name="unit_amount[{{ $item->product_id }}]" placeholder="จำนวนต้องการเบิก">            @endforeach
         </div>
 
         <button type="submit">Update Product</button>
