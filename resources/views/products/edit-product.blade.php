@@ -13,7 +13,7 @@
     @extends('layouts.admin')
 
     @section('content')
-        <div class="flex items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8 mt-[-100px]">
+        <div class="flex items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8 mt-[-30px]">
             <div class="p-6 sm:p-8 rounded-2xl bg-white shadow-xl w-full max-w-md">
                 <h1 class="text-center text-2xl font-bold mb-3">Edit Product</h1>
                 <form action="{{ route('product.update', $product->product_id) }}" method="POST" id="editProduct-form">
