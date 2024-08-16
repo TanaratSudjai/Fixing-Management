@@ -25,13 +25,13 @@
                         <label for="repair_detail" class="text-gray-800 text-sm mb-2 block">รายละเอียดการแจ้งซ่อม</label>
                         <div class="relative flex items-center">
                             <input type="text" name="repair_detail" id="repair_detail"
-                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
+                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3  outline-blue-600"
                                 value="{{ old('repair_detail', $repair->repair_detail) }}" required>
                         </div>
 
                         <label for="employee_id" class="text-gray-800 text-sm mb-2 block">นำพนักงานเพื่อไปซ่อม</label>
                         <div class="relative flex items-center mb-4">
-                            <select name="employee_id" id="employee_id" class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600">
+                            <select name="employee_id" id="employee_id" class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3  outline-blue-600">
                                 <option value="">เลือกพนักงาน</option>
                                 @foreach ($employees as $employee)
                                     <option value="{{ $employee->id }}"
@@ -42,7 +42,7 @@
                             </select>
                         </div>
 
-                        <button type="button" id="submit-btn" class="mt-2 w-full bg-[#17a2b8] hover:bg-[#107584] text-white py-3 rounded-md mb-4 transition duration-300 ease-in-out">
+                        <button type="button" id="submit-btn" class="mt-2 w-full bg-[#17a2b8] hover:bg-[#107584] text-white py-3  mb-4 transition duration-300 ease-in-out">
                             บันทึก
                         </button>
 
