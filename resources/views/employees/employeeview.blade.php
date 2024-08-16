@@ -86,11 +86,12 @@
                                                         <a href="{{ route('employee.edit', $employee->id) }}"
                                                             class="btn bg-yellow-500 py-2">Edit</a>
 
-                                                        <form id="del_form" action="{{ route('employee.delete', $employee->id) }}"
+                                                        <form id="del_form_{{ $employee->id }}"
+                                                            action="{{ route('employee.delete', $employee->id) }}"
                                                             method="POST" style="display:inline;">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button id="del_btn" type="submit"
+                                                            <button id="del_btn_{{ $employee->id }}" type="submit"
                                                                 class="btn btn-warning">Delete</button>
                                                         </form>
                                                     </div>
@@ -98,6 +99,7 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>
@@ -106,21 +108,26 @@
             </div>
         </div>
         <script>
-            document.getElementById('del_btn').addEventListener('click', function (event) {
-                event.preventDefault(); // Prevent the form from submitting immediately
+            document.querySelectorAll('button[id^="del_btn_"]').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent the form from submitting immediately
 
-                Swal.fire({
-                    title: "คุณแน่ใจว่าจะลบสินค้านี้หรือไม่?",
-                    text: "แน่ใจใช่ไหม?",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "ใช่, ฉันแน่ใจ!"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById('del_form').submit(); // Submit the form if confirmed
-                    }
+                    const employeeId = this.id.split('_')[2]; // Extract the employee ID from the button ID
+                    const form = document.getElementById(`del_form_${employeeId}`);
+
+                    Swal.fire({
+                        title: "คุณแน่ใจว่าจะลบชื่อพนักงานคนนี้หรือไม่?",
+                        text: "แน่ใจใช่ไหม?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "ใช่, ฉันแน่ใจ!"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit(); // Submit the form if confirmed
+                        }
+                    });
                 });
             });
         </script>

@@ -92,11 +92,11 @@
                                                         <a href="{{ route('product.edit', $product->product_id) }}"
                                                             class="btn bg-yellow-500">Edit</a>
 
-                                                        <form id="del_form" action="{{ route('product.delete', $product->product_id) }}"
+                                                        <form id="del_form_{{ $product->product_id }}" action="{{ route('product.delete', $product->product_id) }}"
                                                             method="POST" style="display:inline;">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button id="del_btn" type="submit" class="btn btn-warning">Delete</button>
+                                                            <button id="del_btn_{{ $product->product_id }}" type="submit" class="btn btn-warning">Delete</button>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -112,21 +112,26 @@
         </div>
 
         <script>
-            document.getElementById('del_btn').addEventListener('click', function (event) {
-                event.preventDefault(); // Prevent the form from submitting immediately
+            document.querySelectorAll('button[id^="del_btn_"]').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent the form from submitting immediately
 
-                Swal.fire({
-                    title: "คุณแน่ใจว่าจะลบสินค้านี้หรือไม่?",
-                    text: "แน่ใจใช่ไหม?",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "ใช่, ฉันแน่ใจ!"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById('del_form').submit(); // Submit the form if confirmed
-                    }
+                    const product_id = this.id.split('_')[2]; // Extract the employee ID from the button ID
+                    const form = document.getElementById(`del_form_${product_id}`);
+
+                    Swal.fire({
+                        title: "คุณแน่ใจว่าจะลบสินค้านี้หรือไม่?",
+                        text: "แน่ใจใช่ไหม?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "ใช่, ฉันแน่ใจ!"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit(); // Submit the form if confirmed
+                        }
+                    });
                 });
             });
         </script>
