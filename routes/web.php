@@ -17,7 +17,7 @@ Route::post('register', [RegistorController::class, 'register']);
 // Authentication Routes
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login.form');
 Route::post('login', [LoginController::class, 'login'])->name('login');
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 // Inactive Page Route
 Route::get('/inactive', function () {
@@ -43,6 +43,7 @@ Route::middleware('admin')->group(function () {
     Route::get('/listrepair/req', [ManagaementRepirController::class, 'RepirList'])->name('customer.repir');
     Route::get('/repair/selectemployee/{id}', [ManagaementRepirController::class, 'selectemployee'])->name('repair.selectemployee');
     Route::put('/repair/update/{id}', [ManagaementRepirController::class, 'update'])->name('repair.update');
+    Route::get('/dashboard/admin', [AdminController::class , 'Dashboard'])->name('admin.dashboard');
 });
 
 // Customer Routes
