@@ -99,4 +99,23 @@ class AdminController extends Controller
         return view('employees.employeeview', compact('employees'));
     }
 
+    public function Dashboard(){
+        $countCustomer = User::where('status', 0)->count() ;
+        $countEmployee = User::where('status', 2)->count() ;
+        $countProduct = Product::all()->count();
+        $countRepair_done = Repir::where('status_id', 3)->count();
+        $countRepair_inprogress = Repir::where('status_id', 2)->count();
+        $countRepair_pending = Repir::where('status_id', 1)->count();
+
+        $data = [
+            'countCustomer' => $countCustomer,
+            'countEmployee' => $countEmployee,
+            'countProduct' => $countProduct,
+            'countRepair_done' => $countRepair_done,
+            'countRepair_inprogress' => $countRepair_inprogress,
+            'countRepair_pending' => $countRepair_pending
+        ];
+        return view('admin.dashboard', compact('data'));
+    }
+
 }

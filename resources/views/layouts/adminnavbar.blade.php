@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <nav class="bg-[#E1F7F5] shadow-xl">
+    <nav class="bg-[#E1F7F5] ">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -44,7 +44,7 @@
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4 focus:outline-none justify-center mt-1">
-                            <a href="{{ route('active') }}"
+                            <a href="{{ route('admin.dashboard') }}"
                                 class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#0E46A3] hover:border-b-2 border-[#0E46A3]">
                                 Dashboard
                             </a>
