@@ -91,7 +91,7 @@ class RepirController extends Controller
     public function update(Request $request, $id)
     {
         $repair = Repir::findOrFail($id);
-        if ($repair->status_id == 0) {
+        if ($repair->status_id == 1) {
             $request->validate([
                 'repair_detail' => 'required|string|max:255',
             ]);

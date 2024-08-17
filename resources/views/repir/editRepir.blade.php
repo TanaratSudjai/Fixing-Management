@@ -14,7 +14,7 @@
         <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">Edit Repair</h1>
 
         @if ($errors->any())
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -26,17 +26,18 @@
         <form action="{{ route('repairs.update', $repair->repair_id) }}" method="POST">
             @csrf
             @method('PUT')
-            <div class="mb-4">
-                <label for="repair_detail" class="block text-gray-700 text-sm font-bold mb-2">Repair Detail</label>
-                <input type="text" id="repair_detail" name="repair_detail" 
-                       value="{{ $repair->repair_detail }}" 
-                       required 
-                       class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <textarea class="w-full h-[150px] px-4 py-3 border border-gray-300 rounded-lg shadow-sm text-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                name="repair_detail" id="" cols="30" rows="10"  required >{{ $repair->repair_detail }}</textarea>
+            <div class="flex flex-col gap-4">
+                <button type="submit" 
+                        class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Update Repair
+                </button>
+                <a href="{{ route('customer.dashboard') }}"
+                   class="w-full bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 text-center">
+                    Cancel
+                </a>
             </div>
-            <button type="submit" 
-                    class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                Update Repair
-            </button>
         </form>
     </div>
 </body>
