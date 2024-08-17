@@ -5,8 +5,8 @@
     <title>Repairs List</title>
 </head>
 
-<body>
-    <h1>Repairs List</h1>
+<body class="bg-blue">
+    <h1 >Repairs List</h1>
     <table border="1">
         <thead>
             <tr>
