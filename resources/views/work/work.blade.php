@@ -5,97 +5,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work Repair List</title>
-    <!-- Include any CSS files here -->
+    @vite('resources/css/app.css')
 </head>
 
-<body>
-    <h1>Work Repair List</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Repair ID</th>
-                <th>Customer Name</th>
-                <th>Repair Detail</th>
-                <th>Status ID</th>
-                <th>Product</th>
-                <th>Unit fix</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($workrepair as $repair)
-                <tr>
-                    <td>{{ $repair->repair_id }}</td>
-                    <td>{{ $repair->customer->name }}</td>
-                    <td>{{ $repair->repair_detail }}</td>
-                    <td>{{ $repair->status->status_name }}</td>
-                    <td>{{ $repair->product->product_name ?? 'ยังไม่เบิกสินค้า' }}</td>
-                    <td>{{ $repair->unit_amount ?? 'ยังไม่เบิกสินค้า' }}</td>
-                    <td>{{ $repair->created_at }}</td>
-                    <td>{{ $repair->updated_at }}</td>
-                    <td>
+<body class="p-5 bg-gray-100">
+    <h1 class="text-xl text-white bg-blue-600 p-5">Work Repair List</h1>
 
-                        @if ($repair->product != null)
-                            <form action="{{ route('repair.updateStatus', $repair->repair_id) }}" method="POST"
-                                style="display:inline;">
-                                @csrf
-                                @method('PUT')
-                                <input type="hidden" name="status_id" value="2">
-                                <button type="submit" class="btn btn-danger">เเจ้งลูกค้า</button>
-                            </form>
-                        @else
-                            {
-                            <a href="{{ route('repair.selectproduct', $repair->repair_id) }}"
-                                class="btn btn-warning">เบิกอะไหล่</a>
-
-                            }
-                        @endif
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-
-    <br>
-
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Repair ID</th>
-                <th>Customer Name</th>
-                <th>Repair Detail</th>
-                <th>Status ID</th>
-                <th>Product</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($inprogress as $repairInpogress)
-                <tr>
-                    <td>{{ $repairInpogress->repair_id }}</td>
-                    <td>{{ $repairInpogress->customer->name }}</td>
-                    <td>{{ $repairInpogress->repair_detail }}</td>
-                    <td>{{ $repairInpogress->status->status_name }}</td>
-                    <td>{{ $repairInpogress->product->product_name ?? 'ยังไม่เบิกสินค้า' }}</td>
-                    <td>{{ $repairInpogress->created_at }}</td>
-                    <td>{{ $repairInpogress->updated_at }}</td>
-                    <td>
-                        <form action="{{ route('repair.done', $repairInpogress->repair_id) }}" method="POST"
-                            style="display:inline;">
+    <!-- First List -->
+    <div>
+        @foreach ($workrepair as $repair)
+            <div class="bg-white rounded-lg shadow-md p-4 mb-4">
+                <p class="text-sm font-bold text-gray-600">Repair ID: <span
+                        class="text-gray-800">{{ $repair->repair_id }}</span></p>
+                <p class="text-sm font-bold text-gray-600">Customer Name: <span
+                        class="text-gray-800">{{ $repair->customer->name }}</span></p>
+                <p class="text-sm font-bold text-gray-600">Repair Detail: <span
+                        class="text-gray-800">{{ $repair->repair_detail }}</span></p>
+                <p class="text-sm font-bold text-gray-600">Status ID: <span
+                        class="text-gray-800">{{ $repair->status->status_name }}</span></p>
+                <p class="text-sm font-bold text-gray-600">Product: <span
+                        class="text-gray-800">{{ $repair->product->product_name ?? 'ยังไม่เบิกสินค้า' }}</span></p>
+                <p class="text-sm font-bold text-gray-600">Unit Fix: <span
+                        class="text-gray-800">{{ $repair->unit_amount ?? 'ยังไม่เบิกสินค้า' }}</span></p>
+                <p class="text-sm font-bold text-gray-600">Created At: <span
+                        class="text-gray-800">{{ $repair->created_at }}</span></p>
+                <p class="text-sm font-bold text-gray-600">Updated At: <span
+                        class="text-gray-800">{{ $repair->updated_at }}</span></p>
+                <div class="mt-3">
+                    @if ($repair->product != null)
+                        <form action="{{ route('repair.updateStatus', $repair->repair_id) }}" method="POST"
+                            class="inline">
                             @csrf
                             @method('PUT')
-                            <input type="hidden" name="status_id" value="3">
-                            <button type="submit" class="btn btn-danger">ซ่อมสำเร็จ</button>
+                            <input type="hidden" name="status_id" value="2">
+                            <button type="submit"
+                                class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+                                เเจ้งลูกค้า
+                            </button>
                         </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+                    @else
+                        <a href="{{ route('repair.selectproduct', $repair->repair_id) }}"
+                            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
+                            เบิกอะไหล่
+                        </a>
+                    @endif
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+    <!-- Second List -->
+    <div>
+        @foreach ($inprogress as $repairInpogress)
+            <div class="bg-white rounded-lg shadow-md p-4 mb-4">
+                <p class="text-sm font-bold text-gray-600">Repair ID: <span
+                        class="text-gray-800">{{ $repairInpogress->repair_id }}</span></p>
+                <p class="text-sm font-bold text-gray-600">Customer Name: <span
+                        class="text-gray-800">{{ $repairInpogress->customer->name }}</span></p>
+                <p class="text-sm font-bold text-gray-600">Repair Detail: <span
+                        class="text-gray-800">{{ $repairInpogress->repair_detail }}</span></p>
+                <p class="text-sm font-bold text-gray-600">Status ID: <span
+                        class="text-gray-800">{{ $repairInpogress->status->status_name }}</span></p>
+                <p class="text-sm font-bold text-gray-600">Product: <span
+                        class="text-gray-800">{{ $repairInpogress->product->product_name ?? 'ยังไม่เบิกสินค้า' }}</span>
+                </p>
+                <p class="text-sm font-bold text-gray-600">Created At: <span
+                        class="text-gray-800">{{ $repairInpogress->created_at }}</span></p>
+                <p class="text-sm font-bold text-gray-600">Updated At: <span
+                        class="text-gray-800">{{ $repairInpogress->updated_at }}</span></p>
+                <div class="mt-3">
+                    <form action="{{ route('repair.done', $repairInpogress->repair_id) }}" method="POST"
+                        class="inline">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="status_id" value="3">
+                        <button type="submit"
+                            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                            ซ่อมสำเร็จ
+                        </button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
 </body>
 
 </html>
