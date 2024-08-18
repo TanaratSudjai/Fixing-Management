@@ -11,44 +11,69 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            
         }
-
+    
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-bottom: 20px;
         }
-
-        th,
-        td {
-            padding: 10px;
+    
+        th, td {
+            padding: 12px 15px;
             border: 1px solid #ddd;
-            
+            text-align: center;
         }
-
+    
         th {
             background-color: #f4f4f4;
+            font-weight: bold;
         }
-
+    
         .btn {
-            padding: 5px 10px;
+            padding: 8px 15px;
             text-decoration: none;
             color: white;
             border-radius: 4px;
+            display: inline-block;
         }
-
+    
         .btn-success {
             background-color: #28a745;
         }
-
-        .btn-info {
-            background-color: #17a2b8;
-        }
-
+    
         .btn-warning {
-            background-color: #ff0707;
-            color: rgb(253, 253, 253);
-            /* เปลี่ยนสีตัวอักษรเป็นสีดำ */
+            background-color: #ff0000; /* Red background */
+            color: #ffffff; /* White text */
+        }
+    
+        .btn-warning:hover {
+            background-color: #cc0000; /* Darker red on hover */
+        }
+    
+        .btn-edit {
+            background-color: #f0ad4e; /* Yellow button */
+            color: #fff;
+        }
+    
+        .btn-edit:hover {
+            background-color: #ec971f;
+        }
+    
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    
+        @media (max-width: 768px) {
+            table {
+                font-size: 12px;
+            }
+    
+            .btn {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -62,10 +87,9 @@
                 <div class="bg-white rounded p-4 px-4 md:p-8 mb-6 h-[80vh]">
 
                     <h1 class="text-center text-2xl font-bold mb-3">รายการแจ้งซ่อม</h1>
-                    <div className="md:container md:mx-auto">
-                        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                            <table class="w-full text-sm text-center rtl:text-center text-black ">
-                                <thead class="text-sm text-black uppercase bg-white text-center">
+                    <div class="relative overflow-x-auto sm:rounded-lg">
+                    <table class="text-sm text-center rtl:text-center text-black">
+                        <thead class="text-sm text-black uppercase bg-white text-center">
                                     <tr>
                                         <th class="text-center p-2 px-2 gap-2 w-1/12">รหัสแจ่งซ่อม</th>
                                         <th class="text-center p-2 px-2 gap-2 w-1/12">ชื่อลูกค้า</th>
@@ -98,7 +122,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    
                 @endsection
             </div>
         </div>

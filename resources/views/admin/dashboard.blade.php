@@ -9,7 +9,7 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            margin: 0;
+        
         }
         .dashboard-container {
             display: grid;
@@ -56,10 +56,8 @@
 </head>
 <body>
     @extends('layouts.admin')
-
-
     @section('content')
-    <div class="dashboard-container">
+    <div class="dashboard-container px-5">
         <div class="box">
             <h3>{{ $data['countCustomer'] }}</h3>
             <p>Customers</p>

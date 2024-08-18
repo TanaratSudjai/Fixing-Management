@@ -36,7 +36,7 @@ class LoginController extends Controller
 
             if ($user->status == 1) {
 
-                return redirect()->route('active');
+                return redirect()->route('admin.dashboard');
             } else if ($user->status == 0) {
 
                 return redirect()->route('customer.dashboard');
