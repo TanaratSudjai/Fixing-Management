@@ -41,30 +41,12 @@
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4 focus:outline-none justify-center mt-1">
-                            <a href="{{ route('admin.dashboard') }}"
-                                class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#0E46A3] hover:border-b-2 border-[#0E46A3]">
-                                Dashboard
-                            </a>
-                            <a href="{{ route('customer.repir') }}"
+                            
+                            <a href="{{ route('employee.work') }}"
                                 class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#0E46A3] hover:border-b-2 border-[#0E46A3]">
                                 รายการแจ้งซ่อม
                             </a>
-                            <a href="{{ route('employee.add') }}"
-                                class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#0E46A3] hover:border-b-2 border-[#0E46A3] ">
-                                เพิ่มพนักงาน
-                            </a>
-                            <a href="{{ route('product.add') }}"
-                                class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#0E46A3] hover:border-b-2 border-[#0E46A3]">
-                                เพิ่มสินค้า
-                            </a>
-                            <a href="{{ route('products.view') }}"
-                                class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#0E46A3] hover:border-b-2 border-[#0E46A3]">
-                                รายการสินค้า
-                            </a>
-                            <a href="{{ route('employee.list') }}"
-                                class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#0E46A3] hover:border-b-2 border-[#0E46A3]">
-                                รายชื่อพนักงาน
-                            </a>
+                            
                         </div>
                     </div>
                 </div>
@@ -95,18 +77,8 @@
         <div class="sm:hidden hidden" id="mobile-menu">
             <div class="space-y-1 px-2 pb-3 pt-2">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="{{ route('admin.dashboard') }}" class="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">
-                    Dashboard</a>
-                <a href="{{ route('customer.repir') }}"
+                <a href="{{ route('employee.work') }}"
                     class="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">รายการแจ้งซ่อม</a>
-                <a href="{{ route('employee.add') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">เพิ่มพนักงาน</a>
-                <a href="{{ route('product.add') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">เพิ่มสินค้า</a>
-                <a href="{{ route('products.view') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">รายการสินค้า</a>
-                <a href="{{ route('employee.list') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">รายชื่อพนักงาน</a>
             </div>
         </div>
     </nav>

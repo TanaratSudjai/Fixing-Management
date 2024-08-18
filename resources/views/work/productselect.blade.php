@@ -10,6 +10,10 @@
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
+            justify-content: center;
+            /* Centers cards horizontally */
+            align-items: center;
+            /* Aligns items vertically */
             margin-top: 20px;
         }
 
@@ -21,6 +25,12 @@
             cursor: pointer;
             text-align: center;
             transition: transform 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* Ensures content inside the card is centered vertically */
+            align-items: center;
+            /* Ensures content inside the card is centered horizontally */
         }
 
         .card.selected {
@@ -39,58 +49,68 @@
 </head>
 
 <body>
-    <h1>Select Product for Repair</h1>
+    @extends('layouts.employ')
 
-    <p><strong>Repair ID:</strong> {{ $repair->repair_id }}</p>
-    <p><strong>Repair Detail:</strong> {{ $repair->repair_detail }}</p>
-    <p><strong>Current Product ID:</strong> {{ $repair->product_id }}</p>
+    @section('content')
+        <div class="p-6 bg-white border h-[100vh] flex justify-center w-full">
+            <div class="container mx-5">
+                <div class="bg-white rounded p-4 px-4 md:p-8 mb-6 h-[80vh] text-center border-2 ">
+                    <h1 class="text-2xl font-bold mb-3">Select Product for Repair</h1>
 
-    <form action="{{ route('repair.updateProduct', $repair->repair_id) }}" method="POST">
-        @csrf
-        @method('PUT')
+                    <p><strong>Repair ID:</strong> {{ $repair->repair_id }}</p>
+                    <p><strong>Repair Detail:</strong> {{ $repair->repair_detail }}</p>
+                    <p><strong>Current Product ID:</strong> {{ $repair->product_id }}</p>
 
-        <div class="card-container">
-            @foreach ($product as $item)
-                <div class="card" data-id="{{ $item->product_id }}">
-                    <h3>{{ $item->product_name }}</h3>
-                    <p>Product ID: {{ $item->product_id }}</p>
-                    <p>Available Quantity: {{ $item->product_qty }}</p>
-                    <input type="radio" name="product_id" value="{{ $item->product_id }}" class="hidden"
-                        {{ $repair->product_id == $item->product_id ? 'checked' : '' }}>
-                    <input type="number" name="unit_amount[{{ $item->product_id }}]" placeholder="จำนวนต้องการเบิก"
-                        min="1" max="{{ $item->product_qty }}">
+                    <form action="{{ route('repair.updateProduct', $repair->repair_id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="card-container">
+                            @foreach ($product as $item)
+                                <div class="card" data-id="{{ $item->product_id }}">
+                                    <h3>{{ $item->product_name }}</h3>
+                                    <p>Product ID: {{ $item->product_id }}</p>
+                                    <p>Available Quantity: {{ $item->product_qty }}</p>
+                                    <input type="radio" name="product_id" value="{{ $item->product_id }}" class="hidden"
+                                        {{ $repair->product_id == $item->product_id ? 'checked' : '' }}>
+                                    <input type="number" name="unit_amount[{{ $item->product_id }}]"
+                                        placeholder="จำนวนต้องการเบิก" min="1" max="{{ $item->product_qty }}">
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <button type="submit" class="mt-4 w-full bg-[#17a2b8] hover:bg-[#107584] text-white py-3  mb-4 transition duration-300 ease-in-out">Update Product</button>
+                    </form>
                 </div>
-            @endforeach
+            </div>
         </div>
 
-        <button type="submit">Update Product</button>
-    </form>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const cards = document.querySelectorAll('.card');
+                const hiddenInputs = document.querySelectorAll('.hidden');
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.card');
-            const hiddenInputs = document.querySelectorAll('.hidden');
+                cards.forEach(card => {
+                    card.addEventListener('click', function() {
+                        // Deselect all cards
+                        cards.forEach(c => c.classList.remove('selected'));
+                        hiddenInputs.forEach(input => input.checked = false);
 
-            cards.forEach(card => {
-                card.addEventListener('click', function() {
-                    // Deselect all cards
-                    cards.forEach(c => c.classList.remove('selected'));
-                    hiddenInputs.forEach(input => input.checked = false);
+                        // Select the clicked card
+                        this.classList.add('selected');
+                        this.querySelector('input[type="radio"]').checked = true;
+                    });
+                });
 
-                    // Select the clicked card
-                    this.classList.add('selected');
-                    this.querySelector('input[type="radio"]').checked = true;
+                // Automatically select the card if the radio button is already checked
+                hiddenInputs.forEach(input => {
+                    if (input.checked) {
+                        input.closest('.card').classList.add('selected');
+                    }
                 });
             });
-
-            // Automatically select the card if the radio button is already checked
-            hiddenInputs.forEach(input => {
-                if (input.checked) {
-                    input.closest('.card').classList.add('selected');
-                }
-            });
-        });
-    </script>
+        </script>
+    @endsection
 </body>
 
 </html>

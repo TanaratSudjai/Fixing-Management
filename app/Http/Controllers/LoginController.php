@@ -23,11 +23,9 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput();
         }
-
         // Attempt to log the user in
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
@@ -35,13 +33,11 @@ class LoginController extends Controller
             session()->put('message', 'Welcome back, ' . $user->name);
 
             if ($user->status == 1) {
-
                 return redirect()->route('admin.dashboard');
             } else if ($user->status == 0) {
-
                 return redirect()->route('customer.dashboard');
             } else if ($user->status == 2) {
-                return redirect()->route('employee.dashboard');
+                return redirect()->route('employee.work');
             }
             return redirect()->route('home');
         }

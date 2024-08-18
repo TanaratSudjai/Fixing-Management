@@ -9,7 +9,7 @@
 <body>
     
     <div>
-        @include('layouts.employeenavbar')
+        @include('layouts.employee')
     </div>
 
     <div>
