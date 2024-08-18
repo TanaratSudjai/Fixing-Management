@@ -111,7 +111,7 @@
                                                 @if ($repair->status_id == 3)
                                                     <a href="" class="btn btn-success">เรียบร้อย</a>
                                                 @elseif($repair->status_id == 2)
-                                                    <a href="" class="btn btn-info">อยู่ระหว่างการซ่อม</a>
+                                                    <a href="" class="btn btn-info bg-[#17a2b8]">อยู่ระหว่างการซ่อม</a>
                                                 @else
                                                     <a href="{{ route('repair.selectemployee', $repair->repair_id) }}"
                                                         class="btn btn-warning">เลือกพนักงาน</a>
