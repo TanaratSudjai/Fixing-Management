@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Product for Repair</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
         .card-container {
             display: flex;
             flex-wrap: wrap;
@@ -55,11 +59,11 @@
         <div class="p-6 bg-white border h-[100vh] flex justify-center w-full">
             <div class="container mx-5">
                 <div class="bg-white rounded p-4 px-4 md:p-8 mb-6 h-[80vh] text-center border-2 ">
-                    <h1 class="text-2xl font-bold mb-3">Select Product for Repair</h1>
+                    <h1 class="text-2xl font-bold mb-3">เลือกสินค้าสำหรับการซ่อม</h1>
 
-                    <p><strong>Repair ID:</strong> {{ $repair->repair_id }}</p>
-                    <p><strong>Repair Detail:</strong> {{ $repair->repair_detail }}</p>
-                    <p><strong>Current Product ID:</strong> {{ $repair->product_id }}</p>
+                    <p><strong>รหัสการซ่อม:</strong> {{ $repair->repair_id }}</p>
+                    <p><strong>รายละเอียดการซ่อม:</strong> {{ $repair->repair_detail }}</p>
+                    <p><strong>รหัสสินค้าปัจจุบัน:</strong> {{ $repair->product_id }}</p>
 
                     <form action="{{ route('repair.updateProduct', $repair->repair_id) }}" method="POST">
                         @csrf
@@ -69,8 +73,8 @@
                             @foreach ($product as $item)
                                 <div class="card" data-id="{{ $item->product_id }}">
                                     <h3>{{ $item->product_name }}</h3>
-                                    <p>Product ID: {{ $item->product_id }}</p>
-                                    <p>Available Quantity: {{ $item->product_qty }}</p>
+                                    <p>รหัสสินค้า: {{ $item->product_id }}</p>
+                                    <p>จำนวนที่มีอยู่: {{ $item->product_qty }}</p>
                                     <input type="radio" name="product_id" value="{{ $item->product_id }}" class="hidden"
                                         {{ $repair->product_id == $item->product_id ? 'checked' : '' }}>
                                     <input type="number" name="unit_amount[{{ $item->product_id }}]"
@@ -79,7 +83,7 @@
                             @endforeach
                         </div>
 
-                        <button type="submit" class="mt-4 w-full bg-[#17a2b8] hover:bg-[#107584] text-white py-3  mb-4 transition duration-300 ease-in-out">Update Product</button>
+                        <button type="submit" class="mt-4 w-full bg-[#17a2b8] hover:bg-[#107584] text-white py-3  mb-4 transition duration-300 ease-in-out">อัปเดตสินค้า</button>
                     </form>
                 </div>
             </div>

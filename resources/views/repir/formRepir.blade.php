@@ -7,13 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Customer Repair Request</title>
     @vite('resources/css/app.css')
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-gray-100 font-sans leading-normal tracking-normal flex items-center justify-center min-h-screen p-5">
+<body class="bg-gray-100 font-sans leading-normal tracking-normal flex items-center justify-center min-h-screen p-5" style="font-family: 'Kanit', sans-serif;">
 
     <!-- Main Container -->
     <div class="w-full max-w-md mx-auto bg-white rounded-lg shadow-lg p-6">
-        <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">เเจ้งซ่อมสำหรับลูกค้า</h2>
+        <h2 class="text-2xl font-bold text-center text-black mb-6">เเจ้งซ่อมสำหรับลูกค้า</h2>
 
         <!-- Success Message -->
         @if (session('success'))

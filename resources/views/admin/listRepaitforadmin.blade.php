@@ -7,9 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <title>Repairs List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Kanit', sans-serif;
             margin: 20px;
         }
     
@@ -91,12 +92,12 @@
                     <table class="text-sm text-center rtl:text-center text-black">
                         <thead class="text-sm text-black uppercase bg-white text-center">
                                     <tr>
-                                        <th class="text-center p-2 px-2 gap-2 w-1/12">รหัสแจ่งซ่อม</th>
+                                        <th class="text-center p-2 px-2 gap-2 w-1/12">รหัสแจ้งซ่อม</th>
                                         <th class="text-center p-2 px-2 gap-2 w-1/12">ชื่อลูกค้า</th>
                                         <th class="text-center p-2 px-2 gap-2 w-1/12">รายละเอียด</th>
                                         <th class="text-center p-2 px-2 gap-2 w-1/12">พนักงาน</th>
                                         <th class="text-center p-2 px-2 gap-2 w-1/12">สถานะ</th>
-                                        <th class="text-center p-2 px-2 gap-2 w-1/12">Action</th>
+                                        <th class="text-center p-2 px-2 gap-2 w-1/12">ดำเนินการ</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">

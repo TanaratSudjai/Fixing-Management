@@ -6,7 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work Repair List</title>
     @vite('resources/css/app.css')
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 </head>
+
+<style>
+    body {
+        font-family: 'Kanit', sans-serif;
+    }
+</style>
 
 <body class="bg-gray-100">
     @extends('layouts.employ')
@@ -14,26 +21,26 @@
         <div class="p-6 bg-white border h-[100vh] flex justify-center w-full">
             <div class="container mx-auto">
                 <div class="bg-white rounded p-4 px-4 md:p-8 mb-6 h-[80vh]">
-                    <h1 class="text-xl text-white bg-[#17a2b8] p-5">Work Repair List</h1>
+                    <h1 class="text-xl text-white bg-[#17a2b8] p-5">รายการการซ่อม</h1>
                     <div>
                         @foreach ($workrepair as $repair)
                             <div class="bg-white rounded-lg shadow-md p-4 mb-4">
-                                <p class="text-sm font-bold text-gray-600">Repair ID: <span
+                                <p class="text-sm font-bold text-gray-600">รหัสการซ่อม: <span
                                         class="text-gray-800">{{ $repair->repair_id }}</span></p>
-                                <p class="text-sm font-bold text-gray-600">Customer Name: <span
+                                <p class="text-sm font-bold text-gray-600">ชื่อลูกค้า: <span
                                         class="text-gray-800">{{ $repair->customer->name }}</span></p>
-                                <p class="text-sm font-bold text-gray-600">Repair Detail: <span
+                                <p class="text-sm font-bold text-gray-600">รายละเอียดการซ่อม: <span
                                         class="text-gray-800">{{ $repair->repair_detail }}</span></p>
-                                <p class="text-sm font-bold text-gray-600">Status ID: <span
+                                <p class="text-sm font-bold text-gray-600">รหัสสถานะ: <span
                                         class="text-gray-800">{{ $repair->status->status_name }}</span></p>
-                                <p class="text-sm font-bold text-gray-600">Product: <span
+                                <p class="text-sm font-bold text-gray-600">สินค้า: <span
                                         class="text-gray-800">{{ $repair->product->product_name ?? 'ยังไม่เบิกสินค้า' }}</span>
                                 </p>
-                                <p class="text-sm font-bold text-gray-600">Unit Fix: <span
+                                <p class="text-sm font-bold text-gray-600">แก้ไขหน่วย: <span
                                         class="text-gray-800">{{ $repair->unit_amount ?? 'ยังไม่เบิกสินค้า' }}</span></p>
-                                <p class="text-sm font-bold text-gray-600">Created At: <span
+                                <p class="text-sm font-bold text-gray-600">สร้างเมื่อ: <span
                                         class="text-gray-800">{{ $repair->created_at }}</span></p>
-                                <p class="text-sm font-bold text-gray-600">Updated At: <span
+                                <p class="text-sm font-bold text-gray-600">อัปเดตเมื่อ: <span
                                         class="text-gray-800">{{ $repair->updated_at }}</span></p>
                                 <div class="mt-3">
                                     @if ($repair->product != null)
@@ -62,20 +69,20 @@
                     <div>
                         @foreach ($inprogress as $repairInpogress)
                             <div class="bg-white rounded-lg shadow-md p-4 mb-4">
-                                <p class="text-sm font-bold text-gray-600">Repair ID: <span
+                                <p class="text-sm font-bold text-gray-600">รหัสการซ่อม: <span
                                         class="text-gray-800">{{ $repairInpogress->repair_id }}</span></p>
-                                <p class="text-sm font-bold text-gray-600">Customer Name: <span
+                                <p class="text-sm font-bold text-gray-600">ชื่อลูกค้า: <span
                                         class="text-gray-800">{{ $repairInpogress->customer->name }}</span></p>
-                                <p class="text-sm font-bold text-gray-600">Repair Detail: <span
+                                <p class="text-sm font-bold text-gray-600">รายละเอียดการซ่อม: <span
                                         class="text-gray-800">{{ $repairInpogress->repair_detail }}</span></p>
-                                <p class="text-sm font-bold text-gray-600">Status ID: <span
+                                <p class="text-sm font-bold text-gray-600">รหัสสถานะ: <span
                                         class="text-gray-800">{{ $repairInpogress->status->status_name }}</span></p>
-                                <p class="text-sm font-bold text-gray-600">Product: <span
+                                <p class="text-sm font-bold text-gray-600">สินค้า: <span
                                         class="text-gray-800">{{ $repairInpogress->product->product_name ?? 'ยังไม่เบิกสินค้า' }}</span>
                                 </p>
-                                <p class="text-sm font-bold text-gray-600">Created At: <span
+                                <p class="text-sm font-bold text-gray-600">สร้างเมื่อ: <span
                                         class="text-gray-800">{{ $repairInpogress->created_at }}</span></p>
-                                <p class="text-sm font-bold text-gray-600">Updated At: <span
+                                <p class="text-sm font-bold text-gray-600">อัปเดตเมื่อ: <span
                                         class="text-gray-800">{{ $repairInpogress->updated_at }}</span></p>
                                 <div class="mt-3">
                                     <form action="{{ route('repair.done', $repairInpogress->repair_id) }}" method="POST"
