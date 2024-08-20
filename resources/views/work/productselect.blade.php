@@ -9,45 +9,87 @@
     <style>
         body {
             font-family: 'Kanit', sans-serif;
+            background-color: #f3f4f6;
+            padding: 20px;
         }
+
         .card-container {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
-            /* Centers cards horizontally */
-            align-items: center;
-            /* Aligns items vertically */
-            margin-top: 20px;
         }
 
         .card {
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            border: 2px solid #e2e8f0;
             padding: 20px;
-            width: 200px;
-            cursor: pointer;
+            width: 100%;
+            max-width: 280px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform 0.2s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            /* Ensures content inside the card is centered vertically */
-            align-items: center;
-            /* Ensures content inside the card is centered horizontally */
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
         }
 
         .card.selected {
-            border-color: #007bff;
-            background-color: #e9f7ff;
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+            transform: scale(1.05);
         }
 
-        .card:hover {
-            transform: scale(1.05);
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+
+        .card p {
+            margin-bottom: 8px;
+            color: #4b5563;
+        }
+
+        .card input[type="number"] {
+            margin-top: 10px;
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+        }
+
+        .submit-btn {
+            width: 100%;
+            max-width: 300px;
+            background-color: #3b82f6;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #2563eb;
         }
 
         .hidden {
             display: none;
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 15px;
+                max-width: 200px;
+            }
+
+            .submit-btn {
+                padding: 12px;
+                font-size: 16px;
+                margin-top: 20px;
+            }
         }
     </style>
 </head>
@@ -56,14 +98,13 @@
     @extends('layouts.employ')
 
     @section('content')
-        <div class="p-6 bg-white border h-[100vh] flex justify-center w-full">
+        <div class="p-6  h-[100vh] flex justify-center w-full">
             <div class="container mx-5">
-                <div class="bg-white rounded p-4 px-4 md:p-8 mb-6 h-[80vh] text-center border-2 ">
-                    <h1 class="text-2xl font-bold mb-3">เลือกสินค้าสำหรับการซ่อม</h1>
+                <div class=" px-4 md:p-8 mb-6 h-[80vh] text-center ">
+                    <h1 class="text-2xl font-bold mb-6">เลือกสินค้าสำหรับการซ่อม</h1>
 
-                    <p><strong>รหัสการซ่อม:</strong> {{ $repair->repair_id }}</p>
-                    <p><strong>รายละเอียดการซ่อม:</strong> {{ $repair->repair_detail }}</p>
-                    <p><strong>รหัสสินค้าปัจจุบัน:</strong> {{ $repair->product_id }}</p>
+                    <p class="mb-4"><strong>รหัสการซ่อม:</strong> {{ $repair->repair_id }}</p>
+                    <p class="mb-6"><strong>รายละเอียดการซ่อม:</strong> {{ $repair->repair_detail }}</p>
 
                     <form action="{{ route('repair.updateProduct', $repair->repair_id) }}" method="POST">
                         @csrf
@@ -78,12 +119,12 @@
                                     <input type="radio" name="product_id" value="{{ $item->product_id }}" class="hidden"
                                         {{ $repair->product_id == $item->product_id ? 'checked' : '' }}>
                                     <input type="number" name="unit_amount[{{ $item->product_id }}]"
-                                        placeholder="จำนวนต้องการเบิก" min="1" max="{{ $item->product_qty }}">
+                                        placeholder="จำนวนที่ต้องการเบิก" min="1" max="{{ $item->product_qty }}">
                                 </div>
                             @endforeach
                         </div>
 
-                        <button type="submit" class="mt-4 w-full bg-[#17a2b8] hover:bg-[#107584] text-white py-3  mb-4 transition duration-300 ease-in-out">อัปเดตสินค้า</button>
+                        <button type="submit" class="submit-btn w-[100px] fixed top-[85%] right-2">ยืนยัน</button>
                     </form>
                 </div>
             </div>

@@ -35,7 +35,6 @@
             padding: 8px 15px;
             text-decoration: none;
             color: white;
-            border-radius: 4px;
             display: inline-block;
         }
     
@@ -85,10 +84,10 @@
     @section('content')
         <div class="p-6 bg-white border h-[100vh] flex justify-center w-full">
             <div class="container mx-auto">
-                <div class="bg-white rounded p-4 px-4 md:p-8 mb-6 h-[80vh]">
+                <div class="bg-white  p-4 px-4 md:p-8 mb-6 h-[80vh]">
 
                     <h1 class="text-center text-2xl font-bold mb-3">รายการแจ้งซ่อม</h1>
-                    <div class="relative overflow-x-auto sm:rounded-lg">
+                    <div class="relative overflow-x-auto ">
                     <table class="text-sm text-center rtl:text-center text-black">
                         <thead class="text-sm text-black uppercase bg-white text-center">
                                     <tr>

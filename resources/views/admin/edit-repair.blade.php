@@ -22,7 +22,7 @@
 
     @section('content')
         <div class="flex items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8 mt-[-30px]">
-            <div class="p-6 sm:p-8 rounded-2xl bg-white shadow-xl w-full max-w-md">
+            <div class="p-6 sm:p-8 bg-white shadow-xl w-full max-w-md">
                 <h1 class="text-center text-2xl font-bold mb-3">เลือกพนักงาน</h1>
                 <form id="repair-form" action="{{ route('repair.update', $repair->repair_id) }}" method="POST">
                     @csrf
@@ -41,7 +41,7 @@
                             <select name="employee_id" id="employee_id" class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3  outline-blue-600">
                                 <option value="">เลือกพนักงาน</option>
                                 @foreach ($employees as $employee)
-                                    <option value="{{ $employee->id }}"
+                                    <option  value="{{ $employee->id }}"
                                         {{ $repair->employee_id == $employee->id ? 'selected' : '' }}>
                                         {{ $employee->name }}
                                     </option>
@@ -79,7 +79,7 @@
                     }
                 });
             });
-        </scrip>
+        </script>
     @endsection
 </body>
 

@@ -28,7 +28,7 @@
     @extends('layouts.admin')
     @section('content')
         <div class="flex items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8 mt-[-30px]">
-            <div class="p-6 sm:p-8 rounded-2xl bg-white shadow-xl w-full max-w-md">
+            <div class="p-6 sm:p-8  bg-white shadow-xl w-full max-w-md">
                 <h1 class="text-center text-2xl font-bold mb-3">เพิ่มสินค้า</h1>
 
                 <form action="{{ route('admin.addProduct') }}" method="POST" class="mt-6 space-y-4" id="product-form">
@@ -36,7 +36,7 @@
                     <div>
                         <label for="product_name" class="text-gray-800 text-sm mb-2 block">ชื่อสินค้า</label>
                         <div class="relative flex items-center">
-                            <input placeholder="Product Name" type="text" name="product_name" id="product_name" required class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600">
+                            <input placeholder="Product Name" type="text" name="product_name" id="product_name" required class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3  outline-blue-600">
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@
                         <label for="product_detail" class="text-gray-800 text-sm mb-2 block">รายละเอียดสินค้า</label>
                         <div>
                             <textarea placeholder="Product detail" name="product_detail" id="product_detail" required
-                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"></textarea>
+                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3  outline-blue-600"></textarea>
                         </div>
                     </div>
 
@@ -52,17 +52,17 @@
                         <label for="product_qty" class="text-gray-800 text-sm mb-2 block">จำนวน</label>
                         <div>
                             <input placeholder="Product quantity" type="number" name="product_qty" id="product_qty" required
-                                min="0" class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600">
+                                min="0" class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3  outline-blue-600">
                         </div>
                     </div>
 
                     <div>
                         <label for="product_price" class="text-gray-800 text-sm mb-2 block">ราคา</label>
                         <input placeholder="Product Price" type="number" name="product_price" id="product_price" required
-                            min="0" step="0.01" class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600">
+                            min="0" step="0.01" class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3  outline-blue-600">
                     </div>
 
-                    <button id="submit-btn" type="submit" class="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-black bg-[#A3C9F0] hover:bg-[#D0E4F4] focus:outline-none">เพิ่มสินค้า</button>
+                    <button id="submit-btn" type="submit" class="w-full py-3 px-4 text-sm tracking-wide text-black bg-[#A3C9F0] hover:bg-[#D0E4F4] focus:outline-none">เพิ่มสินค้า</button>
                 </form>
             </div>
         </div>
