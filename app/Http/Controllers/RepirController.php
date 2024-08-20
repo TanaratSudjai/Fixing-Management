@@ -18,6 +18,8 @@ class RepirController extends Controller
             $customerId = auth()->id();
             $repairs = Repir::with('customer', 'status')
                 ->where('customer_id', $customerId)
+                // ->where('status_id', 1 &)
+                ->orderBy('created_at', 'desc')
                 ->get();
 
             return view('repir.listRepait', compact('repairs'));

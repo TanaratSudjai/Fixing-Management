@@ -21,7 +21,7 @@
 
     @section('content')
         <div class="flex items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8 mt-[-100px]">
-            <div class="p-6 sm:p-8 rounded-2xl bg-white shadow-xl w-full max-w-md">
+            <div class="p-6 sm:p-8 bg-white shadow-xl w-full max-w-md">
 
                 <h1 class="text-center text-2xl font-bold mb-3">แก้ไขพนักงาน</h1>
 
@@ -33,12 +33,12 @@
                             <label for="name" class="text-gray-800 text-sm mb-2 block">ชื่อ</label>
                             <input type="text" id="name" name="name" 
                                 value="{{ old('name', $employee->name) }}" required
-                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600">
+                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3  outline-blue-600">
                         </div>
 
                         <!-- Status field is removed -->
 
-                        <button type="button" id="submit-btn" class="mt-4 w-full bg-[#A3C9F0] hover:bg-[#D0E4F4] text-black text-center font-bold py-3 rounded-md transition duration-300 ease-in-out">
+                        <button type="button" id="submit-btn" class="mt-4 w-full bg-[#A3C9F0] hover:bg-[#D0E4F4] text-black text-center font-bold py-3  transition duration-300 ease-in-out">
                             บันทึก
                         </button>
                     </div>

@@ -29,8 +29,9 @@ class LoginController extends Controller
         // Attempt to log the user in
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
-            $userId = Auth::id();
-            session()->put('message', 'Welcome back, ' . $user->name);
+            // $userId = Auth::id();
+            session()->put('message', $user->name);
+            
 
             if ($user->status == 1) {
                 return redirect()->route('admin.dashboard');

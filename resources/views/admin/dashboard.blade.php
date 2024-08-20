@@ -24,7 +24,6 @@
         }
         .box {
             background-color: white;
-            border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
             text-align: center;
@@ -47,9 +46,9 @@
         }
         .chart-box {
             background-color: white;
-            border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            margin:  0px 25px 0 25px ;
             width: 48%;
         }
         canvas {
