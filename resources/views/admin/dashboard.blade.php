@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <style>
+        * {
+            font-family: 'Kanit', sans-serif
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-        
         }
         .dashboard-container {
             display: grid;
@@ -60,27 +64,27 @@
     <div class="dashboard-container px-5">
         <div class="box">
             <h3>{{ $data['countCustomer'] }}</h3>
-            <p>Customers</p>
+            <p>จำนวนลูกค้า</p>
         </div>
         <div class="box">
             <h3>{{ $data['countEmployee'] }}</h3>
-            <p>Employees</p>
+            <p>จำนวนพนักงาน</p>
         </div>
         <div class="box">
             <h3>{{ $data['countProduct'] }}</h3>
-            <p>Products</p>
+            <p>สินค้า</p>
         </div>
         <div class="box">
             <h3>{{ $data['countRepair_done'] }}</h3>
-            <p>Repairs Done</p>
+            <p>งานซ่อมที่เสร็จสิ้น</p>
         </div>
         <div class="box">
             <h3>{{ $data['countRepair_inprogress'] }}</h3>
-            <p>Repairs In Progress</p>
+            <p>งานซ่อมที่กำลังดำเนินการ</p>
         </div>
         <div class="box">
             <h3>{{ $data['countRepair_pending'] }}</h3>
-            <p>Repairs Pending</p>
+            <p>งานซ่อมที่รอดำเนินการ</p>
         </div>
     </div>
 
@@ -95,15 +99,15 @@
 
     <script>
         const data = @json($data);
-
+    
         // Line Chart
         const ctxLine = document.getElementById('lineChart').getContext('2d');
         const lineChart = new Chart(ctxLine, {
             type: 'line',
             data: {
-                labels: ['Customers', 'Employees', 'Products'],
+                labels: ['ลูกค้า', 'พนักงาน', 'สินค้า'],
                 datasets: [{
-                    label: 'Counts',
+                    label: 'จำนวน',
                     data: [data.countCustomer, data.countEmployee, data.countProduct],
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 2,
@@ -118,19 +122,43 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                family: 'Kanit', // เปลี่ยนฟอนต์ของป้ายชื่อแกน x
+                                size: 14
+                            }
+                        }
+                    },
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: {
+                            font: {
+                                family: 'Kanit', // เปลี่ยนฟอนต์ของป้ายชื่อแกน y
+                                size: 14
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            font: {
+                                family: 'Kanit', // เปลี่ยนฟอนต์ของป้ายชื่อใน legend
+                                size: 14
+                            }
+                        }
                     }
                 }
             }
         });
-
+    
         // Pie Chart
         const ctxPie = document.getElementById('pieChart').getContext('2d');
         const pieChart = new Chart(ctxPie, {
             type: 'pie',
             data: {
-                labels: ['Repairs Done', 'In Progress', 'Pending'],
+                labels: ['งานซ่อมที่เสร็จสิ้น', 'กำลังดำเนินการ', 'รอดำเนินการ'],
                 datasets: [{
                     label: 'Repair Status',
                     data: [data.countRepair_done, data.countRepair_inprogress, data.countRepair_pending],
@@ -144,10 +172,22 @@
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            font: {
+                                family: 'Kanit', // เปลี่ยนฟอนต์ของป้ายชื่อใน legend
+                                size: 14
+                            }
+                        }
+                    }
+                }
             }
         });
     </script>
+    
+    
     @endsection
 </body>
 </html>

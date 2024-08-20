@@ -7,9 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>product for admin</title>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Kanit', sans-serif;
             margin: 20px;
         }
     
@@ -84,21 +85,21 @@
 <div class="p-6 bg-white border h-[100vh] flex justify-center w-full">
     <div class="container mx-auto">
         <div class="bg-white rounded p-4 px-4 md:p-8 mb-6 h-[50vh]">
-            <h1 class="text-center text-2xl font-bold mb-3">All Products</h1>
+            <h1 class="text-center text-2xl font-bold mb-3">สินค้าทั้งหมด</h1>
 
             @if ($products->isEmpty())
-                <p class="text-center text-2xl font-bold mb-3">No products available.</p>
+                <p class="text-center text-2xl font-bold mb-3">ไม่มีรายการสินค้า</p>
             @else
                 <div class="relative overflow-x-auto sm:rounded-lg">
                     <table class="text-sm text-center rtl:text-center text-black">
                         <thead class="text-sm text-black uppercase bg-white text-center">
                             <tr>
-                                <th>Product ID</th>
-                                <th>Name</th>
-                                <th>Details</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Action</th>
+                                <th>รหัสสินค้า</th>
+                                <th>ชื่อ</th>
+                                <th>รายละเอียด</th>
+                                <th>จำนวน</th>
+                                <th>ราคา</th>
+                                <th>ดำเนินการ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -112,13 +113,13 @@
                                     <td>
                                         <div class="flex justify-center gap-3">
                                             <a href="{{ route('product.edit', $product->product_id) }}"
-                                                class="btn btn-edit">Edit</a>
+                                                class="btn btn-edit">แก้ไข</a>
 
                                             <form id="del_form_{{ $product->product_id }}" action="{{ route('product.delete', $product->product_id) }}"
                                                 method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button id="del_btn_{{ $product->product_id }}" type="submit" class="btn btn-warning">Delete</button>
+                                                <button id="del_btn_{{ $product->product_id }}" type="submit" class="btn btn-warning">ลบ</button>
                                             </form>
                                         </div>
                                     </td>

@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>รายการแจ้งซ่อม</title>
     @vite('resources/css/app.css')
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 </head>
+
+<style>
+    body {
+        font-family: 'Kanit', sans-serif;
+    }
+</style>
+
 <body class="p-4 md:p-6">
     <h1 class="text-3xl font-bold text-white bg-blue-500 p-4 rounded-lg text-center shadow-md mb-6">รายการแจ้งซ่อม</h1>
     <div class="max-w-3xl mx-auto space-y-4">
