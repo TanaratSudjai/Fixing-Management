@@ -35,6 +35,6 @@ class RegistorController extends Controller
         ]);
 
         // Redirect to login or another page
-        return redirect()->route('login')->with('success', 'Registration successful. Please log in.');
+        return redirect()->route('login.form')->with('success', 'Registration successful. Please log in.');
     }
 }

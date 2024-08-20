@@ -57,7 +57,7 @@
             </button>
         </form>
 
-        <p class="text-center text-gray-500 text-xs mt-4"> มีบัญชีอยู่แล้ว? <a href="{{ route('login') }}"
+        <p class="text-center text-gray-500 text-xs mt-4"> มีบัญชีอยู่แล้ว? <a href="{{ route('login.form') }}"
                 class="text-blue-500 hover:text-blue-700">เข้าสู่ระบบ</a></p>
     </div>
 
