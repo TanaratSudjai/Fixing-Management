@@ -18,6 +18,8 @@ class RepirController extends Controller
             $customerId = auth()->id();
             $repairs = Repir::with('customer', 'status')
                 ->where('customer_id', $customerId)
+                // ->where('status_id', 1 &)
+                ->orderBy('created_at', 'desc')
                 ->get();
 
             return view('repir.listRepait', compact('repairs'));
@@ -91,7 +93,7 @@ class RepirController extends Controller
     public function update(Request $request, $id)
     {
         $repair = Repir::findOrFail($id);
-        if ($repair->status_id == 0) {
+        if ($repair->status_id == 1) {
             $request->validate([
                 'repair_detail' => 'required|string|max:255',
             ]);

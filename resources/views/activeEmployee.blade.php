@@ -9,15 +9,17 @@
 </head>
 
 <body>
-    @if (session('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
+    {{-- <a href="{{ route('employee.work') }}">เบิกสินค้า</a> --}}
+    <div class="container">
+        {{-- @if (session('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif --}}
+        @extends('layouts.employee')
+
+        @section('content')
         </div>
-    @endif
+    </body>
 
-    พนักงาน
-
-    <a href="{{ route('employee.work') }}">เบิกสินค้า</a>
-</body>
-
-</html>
+    </html>

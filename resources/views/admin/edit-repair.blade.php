@@ -7,7 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 </head>
+
+<style>
+    body {
+        font-family: 'Kanit', sans-serif;
+    }
+</style>
 
 <body>
     @extends('layouts.admin')
@@ -15,7 +22,7 @@
 
     @section('content')
         <div class="flex items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8 mt-[-30px]">
-            <div class="p-6 sm:p-8 rounded-2xl bg-white shadow-xl w-full max-w-md">
+            <div class="p-6 sm:p-8 bg-white shadow-xl w-full max-w-md">
                 <h1 class="text-center text-2xl font-bold mb-3">เลือกพนักงาน</h1>
                 <form id="repair-form" action="{{ route('repair.update', $repair->repair_id) }}" method="POST">
                     @csrf
@@ -34,7 +41,7 @@
                             <select name="employee_id" id="employee_id" class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3  outline-blue-600">
                                 <option value="">เลือกพนักงาน</option>
                                 @foreach ($employees as $employee)
-                                    <option value="{{ $employee->id }}"
+                                    <option  value="{{ $employee->id }}"
                                         {{ $repair->employee_id == $employee->id ? 'selected' : '' }}>
                                         {{ $employee->name }}
                                     </option>
@@ -42,12 +49,12 @@
                             </select>
                         </div>
 
-                        <button type="button" id="submit-btn" class="mt-2 w-full bg-[#17a2b8] hover:bg-[#107584] text-white py-3  mb-4 transition duration-300 ease-in-out">
+                        <button type="button" id="submit-btn" class="mt-2 w-full bg-[#A3C9F0] hover:bg-[#D0E4F4] text-black py-3  mb-4 transition duration-300 ease-in-out">
                             บันทึก
                         </button>
 
                         <div class="w-full text-center flex justify-center">
-                            <a href="{{ route('customer.repir') }}" class="text-blue-400 text-sm hover:underline text-center">กลับไปยังรายการ</a>
+                            <a href="{{ route('customer.repir') }}" class="text-black text-sm hover:underline text-center">กลับไปยังรายการ</a>
                         </div>
                     </div>
                 </form>
