@@ -15,9 +15,12 @@
     }
 </style>
 
-<body class="p-4 md:p-6">
+<body>
+@extends('layouts.customer')
+
+@section('content')
     <h1 class="text-3xl font-bold text-white bg-blue-500 p-4  text-center shadow-md mb-6">รายการแจ้งซ่อม</h1>
-    <div class="max-w-3xl mx-auto space-y-4">
+    <div class="max-w-3xl mx-auto space-y-4 px-4">
         @foreach ($repairs as $repair)
             <div class="bg-white  p-4 shadow-md hover:shadow-lg transition-shadow duration-200">
                 <div class="flex justify-between items-center mb-2">
@@ -56,6 +59,7 @@
             <a href="{{route('customer.dashboard')}}">X</a>
         </div>
     </div>
+@endsection
 </body>
 
 </html>

@@ -19,32 +19,32 @@
                 <img src="logo.png" alt="Logo" class="w-23 h-20">
 
             </div>
-            <h2 class="text-xl font-semibold text-foreground text-center mb-10">Create an account</h2>
+            <h2 class="text-xl text-base text-center mb-10 ">สร้างบัญชี FMS</h2>
             <form method="POST" action="{{ route('register') }}" id="registerForm">
                 @csrf
                 <div class="mb-4">
-                    <label class="block text-muted-foreground mb-1" for="username">UserName</label>
+                    <label class="block text-muted-foreground mb-1" for="username">ชื่อผู้ใช้</label>
                     <input class="border border-border rounded-lg p-2 w-full" type="text" id="name" name="name"
-                        value="{{ old('name') }}" placeholder="Enter your username" required />
+                        value="{{ old('name') }}" placeholder="ป้อนชื่อของคุณ" required />
                 </div>
                 <div class="mb-4">
-                    <label class="block text-muted-foreground mb-1" for="email">Email</label>
+                    <label class="block text-muted-foreground mb-1" for="email">อีเมล</label>
                     <input class="border border-border rounded-lg p-2 w-full" type="email" id="email" name="email"
-                        value="{{ old('email') }}" placeholder="Enter your email" required />
+                        value="{{ old('email') }}" placeholder="ป้อนอีเมลของคุณ" required />
                 </div>
                 <div class="mb-4">
-                    <label class="block text-muted-foreground mb-1" for="password">Password</label>
+                    <label class="block text-muted-foreground mb-1" for="password">รหัสผ่าน</label>
                     <input class="border border-border rounded-lg p-2 w-full" type="password" id="password"
-                        name="password" placeholder="Enter your password" required />
+                        name="password" placeholder="ป้อนรหัสผ่านของคุณ" required />
                 </div>
                 <div class="mb-4">
-                    <label class="block text-muted-foreground mb-1" for="confirm-password">Confirm Password</label>
-                    <input class="border border-border rounded-lg p-2 w-full" type="password" id="password_confirmation"
-                        name="password_confirmation" placeholder="Confirm your password" required />
+                    <label class="block text-muted-foreground mb-1" for="confirm-password">ยืนยันรหัสผ่าน</label>
+                    <input class="border border-border rounded-lg p-2 w-full " type="password" id="password_confirmation"
+                        name="password_confirmation" placeholder="ยืนยันรหัสผ่านของคุณ" required />
                 </div>
                 <button
                     class="mt-8 mb-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="submit">Sign up</button>
+                    type="submit">สมัคสมาชิก</button>
             </form>
         </div>
     </div>

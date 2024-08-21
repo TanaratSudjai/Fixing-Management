@@ -15,29 +15,29 @@
                 <img src="logo.png" alt="Logo" class="w-23 h-20">
 
             </div>
-            <h2 class="text-xl font-semibold text-foreground text-center mb-10">Sign in to your account</h2>
+            <h2 class="text-xl text-foreground text-center mb-10">ลงชื่อเข้าใช้บัญชีของคุณ</h2>
 
             <form method="POST" action="{{ route('login') }}" class="flex flex-col">
                 @csrf
                 <div class="mb-2">
-                    <label for="email" class="block text-muted-foreground mb-1">Email:</label>
+                    <label for="email" class="block text-muted-foreground mb-1">อีเมล</label>
                     <input type="email" id="email" name="email" value="{{ old('email') }}"
-                        class="block w-full p-2 border border-border rounded mb-4" placeholder="Enter your email"
+                        class="block w-full p-2 border border-border rounded mb-4 text-base" placeholder="ป้อนอีเมลของคุณ"
                         required>
                 </div>
                 <div class="mb-4">
-                    <label for="password" class="block text-muted-foreground mb-1">Password:</label>
+                    <label for="password" class="block text-muted-foreground mb-1">รหัสผ่าน</label>
                     <input type="password" id="password" name="password"
-                        class="block w-full p-2 border border-border rounded mb-4" placeholder="Enter your password"
+                        class="block w-full p-2 border border-border rounded mb-4 " placeholder="ป้อนรหัสผ่านของคุณ"
                         required>
                 </div>
 
                 <button type="submit"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4">Login</button>
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 text-lg">เข้าสู่ระบบ</button>
             </form>
 
-            <p class="w-full mt-8 flex justify-between"> Don't have an account yet? 
-                <a href="{{ route('register') }}" class="text-blue-500 hover:text-blue-700 ml-1 hover:underline">Sign up</a>
+            <p class="w-full mt-8 flex justify-between"> ยังไม่มีบัญชี? 
+                <a href="{{ route('register') }}" class="text-blue-500 hover:text-blue-700 ml-1 hover:underline">สมัคสมาชิก</a>
             </p>
         </div>
     </div>
