@@ -1,41 +1,46 @@
 <!DOCTYPE html>
-<html lang="th">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-[#E1F7F5] flex items-center justify-center min-h-screen" style="font-family: 'Kanit', sans-serif">
-    <div class="bg-white p-4 sm:p-6 md:p-8 lg:p-10 shadow-lg w-11/12 sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4">
-        <div class="flex justify-center mb-4">
-            <img src="logo.png" alt="Logo" class="w-20 h-20 md:w-24 md:h-24">
-        </div>
-        <h2 class="text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6">เข้าสู่ระบบบัญชีของคุณ</h2>
-        <form method="POST" action="{{ route('login') }}" class="flex flex-col">
-            @csrf
-            <div class="mb-4">
-                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">อีเมล</label>
-                <input type="email" id="email" name="email" value="{{ old('email') }}" required
-                    class="shadow appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="mb-4">
-                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">รหัสผ่าน</label>
-                <input type="password" id="password" name="password" required
-                    class="shadow appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <button type="submit"
-                class="bg-[#A3C9F0] hover:bg-[#D0E4F4] text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">เข้าสู่ระบบ</button>
-        </form>
-        <p class="text-center text-gray-500 text-xs mt-4">ยังไม่ได้เป็นสมาชิก? <a href="{{ route('register') }}"
-                class="text-blue-500 hover:text-blue-700">สมัครสมาชิก</a></p>
-    </div>
+<body>
+    <div class=" bg-[#E1F7F5] flex items-center justify-center min-h-screen bg-background">
+        <div class=" bg-white  bg-card p-8 rounded-lg shadow-lg w-full max-w-sm">
+            <div class="flex items-center justify-center mb-6">
+                <img src="logo.png" alt="Logo" class="w-23 h-20">
 
+            </div>
+            <h2 class="text-xl font-semibold text-foreground text-center mb-10">Sign in to your account</h2>
+
+            <form method="POST" action="{{ route('login') }}" class="flex flex-col">
+                @csrf
+                <div class="mb-2">
+                    <label for="email" class="block text-muted-foreground mb-1">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ old('email') }}"
+                        class="block w-full p-2 border border-border rounded mb-4" placeholder="Enter your email"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-muted-foreground mb-1">Password:</label>
+                    <input type="password" id="password" name="password"
+                        class="block w-full p-2 border border-border rounded mb-4" placeholder="Enter your password"
+                        required>
+                </div>
+
+                <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4">Login</button>
+            </form>
+
+            <p class="w-full mt-8 flex justify-between"> Don't have an account yet? 
+                <a href="{{ route('register') }}" class="text-blue-500 hover:text-blue-700 ml-1 hover:underline">Sign up</a>
+            </p>
+        </div>
+    </div>
     @if ($errors->any())
         <script>
             Swal.fire({
@@ -45,6 +50,7 @@
             })
         </script>
     @endif
+
 </body>
 
 </html>
