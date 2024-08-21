@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     
-                    <button id="submit-btn" type="submit" class="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-black bg-[#A3C9F0] hover:bg-[#D0E4F4] focus:outline-none">เพิ่มพนักงาน</button>
+                    <button id="submit-btn" type="submit" class="w-full py-3 px-4 text-sm tracking-wide  text-black bg-[#A3C9F0] hover:bg-[#D0E4F4] focus:outline-none">เพิ่มพนักงาน</button>
                 </form>
             </div>
         </div>
