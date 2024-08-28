@@ -16,7 +16,7 @@
     <div class=" bg-blue-900 flex items-center justify-center min-h-screen bg-background">
         <div class=" bg-white  bg-card p-8 rounded-lg shadow-lg w-full max-w-sm">
             <div class="flex items-center justify-center mb-6">
-                <img src="logo.png" alt="Logo" class="w-23 h-20">
+                <img src="logoo.png" alt="Logo" class="w-23 h-20">
 
             </div>
             <h2 class="text-xl text-base text-center mb-10 ">สร้างบัญชี FMS</h2>
