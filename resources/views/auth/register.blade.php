@@ -13,7 +13,7 @@
 
 
 <body>
-    <div class=" bg-[#E1F7F5] flex items-center justify-center min-h-screen bg-background">
+    <div class=" bg-blue-900 flex items-center justify-center min-h-screen bg-background">
         <div class=" bg-white  bg-card p-8 rounded-lg shadow-lg w-full max-w-sm">
             <div class="flex items-center justify-center mb-6">
                 <img src="logo.png" alt="Logo" class="w-23 h-20">

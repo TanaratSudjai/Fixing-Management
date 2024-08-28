@@ -43,7 +43,8 @@
                     <label for="repair_detail" class="block text-sm font-medium text-gray-700">รายละเอียดการซ่อม</label>
                     <textarea id="repair_detail" name="repair_detail"
                         class="form-textarea mt-1 block w-full -md border border-blue-500 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 h-[300px] p-2"
-                        required></textarea>
+                        required>
+                    </textarea>
                 </div>
                 <button type="submit"
                     class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 -lg shadow-md transition duration-300">
