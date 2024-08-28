@@ -9,10 +9,10 @@
 </head>
 
 <body>
-    <div class=" bg-blue-900 flex items-center justify-center min-h-screen bg-background">
-        <div class=" bg-white  bg-card p-8 rounded-lg shadow-xl w-full max-w-sm">
+    <div class="bg-[#373A40] flex items-center justify-center min-h-screen bg-background">
+        <div class=" bg-white  bg-card p-10 rounded-lg shadow-2xl w-full max-w-sm">
             <div class="flex items-center justify-center mb-6">
-                <img src="logo.png" alt="Logo" class="w-23 h-20">
+                <img src="logoo.png" alt="Logo" class="w-23 h-20">
 
             </div>
             <h2 class="text-xl text-foreground text-center mb-10">ลงชื่อเข้าใช้บัญชีของคุณ</h2>
@@ -33,11 +33,11 @@
                 </div>
 
                 <button type="submit"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 text-lg">เข้าสู่ระบบ</button>
+                    class="bg-[#DC5F00] hover:bg-[#DC5F00] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 text-lg">เข้าสู่ระบบ</button>
             </form>
 
             <p class="w-full mt-8 flex justify-between"> ยังไม่มีบัญชี? 
-                <a href="{{ route('register') }}" class="text-blue-500 hover:text-blue-700 ml-1 hover:underline">สมัคสมาชิก</a>
+                <a href="{{ route('register') }}" class="text-[#DC5F00] hover:text-[#DC5F00] ml-1 hover:underline">สมัคสมาชิก</a>
             </p>
         </div>
     </div>
@@ -50,7 +50,6 @@
             })
         </script>
     @endif
-
 </body>
 
 </html>

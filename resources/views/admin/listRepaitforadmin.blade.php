@@ -78,11 +78,11 @@
     </style>
 </head>
 
-<body>
+<body >
     @extends('layouts.admin')
 
     @section('content')
-        <div class="p-6 bg-white border h-[100vh] flex justify-center w-full">
+        <div class="p-6 bg-[#EEEEEE] border h-[100vh] flex justify-center w-full">
             <div class="container mx-auto">
                 <div class="bg-white  p-4 px-4 md:p-8 mb-6 h-[80vh]">
 
@@ -121,8 +121,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
-                    
+                        </div>               
                 @endsection
             </div>
         </div>
