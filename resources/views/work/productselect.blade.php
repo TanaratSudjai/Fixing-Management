@@ -98,33 +98,38 @@
     @extends('layouts.employ')
 
     @section('content')
-        <div class="p-6  h-[100vh] flex justify-center w-full">
+        <div class="p-6 h-[100vh] flex justify-center w-full">
             <div class="container mx-5">
-                <div class=" px-4 md:p-8 mb-6 h-[80vh] text-center ">
-                    <h1 class="text-2xl font-bold mb-6">เลือกสินค้าสำหรับการซ่อม</h1>
+                <div class="px-4 md:p-8 mb-6 h-[80vh] text-center">
+                    <h1 class="text-2xl font-bold mb-6 text-[#373A40]">เลือกสินค้าสำหรับการซ่อม</h1>
 
-                    <p class="mb-4"><strong>รหัสการซ่อม:</strong> {{ $repair->repair_id }}</p>
-                    <p class="mb-6"><strong>รายละเอียดการซ่อม:</strong> {{ $repair->repair_detail }}</p>
+                    <p class="mb-4 text-[#686D76]"><strong>รหัสการซ่อม:</strong> {{ $repair->repair_id }}</p>
+                    <p class="mb-6 text-[#686D76]"><strong>รายละเอียดการซ่อม:</strong> {{ $repair->repair_detail }}</p>
 
                     <form action="{{ route('repair.updateProduct', $repair->repair_id) }}" method="POST">
                         @csrf
                         @method('PUT')
 
-                        <div class="card-container">
+                        <div class="card-container grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                             @foreach ($product as $item)
-                                <div class="card" data-id="{{ $item->product_id }}">
-                                    <h3>{{ $item->product_name }}</h3>
-                                    <p>รหัสสินค้า: {{ $item->product_id }}</p>
-                                    <p>จำนวนที่มีอยู่: {{ $item->product_qty }}</p>
+                                <div class="card p-4 border border-[#686D76] rounded-md shadow-md text-[#373A40] bg-[#EEEEEE]"
+                                    data-id="{{ $item->product_id }}">
+                                    <h3 class="font-bold text-lg mb-1">{{ $item->product_name }}</h3>
+                                    <p class="mb-1">รหัสสินค้า: {{ $item->product_id }}</p>
+                                    <p class="mb-2">จำนวนที่มีอยู่: {{ $item->product_qty }}</p>
                                     <input type="radio" name="product_id" value="{{ $item->product_id }}" class="hidden"
                                         {{ $repair->product_id == $item->product_id ? 'checked' : '' }}>
                                     <input type="number" name="unit_amount[{{ $item->product_id }}]"
+                                        class="border border-[#686D76] rounded-md p-1 focus:ring-[#DC5F00]"
                                         placeholder="จำนวนที่ต้องการเบิก" min="1" max="{{ $item->product_qty }}">
                                 </div>
                             @endforeach
                         </div>
 
-                        <button type="submit" class="submit-btn w-[100px] fixed top-[85%] right-2">ยืนยัน</button>
+                        <button type="submit"
+                            class="submit-btn w-[100px] fixed top-[85%] right-2 bg-[#DC5F00] text-[#EEEEEE] font-bold py-2 px-4 rounded-md hover:bg-[#373A40] focus:outline-none focus:ring-2 focus:ring-[#DC5F00]">
+                            ยืนยัน
+                        </button>
                     </form>
                 </div>
             </div>

@@ -9,7 +9,7 @@
     @vite('resources/css/app.css')
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <style>
-        nav{
+        nav {
             font-family: 'Kanit', sans-serif;
         }
     </style>
@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <nav class="bg-[#E1F7F5] ">
+    <nav class="bg-[#373A40] ">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -26,12 +26,13 @@
                         aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
                         <span class="absolute -inset-0.5"></span>
                         <span class="sr-only">เปิดเมนูหลัก</span>
-                        <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                            aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
-                        <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                            aria-hidden="true">
+                        <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
@@ -42,23 +43,23 @@
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4 focus:outline-none justify-center mt-1">
-                            
+
                             <a href="{{ route('employee.work') }}"
-                                class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#0E46A3] hover:border-b-2 border-[#0E46A3]">
+                                class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00]">
                                 รายการแจ้งซ่อม
                             </a>
-                            
+
                         </div>
                     </div>
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    
+
                     <div class="relative flex justify-between items-center ml-3 gap-3">
                         <div>
                             <div class="relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                 id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                 <span class="absolute -inset-1.5"></span>
-                                <span class="sr-only">เปิดเมนูผู้ใช้</span>
+                                <span class="sr-only text-[#EEEEEE]">เปิดเมนูผู้ใช้</span>
                                 @if (session('message'))
                                     <div class="alert alert-success text-black">
                                         <strong>{{ session('message') }}</strong>
@@ -66,8 +67,8 @@
                                 @endif
                             </div>
                         </div>
-                        <a href="{{ route('logout') }}" class="text-black ml-auto hover:text-[#FF0000]" role="menuitem" tabindex="-1"
-                            id="user-menu-item-2">
+                        <a href="{{ route('logout') }}" class="text-[#EEEEEE] ml-auto hover:text-[#DC5F00]"
+                            role="menuitem" tabindex="-1" id="user-menu-item-2">
                             <button type="button">ออกจากระบบ</button>
                         </a>
                     </div>
@@ -83,11 +84,11 @@
             </div>
         </div>
     </nav>
-    
+
     <script>
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-    
+
         mobileMenuButton.addEventListener('click', () => {
             const isMenuOpen = mobileMenu.classList.contains('hidden');
             mobileMenu.classList.toggle('hidden', !isMenuOpen);
