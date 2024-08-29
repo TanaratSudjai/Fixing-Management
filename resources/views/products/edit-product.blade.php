@@ -73,19 +73,20 @@
 
         <script>
             document.getElementById('submit-btn').addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent the form from submitting immediately
+                event.preventDefault(); 
 
                 Swal.fire({
                     title: "เลือกพนักงานคนนี้ใช้ไหม?",
                     text: "แน่ใจใช่ไหม?",
                     icon: "warning",
                     showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "ใช่, แน่นอน!"
+                    confirmButtonColor: "#DC5F00",
+                    cancelButtonColor: "#373A40",
+                    confirmButtonText: "ใช่, ฉันแน่ใจ!",
+                    cancelButtonText: "ยกเลิก"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        document.getElementById('editProduct-form').submit(); // Submit the form if confirmed
+                        document.getElementById('editProduct-form').submit(); 
                     }
                 });
             });

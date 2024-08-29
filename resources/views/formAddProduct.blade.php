@@ -10,13 +10,6 @@
 </head>
 <body class="bg-[#EEEEEE] font-kanit">
     @if ($errors->any())
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-md mx-4 my-2">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
     @endif
     @extends('layouts.admin')
     @section('content')
@@ -66,9 +59,10 @@
                     text: "แน่ใจใช่ไหม?",
                     icon: "warning",
                     showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "ใช่, แน่นอน!"
+                    confirmButtonColor: "#DC5F00",
+                    cancelButtonColor: "#373A40",
+                    confirmButtonText: "ใช่, ฉันแน่ใจ!",
+                    cancelButtonText: "ยกเลิก"
                 }).then((result) => {
                     if (result.isConfirmed) {
                         document.getElementById('product-form').submit(); // Submit the form if confirmed
