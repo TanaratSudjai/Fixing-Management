@@ -14,7 +14,7 @@
 
 <body>
     <div class="flex items-center justify-center min-h-screen bg-[#373A40]">
-        <div class="w-[500px] bg-white bg-card p-10 rounded-lg shadow-2xl w-full mx-[17%] xl:max-w-xl">
+        <div class="w-[500px] bg-white bg-card p-10 rounded-lg shadow-2xl w-full mx-[17%] xl:max-w-md">
             <div class="flex items-center justify-center mb-6">
                 <img src={{asset('images/logoo.png')}} alt="Logo" class="w-23 h-20">
 
