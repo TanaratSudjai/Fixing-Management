@@ -22,9 +22,9 @@
         <h1 class="text-3xl font-bold text-[#DC5F00] p-4 text-center mb-6">รายการแจ้งซ่อม</h1>
         <div class="max-w-3xl mx-auto space-y-4 px-4">
             @foreach ($repairs as $repair)
-                <div class="bg-[#686D76] p-4 shadow-md hover:shadow-lg transition-shadow duration-200 rounded-lg">
+                <div class="bg-[#EEEEEE] p-4 shadow-md hover:shadow-lg transition-shadow duration-200 rounded-lg">
                     <div class="flex justify-between items-center mb-2">
-                        <h2 class="text-lg font-semibold text-[#EEEEEE]">รหัส: {{ $repair->repair_id }}</h2>
+                        <h2 class="text-lg font-semibold text-[#686D76]">รหัส: {{ $repair->repair_id }}</h2>
                         <span
                             class="px-2 py-1 text-xs font-semibold rounded-full 
                         {{ $repair->status_id == 1
@@ -35,22 +35,26 @@
                             {{ $repair->status->status_name ?? 'N/A' }}
                         </span>
                     </div>
-                    <p class="text-sm text-[#EEEEEE] mb-1">
+                    <p class="text-sm text-[#686D76] mb-1">
                         <span class="font-medium">ลูกค้า:</span> {{ $repair->customer->name ?? 'customer' }}
                     </p>
-                    <p class="text-sm text-[#EEEEEE]">
+                    <p class="text-sm text-[#686D76]">
                         <span class="font-medium">รายละเอียด:</span> {{ $repair->repair_detail }}
                     </p>
                     <div class="mt-3 text-right">
                         @if ($repair->status_id == 1)
                             <a href="{{ route('repairs.edit', $repair->repair_id) }}"
-                                class="text-sm font-medium text-[#DC5F00] hover:text-[#FF6F00]">แก้ไข</a>
+                                class="text-sm font-medium text-[#FFFFFF] border border-[#DC5F00] bg-[#DC5F00] px-2 py-1 rounded-md">แก้ไข</a>
                         @elseif ($repair->status_id == 2)
-                            <span class="text-sm font-medium text-[#686D76]">กำลังดำเนินการ</span>
+                            <span
+                                class="text-sm font-medium text-[#4A90E2] px-2 py-1 rounded-md">กำลังดำเนินการ</span>
                         @else
-                            <span class="text-sm font-medium text-[#686D76]">ซ่อมเสร็จแล้ว</span>
+                            <span
+                                class="text-sm font-medium text-[#7ED321] px-2 py-1 rounded-md">ซ่อมเสร็จแล้ว</span>
                         @endif
                     </div>
+
+
                 </div>
             @endforeach
         </div>
