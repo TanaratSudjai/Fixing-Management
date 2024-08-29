@@ -72,13 +72,14 @@
                     const form = document.getElementById(`del_form_${employeeId}`);
 
                     Swal.fire({
-                        title: "คุณแน่ใจว่าจะลบชื่อพนักงานคนนี้หรือไม่?",
+                        title: "คุณแน่ใจว่าจะลบพนักงานคนนี้?",
                         text: "แน่ใจใช่ไหม?",
                         icon: "warning",
                         showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "ใช่, ฉันแน่ใจ!"
+                        confirmButtonColor: "#DC5F00",
+                        cancelButtonColor: "#373A40",
+                        confirmButtonText: "ใช่, ฉันแน่ใจ!",
+                        cancelButtonText: "ยกเลิก"
                     }).then((result) => {
                         if (result.isConfirmed) {
                             form.submit(); // Submit the form if confirmed

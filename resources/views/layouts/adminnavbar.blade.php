@@ -35,11 +35,11 @@
                             stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
-                    </button>
+                    </button>   
                 </div>
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                    <div class="flex flex-shrink-0 items-center">
-                        <img src="logoo.png" alt="Logo" class="w-10 h-8" alt="Your Company">
+                    <div class="flex items-center">
+                        <img src="{{ asset('images/logoo.png') }}" class="w-10 h-10">
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4 justify-center mt-1">
@@ -83,27 +83,27 @@
         <div class="sm:hidden hidden" id="mobile-menu">
             <div class="space-y-1 px-2 pb-3 pt-2">
                 <a href="{{ route('admin.dashboard') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-gray-700 hover:text-white">
+                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
                     แผงควบคุม
                 </a>
                 <a href="{{ route('customer.repir') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-gray-700 hover:text-white">
+                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
                     รายการแจ้งซ่อม
                 </a>
                 <a href="{{ route('employee.add') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-gray-700 hover:text-white">
+                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
                     เพิ่มพนักงาน
                 </a>
                 <a href="{{ route('product.add') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-gray-700 hover:text-white">
+                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
                     เพิ่มสินค้า
                 </a>
                 <a href="{{ route('products.view') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-gray-700 hover:text-white">
+                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
                     รายการสินค้า
                 </a>
                 <a href="{{ route('employee.list') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-gray-700 hover:text-white">
+                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
                     รายชื่อพนักงาน
                 </a>
             </div>

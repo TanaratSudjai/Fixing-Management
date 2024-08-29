@@ -58,9 +58,10 @@
                     text: "แน่ใจใช่ไหม?",
                     icon: "warning",
                     showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "ใช่, แน่นอน!"
+                    confirmButtonColor: "#DC5F00",
+                    cancelButtonColor: "#373A40",
+                    confirmButtonText: "ใช่, ฉันแน่ใจ!",
+                    cancelButtonText: "ยกเลิก"
                 }).then((result) => {
                     if (result.isConfirmed) {
                         document.getElementById('employee-form').submit();
