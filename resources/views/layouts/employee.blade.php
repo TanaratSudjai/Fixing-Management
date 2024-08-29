@@ -37,7 +37,7 @@
                 <!-- Logo Section -->
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex-shrink-0 items-center">
-                        <img src={{ asset('logoo.png')}} alt="Logo" class="w-10 h-8">
+                        <img src={{ asset('images/logoo.png')}} alt="Logo" class="w-10 h-8">
                     </div>
                     <!-- Main Navigation -->
                     <div class="hidden sm:ml-6 sm:flex space-x-4">
@@ -51,13 +51,13 @@
                 <!-- Right Section (User Menu & Logout) -->
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     <!-- User Menu -->
-                    <div class="relative">
+                    {{-- <div class="relative">
                         @if (session('message'))
                             <div class="alert alert-success text-black p-1 px-3 bg-[#DC5F00] rounded-full ">
                                 <strong class="text-[#EEEEEE]">{{ session('message') }}</strong>
                             </div>
                         @endif
-                    </div>
+                    </div> --}}
                     <!-- Logout Button -->
                     <a href="{{ route('logout') }}" class="text-[#EEEEEE] ml-3 hover:text-[#DC5F00]" role="menuitem">
                         <button type="button" class="px-3 py-2 rounded-md text-sm font-medium">ออกจากระบบ</button>
