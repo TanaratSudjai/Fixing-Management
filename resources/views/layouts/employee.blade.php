@@ -59,10 +59,10 @@
                             <div class="relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                 id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                 <span class="absolute -inset-1.5"></span>
-                                <span class="sr-only text-[#EEEEEE]">เปิดเมนูผู้ใช้</span>
+                                <span class="sr-only ">เปิดเมนูผู้ใช้</span>
                                 @if (session('message'))
-                                    <div class="alert alert-success text-black">
-                                        <strong>{{ session('message') }}</strong>
+                                    <div class="alert alert-success  text-black">
+                                        <strong class="text-[#EEEEEE]">{{ session('message') }}</strong>
                                     </div>
                                 @endif
                             </div>
