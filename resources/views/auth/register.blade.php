@@ -14,7 +14,7 @@
 
 <body>
     <div class="flex items-center justify-center min-h-screen bg-[#373A40]">
-        <div class="w-[500px] bg-white bg-card p-10 rounded-lg shadow-2xl max-w-sm">
+        <div class="w-[500px] bg-white bg-card p-10 rounded-lg shadow-2xl w-full mx-[17%] xl:max-w-xl">
             <div class="flex items-center justify-center mb-6">
                 <img src={{asset('images/logoo.png')}} alt="Logo" class="w-23 h-20">
 
@@ -46,7 +46,7 @@
                 <div class="w-full text-center">
                     <button
                         class="mt-8 mb-4 w-full bg-[#DC5F00] hover:bg-[#DC5F00] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                        type="submit">สมัคสมาชิก</button>
+                        type="submit">สมัครสมาชิก</button>
                     <a class=" hover:underline w-full text-[#373A40] font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         href="/">
                         เข้าสู่ระบบ
