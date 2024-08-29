@@ -26,19 +26,18 @@
                 <h3 class="text-[#DC5F00] text-3xl font-semibold">{{ $data['countProduct'] }}</h3>
                 <p class="text-[#373A40]">สินค้า</p>
             </div>
-
         </div>
 
-        <div class="container mx-auto mt-5 gap-4 p-5 flex flex-col md:flex-row md:flex-wrap md:justify-between">
-            <div class="chart-box bg-white p-5 rounded-md shadow-md flex-1">
+        <div class="container mx-auto gap-4 p-5 flex flex-col md:flex-row md:flex-wrap md:justify-between">
+            <div class="chart-box bg-white h-[50vh] p-5 rounded-md shadow-md flex-1">
                 <canvas id="lineChart"></canvas>
             </div>
-            <div class="chart-box bg-white p-5 rounded-md shadow-md flex-1 mt-4 md:mt-0">
+            <div class="chart-box bg-white h-[50vh] p-5 rounded-md shadow-md flex-1 mt-4 md:mt-0">
                 <canvas id="pieChart"></canvas>
             </div>
         </div>
 
-        <div class="container mx-auto mt-5 flex flex-col gap-3 md:flex-row md:flex-wrap md:justify-between p-5">
+        <div class="container mx-auto flex flex-col gap-3 md:flex-row md:flex-wrap md:justify-between p-5">
             <div class="flex-1 p-8 bg-[#fff] rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
                 <h3 class="text-[#DC5F00] text-3xl font-semibold">{{ $data['countRepair_done'] }}</h3>
                 <p class="text-[#373A40]">งานซ่อมที่เสร็จสิ้น</p>

@@ -10,58 +10,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 </head>
 
-<style>
-    body {
-        font-family: 'Kanit', sans-serif;
-    }
-</style>
-
-<body>
+<body class="bg-[#EEEEEE] font-kanit">
     @extends('layouts.admin')
 
     @section('content')
-        <div class="flex bg-[#686D76] items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8 mt-[-30px]">
-            <div class="p-6 sm:p-8 bg-white shadow-xl w-full max-w-md">
-                <h1 class="text-center text-2xl font-bold mb-3">เพิ่มพนักงาน</h1>
-                <form id="employee-form" action="{{ route('admin.addEmployee') }}" method="POST" class="mt-6 space-y-4" >
+        <div class="flex bg-[#EEEEEE] items-center justify-center h-[92vh] px-4 py-12 sm:px-6 lg:px-8">
+            <div class="p-6 sm:p-8 bg-white shadow-xl w-full max-w-md rounded-lg">
+                <h1 class="text-center text-2xl font-bold mb-6">เพิ่มพนักงาน</h1>
+                <form id="employee-form" action="{{ route('admin.addEmployee') }}" method="POST" class="space-y-4">
                     @csrf
                     <div>
-                        <label class="text-gray-800 text-sm mb-2 block">ชื่อผู้ใช้</label>
-                        <div class="relative flex items-center">
-                            <input type="text" name="name" placeholder="Username" required
-                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3  outline-blue-600">
-                        </div>
+                        <label for="name" class="text-gray-800 text-sm mb-2 block">ชื่อผู้ใช้</label>
+                        <input type="text" name="name" id="name" placeholder="Username" required
+                            class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
                     </div>
                     <div>
-                        <label class="text-gray-800 text-sm mb-2 block">อีเมล</label>
-                        <div class="relative flex items-center">
-                            <input type="email" name="email" placeholder="Email" required
-                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3  outline-blue-600">
-                        </div>
+                        <label for="email" class="text-gray-800 text-sm mb-2 block">อีเมล</label>
+                        <input type="email" name="email" id="email" placeholder="Email" required
+                            class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
                     </div>
                     <div>
-                        <label class="text-gray-800 text-sm mb-2 block">รหัสผ่าน</label>
-                        <div class="relative flex items-center">
-                            <input type="password" name="password" placeholder="Password" required
-                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3  outline-blue-600">
-                        </div>
+                        <label for="password" class="text-gray-800 text-sm mb-2 block">รหัสผ่าน</label>
+                        <input type="password" name="password" id="password" placeholder="Password" required
+                            class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
+                    <div>
+                        <label for="password_confirmation" class="text-gray-800 text-sm mb-2 block">ยืนยันรหัสผ่าน</label>
+                        <input type="password" name="password_confirmation" id="password_confirmation"
+                            placeholder="Confirm Password" required
+                            class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
 
-                    </div>
-                    <div>
-                        <label class="text-gray-800 text-sm mb-2 block">ยืนยันรหัสผ่าน</label>
-                        <div class="relative flex items-center">
-                            <input type="password" name="password_confirmation" placeholder="Confirm Password" required
-                            class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3  outline-blue-600">
-                        </div>
-                    </div>
-                    
-                    <button id="submit-btn" type="submit" class="w-full py-3 px-4 text-sm tracking-wide  text-black bg-[#A3C9F0] hover:bg-[#D0E4F4] focus:outline-none">เพิ่มพนักงาน</button>
+                    <button id="submit-btn" type="submit"
+                        class="w-full py-3 px-4 text-sm font-semibold text-white bg-[#DC5F00] hover:bg-[#D0E4F4] focus:outline-none rounded-md transition duration-300">
+                        เพิ่มพนักงาน
+                    </button>
                 </form>
             </div>
         </div>
 
         <script>
-            document.getElementById('submit-btn').addEventListener('click', function (event) {
+            document.getElementById('submit-btn').addEventListener('click', function(event) {
                 event.preventDefault(); // Prevent the form from submitting immediately
 
                 Swal.fire({
@@ -74,7 +63,7 @@
                     confirmButtonText: "ใช่, แน่นอน!"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        document.getElementById('employee-form').submit(); // Submit the form if confirmed
+                        document.getElementById('employee-form').submit();
                     }
                 });
             });
