@@ -16,7 +16,7 @@
     <div class="flex items-center justify-center min-h-screen bg-[#373A40]">
         <div class="w-[500px] bg-white bg-card p-10 rounded-lg shadow-2xl max-w-sm">
             <div class="flex items-center justify-center mb-6">
-                <img src="logoo.png" alt="Logo" class="w-23 h-20">
+                <img src={{asset('images/logoo.png')}} alt="Logo" class="w-23 h-20">
 
             </div>
             <h2 class="text-xl text-base text-center mb-10 ">สร้างบัญชี FMS</h2>
