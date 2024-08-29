@@ -13,8 +13,8 @@
 
 
 <body>
-    <div class=" bg-blue-900 flex items-center justify-center min-h-screen bg-background">
-        <div class=" bg-white  bg-card p-8 rounded-lg shadow-lg w-full max-w-sm">
+    <div class="flex items-center justify-center min-h-screen bg-[#373A40]">
+        <div class="w-[500px] bg-white bg-card p-10 rounded-lg shadow-2xl max-w-sm">
             <div class="flex items-center justify-center mb-6">
                 <img src="logoo.png" alt="Logo" class="w-23 h-20">
 
@@ -24,13 +24,13 @@
                 @csrf
                 <div class="mb-4">
                     <label class="block text-muted-foreground mb-1" for="username">ชื่อผู้ใช้</label>
-                    <input class="border border-border rounded-lg p-2 w-full" type="text" id="name" name="name"
-                        value="{{ old('name') }}" placeholder="ป้อนชื่อของคุณ" required />
+                    <input class="border border-border rounded-lg p-2 w-full" type="text" id="name"
+                        name="name" value="{{ old('name') }}" placeholder="ป้อนชื่อของคุณ" required />
                 </div>
                 <div class="mb-4">
                     <label class="block text-muted-foreground mb-1" for="email">อีเมล</label>
-                    <input class="border border-border rounded-lg p-2 w-full" type="email" id="email" name="email"
-                        value="{{ old('email') }}" placeholder="ป้อนอีเมลของคุณ" required />
+                    <input class="border border-border rounded-lg p-2 w-full" type="email" id="email"
+                        name="email" value="{{ old('email') }}" placeholder="ป้อนอีเมลของคุณ" required />
                 </div>
                 <div class="mb-4">
                     <label class="block text-muted-foreground mb-1" for="password">รหัสผ่าน</label>
@@ -39,17 +39,24 @@
                 </div>
                 <div class="mb-4">
                     <label class="block text-muted-foreground mb-1" for="confirm-password">ยืนยันรหัสผ่าน</label>
-                    <input class="border border-border rounded-lg p-2 w-full " type="password" id="password_confirmation"
-                        name="password_confirmation" placeholder="ยืนยันรหัสผ่านของคุณ" required />
+                    <input class="border border-border rounded-lg p-2 w-full " type="password"
+                        id="password_confirmation" name="password_confirmation" placeholder="ยืนยันรหัสผ่านของคุณ"
+                        required />
                 </div>
-                <button
-                    class="mt-8 mb-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="submit">สมัคสมาชิก</button>
+                <div class="w-full text-center">
+                    <button
+                        class="mt-8 mb-4 w-full bg-[#DC5F00] hover:bg-[#DC5F00] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="submit">สมัคสมาชิก</button>
+                    <a class=" hover:underline w-full text-[#373A40] font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        href="/">
+                        เข้าสู่ระบบ
+                    </a>
+                </div>
             </form>
         </div>
     </div>
     <script>
-        document.getElementById('registerForm').addEventListener('submit', function (event) {
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             let email = document.getElementById('email').value;

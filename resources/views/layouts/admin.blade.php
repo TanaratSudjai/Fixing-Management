@@ -7,13 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <div>
         @include('layouts.adminnavbar')
-    </div>
-
-    <div>
         @yield('content')
-    </div>
 </body>
 </html>
