@@ -102,7 +102,7 @@
         <script>
             Swal.fire({
                 icon: 'error',
-                title: 'Validation Error',
+                title: 'Email นี้มีผู้ใช้ไปแล้ว',
                 html: `
                     @foreach ($errors->all() as $error)
                         <p>{{ $error }}</p>
