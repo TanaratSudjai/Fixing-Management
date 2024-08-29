@@ -44,27 +44,27 @@
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4 justify-center mt-1">
                             <a href="{{ route('admin.dashboard') }}"
-                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00]">
+                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center">
                                 แผงควบคุม
                             </a>
                             <a href="{{ route('customer.repir') }}"
-                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00]">
+                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center">
                                 รายการแจ้งซ่อม
                             </a>
                             <a href="{{ route('employee.add') }}"
-                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00]">
+                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center">
                                 เพิ่มพนักงาน
                             </a>
                             <a href="{{ route('product.add') }}"
-                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00]">
+                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center">
                                 เพิ่มสินค้า
                             </a>
                             <a href="{{ route('products.view') }}"
-                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00]">
+                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center">
                                 รายการสินค้า
                             </a>
                             <a href="{{ route('employee.list') }}"
-                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00]">
+                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center">
                                 รายชื่อพนักงาน
                             </a>
                         </div>

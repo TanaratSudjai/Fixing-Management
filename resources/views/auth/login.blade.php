@@ -10,7 +10,7 @@
 
 <body>
     <div class="bg-[#373A40] flex items-center justify-center min-h-screen bg-background">
-        <div class=" bg-white  bg-card p-10 rounded-lg shadow-2xl w-full max-w-sm">
+        <div class="bg-white bg-card p-10 rounded-lg shadow-2xl w-full mx-[17%] xl:max-w-xl">
             <div class="flex items-center justify-center mb-6">
                 <img src={{asset('images/logoo.png')}} alt="Logo" class="w-23 h-20">
 
@@ -37,7 +37,7 @@
             </form>
 
             <p class="w-full mt-8 flex justify-between"> ยังไม่มีบัญชี? 
-                <a href="{{ route('register') }}" class="text-[#DC5F00] hover:text-[#DC5F00] ml-1 hover:underline">สมัคสมาชิก</a>
+                <a href="{{ route('register') }}" class="text-[#DC5F00] hover:text-[#DC5F00] ml-1 hover:underline">สมัครสมาชิก</a>
             </p>
         </div>
     </div>
