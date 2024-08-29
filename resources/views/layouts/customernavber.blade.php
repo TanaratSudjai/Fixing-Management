@@ -40,7 +40,8 @@
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex flex-shrink-0 items-center">
                         <!-- Add class `hidden sm:block` to hide the image on mobile -->
-                        <img src="logoo.png" alt="Logo" class="w-10 h-8 hidden sm:block" alt="Your Company">
+                        <img src="{{ asset('images/logoo.png') }}" alt="Logo" class="w-10 h-8 hidden sm:block"
+                            alt="Your Company">
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4 focus:outline-none justify-center mt-1">
