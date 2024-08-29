@@ -10,7 +10,6 @@
         body {
             font-family: 'Kanit', sans-serif;
             background-color: #f3f4f6;
-            padding: 20px;
         }
 
         .card-container {
@@ -98,7 +97,7 @@
     @extends('layouts.employ')
 
     @section('content')
-        <div class="p-6 h-[100vh] flex justify-center w-full">
+        <div class="p-20 h-[100vh] flex justify-center w-full">
             <div class="container mx-5">
                 <div class="px-4 md:p-8 mb-6 h-[80vh] text-center">
                     <h1 class="text-2xl font-bold mb-6 text-[#373A40]">เลือกสินค้าสำหรับการซ่อม</h1>

@@ -19,7 +19,7 @@
     @section('content')
         <div class="p-6 bg-[#EEEEEE] border flex justify-center w-full">
             <div class="container mx-auto">
-                <div class="bg-white p-4 px-4 md:p-8 mb-6">
+                <div class="bg-white p-14 px-4 md:p-16 mb-6">
                     <h1 class="text-2xl bg-[#DC5F00] p-5 text-center font-bold text-[#EEEEEE]">รายการการซ่อม</h1>
 
                     <!-- รายการที่ยังไม่ได้แจ้งลูกค้า -->
