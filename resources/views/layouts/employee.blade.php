@@ -39,7 +39,7 @@
                 </div>
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex flex-shrink-0 items-center">
-                        <img src="logoo.png" alt="Logo" class="w-10 h-8" alt="Your Company">
+                        <img src="{{asset('images/logoo.png')}}" alt="Logo" class="w-10 h-8" alt="Your Company">
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4 focus:outline-none justify-center mt-1">
@@ -80,7 +80,7 @@
             <div class="space-y-1 px-2 pb-3 pt-2">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <a href="{{ route('employee.work') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">รายการแจ้งซ่อม</a>
+                    class="block rounded-md px-3 py-2 text-base bg-[#686D76] font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">รายการแจ้งซ่อม</a>
             </div>
         </div>
     </nav>
