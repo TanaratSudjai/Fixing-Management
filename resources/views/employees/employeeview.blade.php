@@ -23,6 +23,11 @@
                         <p class="text-center text-xl font-semibold text-[#373A40] mb-3">ไม่พบพนักงาน</p>
                     @else
                         <div class="relative overflow-x-auto">
+                            <form method="GET" action="{{ route('pdf.customer') }}">
+                                <button type="submit" name="download" value="1">Download PDF</button>
+                            </form>
+
+                            {{-- {{ $customet_report->links() }} --}}
                             <table class="min-w-full divide-y divide-gray-200 text-sm text-center">
                                 <thead class="bg-gray-200 sticky top-0">
                                     <tr>
@@ -66,9 +71,9 @@
         <script>
             document.querySelectorAll('button[id^="del_btn_"]').forEach(button => {
                 button.addEventListener('click', function(event) {
-                    event.preventDefault(); 
+                    event.preventDefault();
 
-                    const employeeId = this.id.split('_')[2]; 
+                    const employeeId = this.id.split('_')[2];
                     const form = document.getElementById(`del_form_${employeeId}`);
 
                     Swal.fire({
