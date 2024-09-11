@@ -6,6 +6,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminManagement;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RegistorController;
 use App\Http\Controllers\RepirController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,9 @@ Route::get('/inactive', function () {
 
 // Admin Routes
 Route::middleware('admin')->group(function () {
+
+    Route::get('/pdf-customer', [PDFController::class, 'Gpdf'])->name('pdf.customer');
+    // 
     Route::get('/admin-add-employee', [PageController::class, 'adminPageAddEmployee'])->name('employee.add');
     Route::post('/admin/add-employee', [AdminController::class, 'AddEmployee'])->name('admin.addEmployee');
     Route::get('/employees', [AdminController::class, 'ListEmployee'])->name('employee.list');
@@ -43,7 +47,7 @@ Route::middleware('admin')->group(function () {
     Route::get('/listrepair/req', [ManagaementRepirController::class, 'RepirList'])->name('customer.repir');
     Route::get('/repair/selectemployee/{id}', [ManagaementRepirController::class, 'selectemployee'])->name('repair.selectemployee');
     Route::put('/repair/update/{id}', [ManagaementRepirController::class, 'update'])->name('repair.update');
-    Route::get('/dashboard/admin', [AdminController::class , 'Dashboard'])->name('admin.dashboard');
+    Route::get('/dashboard/admin', [AdminController::class, 'Dashboard'])->name('admin.dashboard');
 });
 
 // Customer Routes
