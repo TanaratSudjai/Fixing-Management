@@ -28,6 +28,9 @@
                         <p class="text-center text-2xl font-bold mb-3">ไม่มีรายการสินค้า</p>
                     @else
                         <div class="relative overflow-x-auto">
+                            <form method="GET" action="{{ route('pdf.product') }}">
+                                <button type="submit" name="download" value="1">Download PDF</button>
+                            </form>
                             <table class="text-sm text-center text-black w-full">
                                 <thead class="bg-gray-200 sticky top-0">
                                     <tr>

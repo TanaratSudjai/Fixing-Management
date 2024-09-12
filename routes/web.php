@@ -29,6 +29,7 @@ Route::get('/inactive', function () {
 Route::middleware('admin')->group(function () {
 
     Route::get('/pdf-customer', [PDFController::class, 'Gpdf'])->name('pdf.customer');
+    Route::get('/pdf-product', [PDFController::class, 'Ppdf'])->name('pdf.product');
     // 
     Route::get('/admin-add-employee', [PageController::class, 'adminPageAddEmployee'])->name('employee.add');
     Route::post('/admin/add-employee', [AdminController::class, 'AddEmployee'])->name('admin.addEmployee');

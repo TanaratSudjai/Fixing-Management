@@ -29,7 +29,7 @@
             border-bottom: 1px solid #ddd;
         }
         th {
-            background-color: #3498db;
+            background-color: #000000;
             color: white;
         }
         tr:nth-child(even) {
