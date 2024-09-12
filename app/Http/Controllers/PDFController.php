@@ -32,7 +32,7 @@ class PDFController extends Controller
 
                $pdf_content = view('pdf-product', compact('product_report'))->render();
 
-               $mpdf = new \Mpdf\Mpdf([
+               $mpdf = new Mpdf([
                    'default_font' => 'thsarabun'
                ]);
 
