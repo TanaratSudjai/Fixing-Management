@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Repir;
 use App\Models\User;
 use Illuminate\Http\Request;
 use PDF;
-use Mpdf\Mpdf;
 
 class PDFController extends Controller
 {
@@ -28,18 +26,10 @@ class PDFController extends Controller
     {
         $product_report = Product::latest()->paginate(30);
 
-       if ($req->has('download')) {
-
-               $pdf_content = view('pdf-product', compact('product_report'))->render();
-
-               $mpdf = new Mpdf([
-                   'default_font' => 'thsarabun'
-               ]);
-
-               $mpdf->WriteHTML($pdf_content);
-
-               return $mpdf->Output('report.pdf', \Mpdf\Output\Destination::DOWNLOAD);
-           }
+        if ($req->has('download')) {
+            $pdf_content = PDF::loadView('pdf-product', compact('product_report'))->setOption(['defualtFont' => 'san-serif']);
+            return $pdf_content->download('report.pdf');
+        }
         return view('products..productview', compact('product_report'));
     }
 
