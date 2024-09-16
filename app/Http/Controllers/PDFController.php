@@ -30,7 +30,7 @@ class PDFController extends Controller
             $pdf_content = PDF::loadView('pdf-product', compact('product_report'))
                 ->setPaper('a4', 'portrait')
                 ->setOptions([
-                    'defaultFont' => 'TH SarabunPSK'
+                    'defaultFont' => 'THSarabun'
                 ]);
 
             return $pdf_content->download('report.pdf');
@@ -38,5 +38,6 @@ class PDFController extends Controller
 
         return view('products.productview', compact('product_report'));
     }
+
 
 }
