@@ -4,29 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        @font-face {
-            font-family: 'THSarabun';
-            src: url('{{ storage_path('fonts/THSarabunNew.ttf') }}') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-
         body {
             font-family: 'THSarabun', sans-serif;
         }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
     </style>
+
 
 
 </head>
