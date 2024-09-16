@@ -27,10 +27,16 @@ class PDFController extends Controller
         $product_report = Product::latest()->paginate(30);
 
         if ($req->has('download')) {
-            $pdf_content = PDF::loadView('pdf-product', compact('product_report'))->setOption(['defualtFont' => 'san-serif']);
+            $pdf_content = PDF::loadView('pdf-product', compact('product_report'))
+                ->setPaper('a4', 'portrait')
+                ->setOptions([
+                    'defaultFont' => 'TH SarabunPSK'
+                ]);
+
             return $pdf_content->download('report.pdf');
         }
-        return view('products..productview', compact('product_report'));
+
+        return view('products.productview', compact('product_report'));
     }
 
 }

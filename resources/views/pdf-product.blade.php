@@ -1,46 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Content-Language" content="th" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Document</title>
     <style>
-    body {
-    font-family: 'sarabun_new', sans-serif;
-    font-size: 20px;
-    }
+        body {
+            font-family: "TH SarabunPSK", sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
     </style>
 </head>
-
 <body>
-    <h1>Product Report</h1>
-
+    <h1>รายงานสินค้า</h1>
     <table>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Detail</th>
-                <th>Qty</th>
-                <th>Price</th>
+                <th>ชื่อสินค้า</th>
+                <th>ราคา</th>
+                <th>วันที่เพิ่ม</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($product_report as $product)
-                <tr>
-                    <td>{{ $product->product_id }}</td>
-                    <td>{{ $product->product_name }}</td>
-                    <td>{{ $product->product_detail }}</td>
-                    <td>{{ $product->product_qty }}</td>
-                    <td>{{ $product->product_price }}</td>
-                </tr>
+            @foreach($product_report as $product)
+            <tr>
+                <td>{{ $product->name }}</td>
+                <td>{{ $product->price }}</td>
+                <td>{{ $product->created_at }}</td>
+            </tr>
             @endforeach
         </tbody>
     </table>
 </body>
-
 </html>
