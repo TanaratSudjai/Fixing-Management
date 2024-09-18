@@ -52,7 +52,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($customet_report as $user)
+            @foreach ($employee_report as $user)
                 <tr>
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>

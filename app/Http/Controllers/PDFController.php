@@ -14,7 +14,7 @@ class PDFController extends Controller
         $employee_report = User::latest()->where('status', 2)->paginate(30);
 
         if ($req->has('download')) {
-            $pdf_report = PDF::loadView('pdf-customer', compact('employee_report'))->setOption(['defualtFont' => 'san-serif']);
+            $pdf_report = PDF::loadView('pdf-employee', compact('employee_report'))->setOption(['defualtFont' => 'san-serif']);
             return $pdf_report->download('report.pdf');
         }
         return view('employee.employeeview', compact('employee_report'));
