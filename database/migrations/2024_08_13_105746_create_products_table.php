@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('product_detail');
             $table->bigInteger('product_qty');
             $table->bigInteger('product_price');
+            $table->text('product_image')->nullable();
             $table->timestamps();
         });
     }

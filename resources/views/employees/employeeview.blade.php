@@ -27,11 +27,11 @@
                                 <button type="submit" name="download" value="1">Download PDF</button>
                             </form>
 
-                            {{-- {{ $customet_report->links() }} --}}
                             <table class="min-w-full divide-y divide-gray-200 text-sm text-center">
                                 <thead class="bg-gray-200 sticky top-0">
                                     <tr>
                                         <th class="p-2 px-2 border-b border-gray-300    ">รหัสพนักงาน</th>
+                                        <th class="p-2 px-2 border-b border-gray-300    ">โปรไฟล์</th>
                                         <th class="p-2 px-2 border-b border-gray-300    ">ชื่อ</th>
                                         <th class="p-2 px-2 border-b border-gray-300    ">อีเมล</th>
                                         <th class="p-2 px-2 border-b border-gray-300    ">สถานะ</th>
@@ -41,6 +41,15 @@
                                     @foreach ($employees as $employee)
                                         <tr class="even:bg-gray-50">
                                             <td class="p-2 border-b border-gray-300">{{ $employee->id }}</td>
+                                            <td class="p-2 border-b border-gray-300">
+                                                @if ($employee->image)
+                                                    <img src="{{ asset('/' . $employee->image) }}" alt="Profile Image"
+                                                        class="w-16 h-16 object-cover rounded-full">
+                                                @else
+                                                    <img src="{{ asset('images/profile.png') }}" alt="Profile Image"
+                                                        class="w-16 h-16 object-cover rounded-full">
+                                                @endif
+                                            </td>
                                             <td class="p-2 border-b border-gray-300">{{ $employee->name }}</td>
                                             <td class="p-2 border-b border-gray-300">{{ $employee->email }}</td>
                                             <td class="p-2 border-b border-gray-300">

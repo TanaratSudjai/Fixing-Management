@@ -32,6 +32,7 @@
                                 <thead class="bg-gray-200 sticky top-0">
                                     <tr>
                                         <th class="p-2 px-2 border-b border-gray-300">รหัสสินค้า</th>
+                                        <th class="p-2 px-2 border-b border-gray-300">รูปภาพ</th>
                                         <th class="p-2 px-2 border-b border-gray-300">ชื่อ</th>
                                         <th class="p-2 px-2 border-b border-gray-300">รายละเอียด</th>
                                         <th class="p-2 px-2 border-b border-gray-300">จำนวน</th>
@@ -43,10 +44,20 @@
                                     @foreach ($products as $product)
                                         <tr class="even:bg-gray-50">
                                             <td class="p-2 border-b border-gray-300">{{ $product->product_id }}</td>
+                                            <td class="p-2 border-b border-gray-300">
+                                                @if ($product->product_image)
+                                                    <img src="{{ asset($product->product_image) }}" alt="Product Image"
+                                                        class="w-16 h-16 object-cover rounded-full">
+                                                @else
+                                                    <span>No Image</span>
+                                                @endif
+                                            </td>
+
                                             <td class="p-2 border-b border-gray-300">{{ $product->product_name }}</td>
                                             <td class="p-2 border-b border-gray-300">{{ $product->product_detail }}</td>
                                             <td class="p-2 border-b border-gray-300">{{ $product->product_qty }}</td>
-                                            <td class="p-2 border-b border-gray-300">${{ number_format($product->product_price) }}</td>
+                                            <td class="p-2 border-b border-gray-300">
+                                                ${{ number_format($product->product_price) }}</td>
                                             <td class="p-2 border-b border-gray-300">
                                                 <div class="flex justify-center gap-3">
                                                     <a href="{{ route('product.edit', $product->product_id) }}"

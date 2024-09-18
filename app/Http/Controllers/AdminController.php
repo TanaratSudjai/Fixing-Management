@@ -13,48 +13,70 @@ use App\Models\Repir;
 
 class AdminController extends Controller
 {
-    public function AddEmployee(Request $req)
+    public function AddEmployee(Request $request)
     {
         try {
-            $validatedData = $req->validate([
-                'name' => 'required|string|max:50',
-                'email' => 'required|string|email|max:100|unique:users',
-                'password' => 'required|string|min:4|confirmed',
-                'status' => 'nullable|integer',
-            ]);
-            $employee = User::create([
-                'name' => $validatedData['name'],
-                'email' => $validatedData['email'],
-                'password' => Hash::make($validatedData['password']),
-                'status' => 2,
+
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:8',
+                'status' => 'nullable|string|max:255',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
 
-            $employee->save();
-            return redirect()->route('employee.add')->with('success', 'เพิ่มพนักงานลงในรายชื่อระบบเรียบร้อยครับ');
+            if ($request->hasFile('image')) {
+                $imageName = time() . '.' . $request->file(key: 'image')->getClientOriginalExtension();
+                $request->file('image')->move(public_path('images'), $imageName);
+                $imagePath = 'images/' . $imageName;
+            } else {
+                $imagePath = null;
+            }
+
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'status' => 2,
+                'image' => $imagePath,
+            ]);
+
+            return redirect()->route('admin.addEmployee')->with('success', 'เพิ่มพนักงานลงในรายชื่อระบบเรียบร้อยครับ');
 
         } catch (Exception $e) {
             Log::error('Error adding employee: ' . $e->getMessage());
-            return redirect()->back()->withErrors(['error' => 'เกิดข้อผิดพลาดในการเพิ่มพนักงานครับ']);
+            return redirect()->back()->withErrors(['error' => 'เกิดข้อผิดพลาดในการเพิ่มพนักงานครับ: ' . $e->getMessage()])->withInput();
         }
     }
 
-    public function AddProduct(Request $req)
+
+    public function AddProduct(Request $request)
     {
         try {
-            $validatedData = $req->validate([
-                'product_name' => 'required|string|max:100',
+            $request->validate([
+                'product_name' => 'required|string|max:255',
                 'product_detail' => 'required|string',
                 'product_qty' => 'required|integer|min:0',
-                'product_price' => 'required|numeric|min:0',
-            ]);
-            $Product = Product::create([
-                'product_name' => $validatedData['product_name'],
-                'product_detail' => $validatedData['product_detail'],
-                'product_qty' => $validatedData['product_qty'],
-                'product_price' => $validatedData['product_price'],
+                'product_price' => 'required|integer|min:0',
+                'image_product' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
 
-            $Product->save();
+            if ($request->hasFile('image_product')) {
+                $imageName = time() . '.' . $request->file('image_product')->getClientOriginalExtension();
+                $request->file('image_product')->move(public_path('images'), $imageName);
+                $imagePath = 'images/' . $imageName;
+            } else {
+                $imagePath = null;
+            }
+
+            Product::create([
+                'product_name' => $request->product_name,
+                'product_detail' => $request->product_detail,
+                'product_qty' => $request->product_qty,
+                'product_price' => $request->product_price,
+                'product_image' => $imagePath,
+            ]);
+
             return redirect()->route('product.add')->with('success', 'เพิ่มอะไหล่ในรายการสินค้าเรียบร้อยครับ');
 
         } catch (Exception $e) {
@@ -92,16 +114,19 @@ class AdminController extends Controller
     {
         $products = Product::all();
         return view('products.productview', compact('products'));
+        // return  $products ; 
     }
     public function ListEmployee()
     {
         $employees = User::where('status', 2)->get();
         return view('employees.employeeview', compact('employees'));
+        // return $employees;
     }
 
-    public function Dashboard(){
-        $countCustomer = User::where('status', 0)->count() ;
-        $countEmployee = User::where('status', 2)->count() ;
+    public function Dashboard()
+    {
+        $countCustomer = User::where('status', 0)->count();
+        $countEmployee = User::where('status', 2)->count();
         $countProduct = Product::all()->count();
         $countRepair_done = Repir::where('status_id', 3)->count();
         $countRepair_inprogress = Repir::where('status_id', 2)->count();
