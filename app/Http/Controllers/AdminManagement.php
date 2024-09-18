@@ -54,8 +54,11 @@ class AdminManagement extends Controller
     {
         try {
             $product = Product::findOrFail($id);
-            $product->delete();
 
+            if ($product->product_image && file_exists(public_path($product->product_image))) {
+                unlink(public_path($product->product_image));
+            }
+            $product->delete();
             return redirect()->route('products.view')->with('success', 'Product deleted successfully.');
         } catch (Exception $e) {
             Log::error('Error deleting product: ' . $e->getMessage());
@@ -88,6 +91,10 @@ class AdminManagement extends Controller
     {
         try {
             $employee = User::findOrFail($id);
+
+            if ($employee->image && file_exists(public_path($employee->image))) {
+                unlink(public_path($employee->image));
+            }
             $employee->delete();
 
             return redirect()->route('employee.list')->with('success', 'Employee deleted successfully.');
