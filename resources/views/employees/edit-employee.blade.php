@@ -31,6 +31,15 @@
                                 class="w-full text-[#373A40] text-sm border border-gray-300 px-4 py-3 rounded-md outline-none focus:ring-2 focus:ring-[#DC5F00]">
                         </div>
 
+                        <div>
+                            <label for="image" class="text-[#373A40] text-sm mb-2 block">โปรไฟล์พนักงาน</label>
+                            <input type="file" name="image" id="image" accept="image/*"
+                                class="w-full text-sm text-[#373A40] file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-[#F3F4F6] hover:file:bg-[#F1F3F5]">
+                            @error('image')
+                                <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <button type="button" id="submit-btn"
                             class="mt-4 w-full bg-[#DC5F00] hover:bg-[#C84D00] text-white text-center font-bold py-3 rounded-md transition duration-300 ease-in-out">
                             บันทึก

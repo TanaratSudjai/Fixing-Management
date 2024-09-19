@@ -71,13 +71,13 @@
                                 <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        <button type="button" id="submit-btn"
+                        <button type="submit" id="submit-btn"
                             class="mt-4 w-full bg-[#DC5F00] text-white py-3 rounded-md hover:bg-[#C44D00] focus:outline-none focus:ring-2 focus:ring-[#373A40] transition duration-300 ease-in-out">
                             บันทึก
                         </button>
                     </div>
                 </form>
+
             </div>
         </div>
 
