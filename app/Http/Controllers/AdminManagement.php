@@ -51,7 +51,6 @@ class AdminManagement extends Controller
 =======
                 'image_product' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
-
             $product = Product::findOrFail($id);
             if ($req->hasFile('image_product')) {
                 $image = $req->file('image_product');
