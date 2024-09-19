@@ -64,9 +64,10 @@
                         </div>
 
                         <div>
-                            <label for="image_product">Product Image</label>
-                            <input type="file" name="image_product" id="image_product" accept="image/*">
-                            @error('image_product')
+                            <label for="image" class="text-[#373A40] text-sm mb-2 block">รูปสินค้า</label>
+                            <input type="file" name="image" id="image" accept="image/*"
+                                class="w-full text-sm text-[#373A40] file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-[#F3F4F6] hover:file:bg-[#F1F3F5]">
+                            @error('image')
                                 <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                             @enderror
                         </div>

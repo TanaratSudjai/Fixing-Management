@@ -84,50 +84,6 @@ class AdminController extends Controller
             return redirect()->back()->withErrors(['error' => 'เกิดข้อผิดพลาดในการเพิ่มอะไหล่สินค้าครับ']);
         }
     }
-    public function UpdateProduct(Request $request, $id)
-    {
-        try {
-            $request->validate([
-                'product_name' => 'required|string|max:255',
-                'product_detail' => 'required|string',
-                'product_qty' => 'required|integer|min:0',
-                'product_price' => 'required|integer|min:0',
-                'image_product' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
-
-            $product = Product::findOrFail($id);
-
-            // Handle image update
-            if ($request->hasFile('image_product')) {
-                // Delete the old image if it exists
-                if ($product->product_image && file_exists(public_path($product->product_image))) {
-                    unlink(public_path($product->product_image));
-                }
-
-                // Upload the new image
-                $imageName = time() . '.' . $request->file('image_product')->getClientOriginalExtension();
-                $request->file('image_product')->move(public_path('images'), $imageName);
-                $imagePath = 'images/' . $imageName;
-            } else {
-                $imagePath = $product->product_image; // Keep the existing image if no new one is uploaded
-            }
-
-            // Update product data
-            $product->update([
-                'product_name' => $request->product_name,
-                'product_detail' => $request->product_detail,
-                'product_qty' => $request->product_qty,
-                'product_price' => $request->product_price,
-                'product_image' => $imagePath,
-            ]);
-
-            return redirect()->route('product.list')->with('success', 'แก้ไขอะไหล่สินค้าสำเร็จครับ');
-
-        } catch (Exception $e) {
-            Log::error('Error updating product: ' . $e->getMessage());
-            return redirect()->back()->withErrors(['error' => 'เกิดข้อผิดพลาดในการแก้ไขอะไหล่สินค้าครับ']);
-        }
-    }
 
     public function ListProduct()
     {

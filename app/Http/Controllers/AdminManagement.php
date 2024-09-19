@@ -24,23 +24,38 @@ class AdminManagement extends Controller
         return view('employees.edit-employee', compact('employee'));
     }
 
-    public function UpdateProduct(Request $req, $id)
+    public function UpdateProduct(Request $request, $id)
     {
         try {
-            $validatedData = $req->validate([
+            $validatedData = $request->validate([
                 'product_name' => 'required|string|max:100',
                 'product_detail' => 'required|string',
                 'product_qty' => 'required|integer|min:0',
                 'product_price' => 'required|numeric|min:0',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
 
             $product = Product::findOrFail($id);
+
+            $product = Product::findOrFail($id);
+            if ($request->hasFile('image')) {
+                if ($product->product_image && file_exists(public_path($product->product_image))) {
+                    unlink(public_path($product->product_image));
+                }
+                $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+                $imagePath = $request->file('image')->move(public_path('images'), $imageName);
+                $imagePath = 'images/' . $imageName;
+            } else {
+                $imagePath = $product->product_image;
+            }
             $product->update([
-                'product_name' => $validatedData['product_name'],
-                'product_detail' => $validatedData['product_detail'],
-                'product_qty' => $validatedData['product_qty'],
-                'product_price' => $validatedData['product_price'],
+                'product_name' => $request->product_name,
+                'product_detail' => $request->product_detail,
+                'product_qty' => $request->product_qty,
+                'product_price' => $request->product_price,
+                'product_image' => $imagePath,
             ]);
+
 
             return redirect()->route('products.view')->with('success', 'Product updated successfully.');
 
