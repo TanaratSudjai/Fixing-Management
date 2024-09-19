@@ -32,9 +32,23 @@ class AdminManagement extends Controller
                 'product_detail' => 'required|string',
                 'product_qty' => 'required|integer|min:0',
                 'product_price' => 'required|numeric|min:0',
+                'image_product' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
 
             $product = Product::findOrFail($id);
+            if ($req->hasFile('image_product')) {
+                $image = $req->file('image_product');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images/'), $imageName);
+
+                if ($product->product_image) {
+                    $oldImage = public_path('images/' . $product->product_image);
+                    if (file_exists($oldImage)) {
+                        unlink($oldImage);
+                    }
+                }
+                $product->product_image = $imageName;
+            }
             $product->update([
                 'product_name' => $validatedData['product_name'],
                 'product_detail' => $validatedData['product_detail'],
@@ -42,8 +56,8 @@ class AdminManagement extends Controller
                 'product_price' => $validatedData['product_price'],
             ]);
 
-            return redirect()->route('products.view')->with('success', 'Product updated successfully.');
-
+            // return redirect()->route('products.view')->with('success', 'Product updated successfully.');
+            return $product  ; 
         } catch (Exception $e) {
             Log::error('Error updating product: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => 'Error updating product.']);
@@ -81,7 +95,6 @@ class AdminManagement extends Controller
             ]);
 
             return redirect()->route('employee.list')->with('success', 'Employee updated successfully.');
-
         } catch (Exception $e) {
             Log::error('Error updating employee: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => 'Error updating employee.']);
@@ -98,7 +111,6 @@ class AdminManagement extends Controller
             $employee->delete();
 
             return redirect()->route('employee.list')->with('success', 'Employee deleted successfully.');
-
         } catch (Exception $e) {
             Log::error('Error deleting employee: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => 'Error deleting employee.']);
