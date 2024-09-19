@@ -41,7 +41,7 @@
                                     @foreach ($employees as $employee)
                                         <tr class="even:bg-gray-50">
                                             <td class="p-2 border-b border-gray-300">{{ $employee->id }}</td>
-                                            <td class="p-2 border-b border-gray-300">
+                                            <td class="p-2 border-b border-gray-300 flex justify-center">
                                                 @if ($employee->image)
                                                     <img src="{{ asset('/' . $employee->image) }}" alt="Profile Image"
                                                         class="w-16 h-16 object-cover rounded-full">

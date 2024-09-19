@@ -34,7 +34,7 @@ class EmployeeManagement extends Controller
             $repair = Repir::findOrFail($id);
             $product = Product::all();
             return view('work.productselect', compact('repair', 'product'));
-
+        //    return $product ;
         } catch (Exception $e) {
             Log::error('Error fetching repair record for editing: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => 'Failed to fetch repair record for editing.']);

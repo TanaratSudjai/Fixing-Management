@@ -113,6 +113,14 @@
                             @foreach ($product as $item)
                                 <div class="card p-4 border border-[#686D76] rounded-md shadow-md text-[#373A40] bg-[#EEEEEE]"
                                     data-id="{{ $item->product_id }}">
+                                    <div class="flex justify-center">
+                                        @if ($item->product_image)
+                                            <img src="{{ asset('/' . $item->product_image) }}" alt="Product Image"
+                                                class="w-16 h-16 object-cover rounded-full">
+                                        @else
+                                            <span>No Image</span>
+                                        @endif
+                                    </div>
                                     <h3 class="font-bold text-lg mb-1">{{ $item->product_name }}</h3>
                                     <p class="mb-1">รหัสสินค้า: {{ $item->product_id }}</p>
                                     <p class="mb-2">จำนวนที่มีอยู่: {{ $item->product_qty }}</p>

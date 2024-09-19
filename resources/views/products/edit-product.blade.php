@@ -18,7 +18,8 @@
         <div class="flex items-center justify-center h-[92vh] px-4 py-12 sm:px-6 lg:px-8 mt-[-30px]">
             <div class="p-6 sm:p-8 bg-white shadow-lg w-full max-w-md rounded-md border border-gray-300">
                 <h1 class="text-center text-2xl font-bold mb-4 text-[#373A40]">แก้ไขสินค้า</h1>
-                <form action="{{ route('product.update', $product->product_id) }}" method="POST" id="editProduct-form">
+                <form action="{{ route('product.update', $product->product_id) }}" method="POST" id="editProduct-form"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="space-y-4">
@@ -62,6 +63,14 @@
                             @enderror
                         </div>
 
+                        <div>
+                            <label for="image_product">Product Image</label>
+                            <input type="file" name="image_product" id="image_product" accept="image/*">
+                            @error('image_product')
+                                <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <button type="button" id="submit-btn"
                             class="mt-4 w-full bg-[#DC5F00] text-white py-3 rounded-md hover:bg-[#C44D00] focus:outline-none focus:ring-2 focus:ring-[#373A40] transition duration-300 ease-in-out">
                             บันทึก
@@ -73,7 +82,7 @@
 
         <script>
             document.getElementById('submit-btn').addEventListener('click', function(event) {
-                event.preventDefault(); 
+                event.preventDefault();
 
                 Swal.fire({
                     title: "เลือกพนักงานคนนี้ใช้ไหม?",
@@ -86,7 +95,7 @@
                     cancelButtonText: "ยกเลิก"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        document.getElementById('editProduct-form').submit(); 
+                        document.getElementById('editProduct-form').submit();
                     }
                 });
             });
