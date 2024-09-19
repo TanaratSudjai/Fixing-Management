@@ -26,66 +26,7 @@ class AdminManagement extends Controller
 
     public function UpdateProduct(Request $request, $id)
     {
-        try {
-            $validatedData = $request->validate([
-                'product_name' => 'required|string|max:100',
-                'product_detail' => 'required|string',
-                'product_qty' => 'required|integer|min:0',
-                'product_price' => 'required|numeric|min:0',
-<<<<<<< HEAD
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
-
-            $product = Product::findOrFail($id);
-
-            $product = Product::findOrFail($id);
-            if ($request->hasFile('image')) {
-                if ($product->product_image && file_exists(public_path($product->product_image))) {
-                    unlink(public_path($product->product_image));
-                }
-                $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
-                $imagePath = $request->file('image')->move(public_path('images'), $imageName);
-                $imagePath = 'images/' . $imageName;
-            } else {
-                $imagePath = $product->product_image;
-=======
-                'image_product' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            ]);
-            $product = Product::findOrFail($id);
-            if ($req->hasFile('image_product')) {
-                $image = $req->file('image_product');
-                $imageName = time() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('images/'), $imageName);
-
-                if ($product->product_image) {
-                    $oldImage = public_path('images/' . $product->product_image);
-                    if (file_exists($oldImage)) {
-                        unlink($oldImage);
-                    }
-                }
-                $product->product_image = $imageName;
->>>>>>> 5bd47d07ea8c0ad10b4bd350b8252d0ae4538d6d
-            }
-            $product->update([
-                'product_name' => $request->product_name,
-                'product_detail' => $request->product_detail,
-                'product_qty' => $request->product_qty,
-                'product_price' => $request->product_price,
-                'product_image' => $imagePath,
-            ]);
-
-<<<<<<< HEAD
-
-            return redirect()->route('products.view')->with('success', 'Product updated successfully.');
-
-=======
-            // return redirect()->route('products.view')->with('success', 'Product updated successfully.');
-            return $product  ; 
->>>>>>> 5bd47d07ea8c0ad10b4bd350b8252d0ae4538d6d
-        } catch (Exception $e) {
-            Log::error('Error updating product: ' . $e->getMessage());
-            return redirect()->back()->withErrors(['error' => 'Error updating product.']);
-        }
+       
     }
 
     public function DeleteProduct($id)
