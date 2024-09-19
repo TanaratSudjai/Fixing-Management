@@ -44,7 +44,7 @@
                                     @foreach ($products as $product)
                                         <tr class="even:bg-gray-50">
                                             <td class="p-2 border-b border-gray-300">{{ $product->product_id }}</td>
-                                            <td class="p-2 border-b border-gray-300">
+                                            <td class="p-2 border-b border-gray-300 flex justify-center">
                                                 @if ($product->product_image)
                                                     <img src="{{ asset($product->product_image) }}" alt="Product Image"
                                                         class="w-16 h-16 object-cover rounded-full">
@@ -86,9 +86,9 @@
         <script>
             document.querySelectorAll('button[id^="del_btn_"]').forEach(button => {
                 button.addEventListener('click', function(event) {
-                    event.preventDefault(); // Prevent the form from submitting immediately
+                    event.preventDefault(); 
 
-                    const product_id = this.id.split('_')[2]; // Extract the product ID from the button ID
+                    const product_id = this.id.split('_')[2]; 
                     const form = document.getElementById(`del_form_${product_id}`);
 
                     Swal.fire({
@@ -102,7 +102,7 @@
                         cancelButtonText: "ยกเลิก"
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            form.submit(); // Submit the form if confirmed
+                            form.submit();
                         }
                     });
                 });

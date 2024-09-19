@@ -12,20 +12,15 @@
 </head>
 
 <body>
-    <!-- Main Container -->
     <div class="bg-[#EEEEEE] font-sans leading-normal tracking-normal flex items-center justify-center min-h-screen p-5"
         style="font-family: 'Kanit', sans-serif;">
         <div class="w-full max-w-md mx-auto bg-white shadow-lg p-6">
             <h2 class="text-2xl font-bold text-center text-[#DC5F00] mb-6">แจ้งซ่อมสำหรับลูกค้า</h2>
-
-            <!-- Success Message -->
             @if (session('success'))
                 <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 relative mb-6" role="alert">
                     {{ session('success') }}
                 </div>
             @endif
-
-            <!-- Error Messages -->
             @if ($errors->any())
                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 relative mb-6" role="alert">
                     <ul class="list-disc list-inside">
@@ -36,7 +31,6 @@
                 </div>
             @endif
 
-            <!-- Repair Form -->
             <form action="{{ route('repairs.store') }}" method="POST" class="space-y-4">
                 @csrf
                 <div>
