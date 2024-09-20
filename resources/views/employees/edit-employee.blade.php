@@ -20,7 +20,7 @@
             <div class="bg-white shadow-xl w-full max-w-md rounded-md p-6 sm:p-8">
                 <h1 class="text-center text-2xl font-bold mb-3 text-[#373A40]">แก้ไขพนักงาน</h1>
 
-                <form action="{{ route('employee.update', $employee->id) }}" method="POST" id="editEmployee-form">
+                <form action="{{ route('employee.update', $employee->id) }}" method="POST" id="editEmployee-form" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div>
