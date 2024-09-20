@@ -44,7 +44,7 @@ class RepirController extends Controller
                 'repair_detail' => $validatedData['repair_detail'],
                 'employee_id' => null,
                 'product_id' => null,
-                'status_id' => 1,
+                'status_id' => 4,
             ]);
 
             return redirect()->route('customer.dashboard')->with('success', 'Repair record created successfully.');
