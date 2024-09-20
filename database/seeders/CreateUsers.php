@@ -37,6 +37,7 @@ class CreateUsers extends Seeder
         // }
 
         // DB::table('status')->insert([
+        //     ['status_name' => 'start'],
         //     ['status_name' => 'Pending'],
         //     ['status_name' => 'In Progress'],
         //     ['status_name' => 'Completed'],

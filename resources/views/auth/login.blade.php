@@ -15,7 +15,8 @@
                 <img src="{{ asset('/images/logoo.png') }}" alt="Logo" class="w-20 sm:w-23 h-16 sm:h-20">
             </div>
             <h2 class="text-lg sm:text-xl text-gray-800 text-center mb-8 sm:mb-10">ลงชื่อเข้าใช้บัญชีของคุณ</h2>
-            <form method="POST" action="/login" class="flex flex-col">
+            <form method="POST" action="{{route('login')}}" class="flex flex-col">
+                @csrf
                 <div class="mb-3 sm:mb-4">
                     <label for="email" class="block text-gray-600 mb-1">อีเมล</label>
                     <input type="email" id="email" name="email"

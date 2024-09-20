@@ -43,6 +43,9 @@
                                                 <a href="" class="text-[#EEEEEE] px-3 bg-[#686D76]">เรียบร้อย</a>
                                             @elseif($repair->status_id == 2)
                                                 <a href="" class="text-[#EEEEEE] px-3 bg-[#DC5F00]">กำลังซ่อม</a>
+                                            @elseif($repair->status_id == 1)
+                                                <a href="{{ route('repair.selectemployee', $repair->repair_id) }}"
+                                                    class="text-[#DC5F00] bg-[#EEEEEE]">เเจ้งพนักงานเเล้ว</a>
                                             @else
                                                 <a href="{{ route('repair.selectemployee', $repair->repair_id) }}"
                                                     class="text-[#DC5F00] bg-[#EEEEEE]">เลือกพนักงาน</a>
