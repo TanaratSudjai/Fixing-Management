@@ -20,7 +20,7 @@
             <div class="bg-white shadow-xl w-full max-w-md rounded-md p-6 sm:p-8">
                 <h1 class="text-center text-2xl font-bold mb-3 text-[#373A40]">แก้ไขพนักงาน</h1>
 
-                <form action="{{ route('employee.update', $employee->id) }}" method="POST" id="editEmployee-form">
+                <form action="{{ route('employee.update', $employee->id) }}" method="POST" id="editEmployee-form" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div>
@@ -29,6 +29,15 @@
                             <input type="text" id="name" name="name" value="{{ old('name', $employee->name) }}"
                                 required
                                 class="w-full text-[#373A40] text-sm border border-gray-300 px-4 py-3 rounded-md outline-none focus:ring-2 focus:ring-[#DC5F00]">
+                        </div>
+
+                        <div>
+                            <label for="image" class="text-[#373A40] text-sm mb-2 block">โปรไฟล์พนักงาน</label>
+                            <input type="file" name="image" id="image" accept="image/*"
+                                class="w-full text-sm text-[#373A40] file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-[#F3F4F6] hover:file:bg-[#F1F3F5]">
+                            @error('image')
+                                <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <button type="button" id="submit-btn"
