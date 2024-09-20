@@ -15,4 +15,11 @@ class ProfileController extends Controller
         $employee = User::where('id', $user->id)->first();
         return view('employees.profile', compact('employee'));
     }
+
+    public function getProfileCustomer()
+    {
+        $user = Auth::user();
+        $customer = User::where('id', $user->id)->first();
+        return view('customer.profile', compact('customer'));
+    }
 }
