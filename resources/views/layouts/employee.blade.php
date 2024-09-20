@@ -37,13 +37,20 @@
                 <!-- Logo Section -->
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex-shrink-0 items-center">
-                        <img src={{ asset('images/logoo.png')}} alt="Logo" class="w-10 h-8">
+                        <img src={{ asset('images/logoo.png') }} alt="Logo" class="w-10 h-8">
                     </div>
                     <!-- Main Navigation -->
                     <div class="hidden sm:ml-6 sm:flex space-x-4">
                         <a href="{{ route('employee.work') }}"
                             class="text-[#EEEEEE] px-3 py-2 rounded-md text-sm font-medium hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00]">
                             รายการแจ้งซ่อม
+                        </a>
+                    </div>
+
+                    <div class="hidden sm:ml-6 sm:flex space-x-4">
+                        <a href="{{ route('profile.view') }}"
+                            class="text-[#EEEEEE] px-3 py-2 rounded-md text-sm font-medium hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00]">
+                            โปรไฟล์
                         </a>
                     </div>
                 </div>
@@ -72,6 +79,12 @@
                 <a href="{{ route('employee.work') }}"
                     class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
                     รายการแจ้งซ่อม
+                </a>
+            </div>
+            <div class="space-y-1 px-2 pb-3 pt-2">
+                <a href="{{ route('profile.view') }}"
+                    class="text-[#EEEEEE] px-3 py-2 rounded-md text-sm font-medium hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00]">
+                    โปรไฟล์
                 </a>
             </div>
         </div>

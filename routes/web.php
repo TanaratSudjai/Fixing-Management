@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminManagement;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistorController;
 use App\Http\Controllers\RepirController;
 use Illuminate\Support\Facades\Route;
@@ -70,4 +71,7 @@ Route::middleware('employee')->group(function () {
     Route::get('/repair/warningstatus/{id}', [EmployeeManagement::class, 'statuswarning'])->name('repair.warning');
     Route::put('/repair/{id}/statusupdate', [EmployeeManagement::class, 'updateStatus'])->name('repair.updateStatus');
     Route::put('/repair/{id}/statusupdatedone', [EmployeeManagement::class, 'done'])->name('repair.done');
+
+    // -------------
+    Route::get('/profile/employee/view', [ProfileController::class, 'getProfile'])->name('profile.view');
 });

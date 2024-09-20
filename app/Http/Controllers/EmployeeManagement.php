@@ -11,6 +11,11 @@ use Exception;
 use App\Models\User;
 class EmployeeManagement extends Controller
 {
+
+    public function Profile(){
+        return view('employees.profile');
+    }
+
     //
     public function listwork()
     {
