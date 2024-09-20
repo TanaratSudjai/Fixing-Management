@@ -16,11 +16,11 @@
     <div class="flex items-center justify-center min-h-screen bg-[#373A40]">
         <div class="w-[500px] bg-white bg-card p-10 rounded-lg shadow-2xl w-full mx-[17%] xl:max-w-md">
             <div class="flex items-center justify-center mb-6">
-                <img src={{asset('images/logoo.png')}} alt="Logo" class="w-23 h-20">
+                <img src={{ asset('images/logoo.png') }} alt="Logo" class="w-23 h-20">
 
             </div>
             <h2 class="text-xl text-base text-center mb-10 ">สร้างบัญชี FMS</h2>
-            <form method="POST" action="{{ route('register') }}" id="registerForm">
+            <form method="POST" action="{{ route('register') }}" id="registerForm" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4">
                     <label class="block text-muted-foreground mb-1" for="username">ชื่อผู้ใช้</label>
@@ -42,6 +42,26 @@
                     <input class="border border-border rounded-lg p-2 w-full " type="password"
                         id="password_confirmation" name="password_confirmation" placeholder="ยืนยันรหัสผ่านของคุณ"
                         required />
+                </div>
+                <div class="mb-4">
+                    <label for="profile_image"
+                        class="text-gray-800 text-sm font-medium mb-2 block">โปรไฟล์ลูกค้า</label>
+                    <div class="flex items-center justify-center w-full">
+                        <label
+                            class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 16l-4-4m0 0l4-4m-4 4h18m-8 4l4-4m0 0l-4-4m4 4H3"></path>
+                                </svg>
+                                <p class="mb-2 text-sm text-gray-500"><span
+                                        class="font-semibold">คลิกเพื่ออัปโหลด</span> หรือ ลากไฟล์มาที่นี่</p>
+                                <p class="text-xs text-gray-500">PNG, JPG หรือ GIF (ขนาดไม่เกิน 2MB)</p>
+                            </div>
+                            <input type="file" name="image" id="image" class="hidden" />
+                        </label>
+                    </div>
                 </div>
                 <div class="w-full text-center">
                     <button

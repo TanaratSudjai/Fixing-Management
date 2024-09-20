@@ -60,6 +60,9 @@ Route::middleware('customer')->group(function () {
     Route::post('/repairs', [RepirController::class, 'AddRepir'])->name('repairs.store');
     Route::get('/repairs/{id}', [RepirController::class, 'edit'])->name('repairs.edit');
     Route::put('/repairsupdate/{id}/req', [RepirController::class, 'update'])->name('repairs.update');
+
+    // ----------------------
+    Route::get('/profile/customer/view', [ProfileController::class, 'getProfileCustomer'])->name('profileCustomer.view');
 });
 
 // Employee Routes

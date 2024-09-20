@@ -53,6 +53,10 @@
                                 class="px-3 py-2 focus:outline-none self-start sm:self-center w-full sm:w-auto hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] text-[#EEEEEE]">
                                 รายการแจ้งซ่อม
                             </a>
+                            <a href="{{ route('profileCustomer.view') }}"
+                                class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] bg-[#373A40] hover:bg-[#DC5F00]">
+                                โปรไฟล์
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -88,6 +92,11 @@
                 <a href="{{ route('repairs.list') }}"
                     class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] bg-[#373A40] hover:bg-[#DC5F00]">
                     รายการแจ้งซ่อม
+                </a>
+
+                <a href="{{ route('profileCustomer.view') }}"
+                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] bg-[#373A40] hover:bg-[#DC5F00]">
+                    โปรไฟล์
                 </a>
             </div>
         </div>
