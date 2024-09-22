@@ -12,36 +12,36 @@ class CreateUsers extends Seeder
      */
     public function run(): void
     {
-        // $users = [
-        //     // [
-        //     //     'name' => 'employee',
-        //     //     'email' => 'employee@gmail.com',
-        //     //     'status' => '2',
-        //     //     'password' => bcrypt('1234')
-        //     // ],
-        //     [
-        //         'name' => 'admin',
-        //         'email' => 'admin@gmail.com',
-        //         'status' => '1',
-        //         'password' => bcrypt('1234')
-        //     ],
-        //     // [
-        //     //     'name' => 'customer',
-        //     //     'email' => 'customer@gmail.com',
-        //     //     'status' => '0',
-        //     //     'password' => bcrypt('1234')
-        //     // ],
-        // ];
-        // foreach ($users as $user) {
-        //     DB::table('users')->insert($user);
-        // }
+        $users = [
+            // [
+            //     'name' => 'employee',
+            //     'email' => 'employee@gmail.com',
+            //     'status' => '2',
+            //     'password' => bcrypt('1234')
+            // ],
+            [
+                'name' => 'admin',
+                'email' => 'admin@gmail.com',
+                'status' => '1',
+                'password' => bcrypt('1234')
+            ],
+            // [
+            //     'name' => 'customer',
+            //     'email' => 'customer@gmail.com',
+            //     'status' => '0',
+            //     'password' => bcrypt('1234')
+            // ],
+        ];
+        foreach ($users as $user) {
+            DB::table('users')->insert($user);
+        }
 
-        // DB::table('status')->insert([
-        //     ['status_name' => 'start'],
-        //     ['status_name' => 'Pending'],
-        //     ['status_name' => 'In Progress'],
-        //     ['status_name' => 'Completed'],
-        // ]);
+        DB::table('status')->insert([
+            ['status_name' => 'start'],
+            ['status_name' => 'Pending'],
+            ['status_name' => 'In Progress'],
+            ['status_name' => 'Completed'],
+        ]);
 
     }
 }

@@ -11,7 +11,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-
 <body>
     <div class="flex items-center justify-center bg-gray-200 w-full min-h-screen px-4 sm:px-0">
         <div class="p-6 sm:p-10 w-full max-w-xs sm:max-w-md rounded-xl">
