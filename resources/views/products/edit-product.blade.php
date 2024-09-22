@@ -81,7 +81,7 @@
             </div>
         </div>
 
-        <script>
+        {{-- <script>
             document.getElementById('submit-btn').addEventListener('click', function(event) {
                 event.preventDefault();
 
@@ -100,7 +100,7 @@
                     }
                 });
             });
-        </script>
+        </script> --}}
     @endsection
 </body>
 

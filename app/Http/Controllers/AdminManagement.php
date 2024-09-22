@@ -58,7 +58,7 @@ class AdminManagement extends Controller
 
         } catch (Exception $e) {
             Log::error('Error updating product: ' . $e->getMessage());
-            return redirect()->back()->withErrors(['error' => 'เกิดข้อผิดพลาดในการแก้ไขอะไหล่สินค้าครับ']);
+            return redirect()->back()->with('success', 'แก้ไขอะไหล่สินค้าสำเร็จครับ');
         }
     }
 
