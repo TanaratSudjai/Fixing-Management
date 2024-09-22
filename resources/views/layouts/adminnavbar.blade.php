@@ -35,7 +35,7 @@
                             stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
-                    </button>   
+                    </button>
                 </div>
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex items-center">
@@ -51,7 +51,7 @@
                                 class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center">
                                 รายการแจ้งซ่อม
                             </a>
-                            <a href="{{ route('employee.add') }}"
+                            <a onclick="toggleEmployeeModal()"
                                 class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center">
                                 เพิ่มพนักงาน
                             </a>
@@ -90,7 +90,7 @@
                     class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
                     รายการแจ้งซ่อม
                 </a>
-                <a href="{{ route('employee.add') }}"
+                <a onclick="toggleEmployeeModal()"
                     class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
                     เพิ่มพนักงาน
                 </a>
@@ -110,6 +110,78 @@
         </div>
     </nav>
 
+    <div id="addEmployeeModal" class="fixed hidden w-full bg-opacity-50 backdrop-blur-sm">
+        <div class=" w-full h-[95vh]  flex justify-center items-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xl font-semibold text-gray-800">เพิ่มพนักงาน</h2>
+                    <button onclick="toggleEmployeeModal()" class="text-gray-400 hover:text-gray-600">
+                        &times;
+                    </button>
+                </div>
+
+                <!-- Employee Form -->
+                <form id="employee-form" action="{{ route('admin.addEmployee') }}" method="POST"
+                    enctype="multipart/form-data" class="space-y-4">
+                    @csrf
+                    <div>
+                        <label for="name" class="text-gray-800 text-sm mb-2 block">ชื่อผู้ใช้</label>
+                        <input type="text" name="name" id="name" placeholder="Username" required
+                            class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
+                    <div>
+                        <label for="email" class="text-gray-800 text-sm mb-2 block">อีเมล</label>
+                        <input type="email" name="email" id="email" placeholder="Email" required
+                            class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
+                    <div>
+                        <label for="password" class="text-gray-800 text-sm mb-2 block">รหัสผ่าน</label>
+                        <input type="password" name="password" id="password" placeholder="Password" required
+                            class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
+                    <div>
+                        <label for="password_confirmation"
+                            class="text-gray-800 text-sm mb-2 block">ยืนยันรหัสผ่าน</label>
+                        <input type="password" name="password_confirmation" id="password_confirmation"
+                            placeholder="Confirm Password" required
+                            class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
+                    <div class="mb-4">
+                        <label for="profile_image"
+                            class="text-gray-800 text-sm font-medium mb-2 block">โปรไฟล์พนักงาน</label>
+                        <div class="flex items-center justify-center w-full">
+                            <label
+                                class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M7 16l-4-4m0 0l4-4m-4 4h18m-8 4l4-4m0 0l-4-4m4 4H3"></path>
+                                    </svg>
+                                    <p class="mb-2 text-sm text-gray-500"><span
+                                            class="font-semibold">คลิกเพื่ออัปโหลด</span>
+                                        หรือ ลากไฟล์มาที่นี่</p>
+                                    <p class="text-xs text-gray-500">PNG, JPG หรือ GIF (ขนาดไม่เกิน 2MB)</p>
+                                </div>
+                                <input type="file" name="image" id="image" class="hidden" />
+                            </label>
+                        </div>
+                    </div>
+                    <button id="submit-btn" type="submit"
+                        class="w-full py-3 px-4 text-sm font-semibold text-white bg-[#DC5F00] hover:bg-[#D0E4F4] focus:outline-none rounded-md transition duration-300">
+                        เพิ่มพนักงาน
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="addProductModal" style="display:none;">
+
+    </div>
+
     <script>
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -119,7 +191,20 @@
             mobileMenu.classList.toggle('hidden', !isMenuOpen);
             mobileMenuButton.setAttribute('aria-expanded', !isMenuOpen);
         });
+
+
+        function toggleEmployeeModal() {
+            const modal = document.getElementById('addEmployeeModal');
+            modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function toggleProductModal() {
+            const modal = document.getElementById('addProductModal');
+            modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+        }
     </script>
 </body>
+
+
 
 </html>
