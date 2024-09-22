@@ -22,13 +22,13 @@
                     @if ($employees->isEmpty())
                         <p class="text-center text-xl font-semibold text-[#373A40] mb-3">ไม่พบพนักงาน</p>
                     @else
-                        <div class="relative overflow-x-auto">
+                        <div class="overflow-x-auto">
                             <form method="GET" action="{{ route('pdf.customer') }}">
                                 <button type="submit" name="download" value="1">Download PDF</button>
                             </form>
 
                             <table class="min-w-full divide-y divide-gray-200 text-sm text-center">
-                                <thead class="bg-gray-200 sticky top-0">
+                                <thead class="bg-gray-200 top-0">
                                     <tr>
                                         <th class="p-2 px-2 border-b border-gray-300    ">รหัสพนักงาน</th>
                                         <th class="p-2 px-2 border-b border-gray-300    ">โปรไฟล์</th>

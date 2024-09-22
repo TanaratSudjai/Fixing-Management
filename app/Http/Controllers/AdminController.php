@@ -41,7 +41,7 @@ class AdminController extends Controller
                 'image' => $imagePath,
             ]);
 
-            return redirect()->route('admin.addEmployee')->with('success', 'เพิ่มพนักงานลงในรายชื่อระบบเรียบร้อยครับ');
+            return redirect()->route('employee.list')->with('success', 'เพิ่มพนักงานลงในรายชื่อระบบเรียบร้อยครับ');
 
         } catch (Exception $e) {
             Log::error('Error adding employee: ' . $e->getMessage());
