@@ -177,7 +177,6 @@
         </div>
     </div>
 
-
     <div id="addProductModal" style="display:none;">
 
     </div>
