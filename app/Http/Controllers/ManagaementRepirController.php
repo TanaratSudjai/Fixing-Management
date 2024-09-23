@@ -15,8 +15,10 @@ class ManagaementRepirController extends Controller
     public function RepirList(Request $req)
     {
         try {
+            $employees = User::where('status', 2)->get();
             $repairs = Repir::with('customer', 'employee', 'product', 'status')->get();
-            return view('admin.listRepaitforadmin', compact('repairs'));
+
+            return view('admin.listRepaitforadmin', compact('repairs', 'employees'));
         } catch (Exception $e) {
             Log::error('Error fetching repair list: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => 'Failed to fetch repair records.']);
@@ -36,7 +38,6 @@ class ManagaementRepirController extends Controller
             return redirect()->back()->withErrors(['error' => 'Failed to fetch repair record for editing.']);
         }
     }
-
 
 
     public function update(Request $request, $id)

@@ -54,8 +54,9 @@
                                             <td class="p-2 border-b border-gray-300">{{ $employee->email }}</td>
                                             <td class="p-2 border-b border-gray-300">
                                                 <div class="flex justify-center gap-3">
-                                                    <a href="{{ route('employee.edit', $employee->id) }}"
-                                                        class="text-[#EEEEEE] px-3 py-1 bg-[#373A40]  hover:bg-[#373A40]">แก้ไข</a>
+                                                    
+                                                    <a onclick="toggleEditEmployeeModal({{ $employee->id }},'{{ $employee->name }}',)"
+                                                        class="text-[#EEEEEE] px-3 py-1 bg-[#373A40] hover:bg-[#373A40]">แก้ไข</a>
 
                                                     <form id="del_form_{{ $employee->id }}"
                                                         action="{{ route('employee.delete', $employee->id) }}"
@@ -103,6 +104,62 @@
             });
         </script>
     @endsection
+
+    <div id="editEmployeeModal" class="fixed hidden w-full bg-opacity-50 backdrop-blur-sm">
+        <div class=" w-full h-[95vh]  flex justify-center items-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xl font-semibold text-gray-800">แก้ไขสินค้า</h2>
+                    <button onclick="toggleEditEmployeeModal()" class="text-gray-400 hover:text-gray-600">
+                        &times;
+                    </button>
+                </div>
+
+                <form action="{{ route('employee.update', $employee->id) }}" method="POST" id="editEmployee-form"
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div>
+                        <div class="form-group mb-4">
+                            <label for="name" class="text-[#373A40] text-sm mb-2 block">ชื่อ</label>
+                            <input type="text" id="name" name="name"
+                                value="{{ old('name', $employee->name) }}" required
+                                class="w-full text-[#373A40] text-sm border border-gray-300 px-4 py-3 rounded-md outline-none focus:ring-2 focus:ring-[#DC5F00]">
+                        </div>
+
+                        <div>
+                            <label for="image" class="text-[#373A40] text-sm mb-2 block">โปรไฟล์พนักงาน</label>
+                            <input type="file" name="image" id="image" accept="image/*"
+                                class="w-full text-sm text-[#373A40] file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-[#F3F4F6] hover:file:bg-[#F1F3F5]">
+                            @error('image')
+                                <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <button type="submit" id="submit-btn"
+                            class="mt-4 w-full bg-[#DC5F00] hover:bg-[#C84D00] text-white text-center font-bold py-3 rounded-md transition duration-300 ease-in-out">
+                            บันทึก
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleEditEmployeeModal(id, name) {
+            const modal = document.getElementById('editEmployeeModal');
+            const form = document.getElementById('editEmployee-form');
+            
+            modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+            
+            if (id) {
+                form.action = `/employee/update/${id}`;
+            }
+            
+            document.getElementById('name').value = name;
+        }
+    </script>
 </body>
 
 </html>

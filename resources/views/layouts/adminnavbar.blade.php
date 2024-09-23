@@ -10,7 +10,6 @@
     <script src="//unpkg.com/alpinejs" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </head>
 
 <style>
@@ -96,7 +95,7 @@
                     class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
                     เพิ่มพนักงาน
                 </a>
-                <a href="{{ route('product.add') }}"
+                <a onclick="toggleProductModal()"
                     class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
                     เพิ่มสินค้า
                 </a>
