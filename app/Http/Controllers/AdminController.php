@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Log;
 use Exception;
 use App\Models\Repir;
+use League\Config\Exception\ValidationException;
 
 
 class AdminController extends Controller
@@ -16,23 +17,24 @@ class AdminController extends Controller
     public function AddEmployee(Request $request)
     {
         try {
-
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:8',
+                'password' => 'required|string|min:8|confirmed', // เพิ่ม 'confirmed' เพื่อตรวจสอบว่ารหัสผ่านตรงกัน
                 'status' => 'nullable|string|max:255',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
-
+        
+            // ถ้ามีการอัปโหลดรูปภาพ
             if ($request->hasFile('image')) {
-                $imageName = time() . '.' . $request->file(key: 'image')->getClientOriginalExtension();
+                $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
                 $request->file('image')->move(public_path('images'), $imageName);
                 $imagePath = 'images/' . $imageName;
             } else {
                 $imagePath = null;
             }
-
+        
+            // สร้างผู้ใช้ใหม่
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -40,12 +42,13 @@ class AdminController extends Controller
                 'status' => 2,
                 'image' => $imagePath,
             ]);
-
+        
+            // ส่งข้อความสำเร็จ
             return redirect()->route('employee.list')->with('success', 'เพิ่มพนักงานลงในรายชื่อระบบเรียบร้อยครับ');
-
-        } catch (Exception $e) {
-            Log::error('Error adding employee: ' . $e->getMessage());
-            return redirect()->back()->withErrors(['error' => 'เกิดข้อผิดพลาดในการเพิ่มพนักงานครับ: ' . $e->getMessage()])->withInput();
+        
+        } catch (ValidationException $e) {
+            // ส่งข้อความแจ้งเตือนข้อผิดพลาดกลับไป
+            return redirect()->back()->withErrors($e)->withInput();
         }
     }
 
@@ -77,7 +80,7 @@ class AdminController extends Controller
                 'product_image' => $imagePath,
             ]);
 
-            return redirect()->route('product.add')->with('success', 'เพิ่มอะไหล่ในรายการสินค้าเรียบร้อยครับ');
+            return redirect()->route('products.view')->with('success', 'เพิ่มอะไหล่ในรายการสินค้าเรียบร้อยครับ');
 
         } catch (Exception $e) {
             Log::error('Error adding Product: ' . $e->getMessage());

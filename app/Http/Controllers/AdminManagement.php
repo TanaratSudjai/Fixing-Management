@@ -8,10 +8,10 @@ use App\Models\User;
 use App\Models\Product;
 use Illuminate\Support\Facades\Log;
 use Exception;
+use App\Models\Repir;
 
 class AdminManagement extends Controller
 {
-    //
     public function EditProduct($id)
     {
         $product = Product::findOrFail($id);
@@ -20,9 +20,24 @@ class AdminManagement extends Controller
 
     public function EditEmployee($id)
     {
+        
         $employee = User::findOrFail($id);
         return view('employees.edit-employee', compact('employee'));
         // return $employee;
+    }
+
+    public function selectemployee($id)
+    {
+        try {
+            $repair = Repir::findOrFail($id);
+
+            $employees = User::where('status', 2)->get();
+
+            return view('admin.listRepaitforadmin', compact('repair', 'employees'));
+        } catch (Exception $e) {
+            Log::error('Error fetching repair record for editing: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'Failed to fetch repair record for editing.']);
+        }
     }
 
     public function UpdateProduct(Request $request, $id)
@@ -58,7 +73,7 @@ class AdminManagement extends Controller
 
         } catch (Exception $e) {
             Log::error('Error updating product: ' . $e->getMessage());
-            return redirect()->back()->withErrors(['error' => 'เกิดข้อผิดพลาดในการแก้ไขอะไหล่สินค้าครับ']);
+            return redirect()->back()->with('success', 'แก้ไขอะไหล่สินค้าสำเร็จครับ');
         }
     }
 
@@ -103,7 +118,7 @@ class AdminManagement extends Controller
             return redirect()->route('employee.list')->with('success', 'Employee updated successfully.');
         } catch (Exception $e) {
             Log::error('Error updating employee: ' . $e->getMessage());
-            return redirect()->back()->withErrors(['error' => 'Error updating employee.']);
+            return redirect()->back();
         }
     }
 
