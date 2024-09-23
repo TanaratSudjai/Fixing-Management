@@ -86,7 +86,7 @@ class AdminManagement extends Controller
                 unlink(public_path($product->product_image));
             }
             $product->delete();
-            return redirect()->route('products.view')->with('success', 'Product deleted successfully.');
+            return redirect()->route('products.view');
         } catch (Exception $e) {
             Log::error('Error deleting product: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => 'Error deleting product.']);
@@ -115,7 +115,7 @@ class AdminManagement extends Controller
                 'name' => $validatedData['name'],
                 'image' => $imagePath,
             ]);
-            return redirect()->route('employee.list')->with('success', 'Employee updated successfully.');
+            return redirect()->route('employee.list')->with('success', 'อัพเดทพนักงานสำเร็จแล้ว');
         } catch (Exception $e) {
             Log::error('Error updating employee: ' . $e->getMessage());
             return redirect()->back();
@@ -133,7 +133,7 @@ class AdminManagement extends Controller
             }
             $employee->delete();
 
-            return redirect()->route('employee.list')->with('success', 'Employee deleted successfully.');
+            return redirect()->route('employee.list')->with('success', 'พนักงานได้ถูกลบแล้ว');
         } catch (Exception $e) {
             Log::error('Error deleting employee: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => 'Error deleting employee.']);

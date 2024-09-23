@@ -19,6 +19,9 @@
 </style>
 
 <body>
+
+
+
     <nav class="bg-[#373A40]">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
@@ -195,8 +198,7 @@
                     @csrf
                     <div>
                         <label for="product_name" class="text-gray-800 text-sm mb-2 block">ชื่อสินค้า</label>
-                        <input placeholder="Product Name" type="text" name="product_name" id="product_name"
-                            required
+                        <input placeholder="Product Name" type="text" name="product_name" id="product_name" required
                             class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#DC5F00]">
                     </div>
 
@@ -208,8 +210,8 @@
 
                     <div>
                         <label for="product_qty" class="text-gray-800 text-sm mb-2 block">จำนวน</label>
-                        <input placeholder="Product quantity" type="number" name="product_qty" id="product_qty"
-                            required min="0"
+                        <input placeholder="Product quantity" type="number" name="product_qty" id="product_qty" required
+                            min="0"
                             class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#DC5F00]">
                     </div>
 
@@ -250,39 +252,72 @@
         </div>
     </div>
 
-    
-    {{-- <script>
-    document.getElementById('employee-form').addEventListener('submit', function(e) {
-        e.preventDefault(); // ป้องกันการ submit แบบธรรมดา
-        
-        let email = document.getElementById('email').value;
-        let password = document.getElementById('password').value;
-        
-        // ตรวจสอบว่ารหัสผ่านยาวน้อยกว่า 8 ตัวหรือไม่
-        if (password.length < 8) {
-            Swal.fire({
-                icon: 'error',
-                title: 'รหัสผ่านไม่เพียงพอ',
-                text: 'รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร!',
-            });
-            return; // หยุดการ submit
-        }
 
-    });
-</script> --}}
+    {{--
+    <script>
+        document.getElementById('employee-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // ป้องกันการ submit แบบธรรมดา
 
-    @if ($errors->any())
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+
+            // ตรวจสอบว่ารหัสผ่านยาวน้อยกว่า 8 ตัวหรือไม่
+            if (password.length < 8) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'รหัสผ่านไม่เพียงพอ',
+                    text: 'รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร!',
+                });
+                return; // หยุดการ submit
+            }
+
+        });
+    </script> --}}
+
+    <!-- SweetAlert for Email Error -->
+
+
+    @if (session('email'))
         <script>
-            let errorMessages = '';
-
-            @foreach ($errors->all() as $error)
-                errorMessages += '{{ $error }}\n';
-            @endforeach
-
             Swal.fire({
                 icon: 'error',
-                title: 'เกิดข้อผิดพลาด!',
-                text: errorMessages,
+                title: 'ข้อผิดพลาด',
+                text: 'อีเมลนี้ถูกใช้ไปแล้ว',
+                confirmButtonText: 'ตกลง'
+            });
+        </script>
+    @endif
+
+    @if (session('compass'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'ข้อผิดพลาด',
+                text: 'รหัสผ่านไม่ตรงกัน',
+                confirmButtonText: 'ตกลง'
+            });
+        </script>
+    @endif
+
+    @if (session('ePass'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'ข้อผิดพลาด',
+                text: 'รหัสผ่านต้องมีอย่างน้อย 8 ตัว',
+                confirmButtonText: 'ตกลง'
+            });
+        </script>
+    @endif
+
+
+    <!-- SweetAlert for Success -->
+    @if (session('swal_success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'สำเร็จ',
+                text: '{{ session('swal_success') }}',
                 confirmButtonText: 'ตกลง'
             });
         </script>
@@ -294,10 +329,25 @@
                 icon: 'success',
                 title: 'สำเร็จ!',
                 text: '{{ session('success') }}',
-                confirmButtonText: 'ตกลง'
+                confirmButtonText: 'ตกลง',
+                confirmButtonColor: '#DC5F00',  // Use the same orange color
             });
         </script>
     @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'สำเร็จ!',
+                text: '{{ session('success') }}',
+                confirmButtonText: 'ตกลง',
+                confirmButtonColor: '#DC5F00',  // Use the same orange color
+            });
+        </script>
+
+    @endif
+
 
     <script>
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -321,6 +371,7 @@
             modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
         }
     </script>
+
 </body>
 
 
