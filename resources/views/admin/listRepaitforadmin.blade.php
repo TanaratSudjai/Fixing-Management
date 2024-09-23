@@ -69,9 +69,11 @@
                     <button onclick="toggleEditEmployeeModal()" class="text-gray-400 hover:text-gray-600">
                         &times;
                     </button>
-
                 </div>
                 <h1 class="text-center text-[#373A40] text-2xl font-bold mb-5">เลือกพนักงาน</h1>
+    
+                @if(isset($repair)) 
+                <!-- If $repair data exists -->
                 <form id="repair-form" action="{{ route('repair.update', $repair->repair_id) }}" method="POST">
                     @csrf
                     @method('PUT')
@@ -82,7 +84,7 @@
                             class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
                             value="{{ old('repair_detail', $repair->repair_detail) }}" required>
                     </div>
-
+    
                     <div class="mb-4">
                         <label for="employee_id" class="text-gray-800 text-sm mb-2 block">นำพนักงานเพื่อไปซ่อม</label>
                         <select name="employee_id" id="employee_id"
@@ -96,20 +98,27 @@
                             @endforeach
                         </select>
                     </div>
-
+    
                     <button type="submit" id="submit-btn"
                         class="w-full bg-[#DC5F00] hover:bg-[#DC5F00] text-white py-3 rounded-md transition duration-300 ease-in-out">
                         บันทึก
                     </button>
-
+    
                     <div class="w-full text-center mt-4">
                         <a href="{{ route('customer.repir') }}"
                             class="text-[#373A40] text-sm hover:underline">กลับไปยังรายการ</a>
                     </div>
                 </form>
+                @else
+                <!-- If $repair data is not available -->
+                <div class="text-center text-gray-500">
+                    ไม่มีข้อมูลที่จะแสดง
+                </div>
+                @endif
             </div>
         </div>
     </div>
+    
 
     <script>
         function toggleEditEmployeeModal(repair_id, repair_detail, employee_id) {
