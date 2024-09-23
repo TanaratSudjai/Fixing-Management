@@ -114,7 +114,7 @@
                         &times;
                     </button>
                 </div>
-
+                @if(isset($employee))
                 <form action="{{ route('employee.update', $employee->id) }}" method="POST" id="editEmployee-form"
                     enctype="multipart/form-data">
                     @csrf
@@ -142,6 +142,12 @@
                         </button>
                     </div>
                 </form>
+                @else
+                <!-- If $repair data is not available -->
+                <div class="text-center text-gray-500">
+                    ไม่มีข้อมูลที่จะแสดง
+                </div>
+                @endif
             </div>
         </div>
     </div>
