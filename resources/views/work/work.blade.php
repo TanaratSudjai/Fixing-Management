@@ -55,7 +55,7 @@
                                             class="inline">
                                             @csrf
                                             @method('PUT')
-                                            <input type="hidden" name="status_id" value="2">
+                                            <input type="hidden" name="status_id" value="3">
                                             <button type="submit"
                                                 class="bg-[#DC5F00] hover:bg-[#E55C00] text-white font-bold py-2 px-4 ">
                                                 เเจ้งลูกค้า
@@ -97,7 +97,7 @@
                                         class="inline">
                                         @csrf
                                         @method('PUT')
-                                        <input type="hidden" name="status_id" value="3">
+                                        <input type="hidden" name="status_id" value="4">
                                         <button type="submit"
                                             class="bg-[#DC5F00] hover:bg-[#E55C00] text-white font-bold py-2 px-4 ">
                                             ซ่อมสำเร็จ

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Repir;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -13,7 +14,12 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $employee = User::where('id', $user->id)->first();
-        return view('employees.profile', compact('employee'));
+        $workHistory = Repir::with('customer', 'employee', 'product', 'status')
+            ->where('employee_id', $user->id)
+            ->where('status_id', 4)
+            ->get();
+        return view('employees.profile', compact('employee', 'workHistory'));
+        // return $workHistory;
     }
 
     public function getProfileCustomer()

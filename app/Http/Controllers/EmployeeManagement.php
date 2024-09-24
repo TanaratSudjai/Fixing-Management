@@ -22,12 +22,12 @@ class EmployeeManagement extends Controller
         $employee = auth()->id();
         $workrepair = Repir::with('customer', 'status')
             ->where('employee_id', $employee)
-            ->where('status_id', 1)
+            ->where('status_id', 2)
             ->get();
 
         $inprogress = Repir::with('customer', 'status')
             ->where('employee_id', $employee)
-            ->where('status_id', 2)
+            ->where('status_id', 3)
             ->get();
 
         return view('work.work', compact('workrepair', 'inprogress'));
@@ -82,7 +82,7 @@ class EmployeeManagement extends Controller
                 $product->product_qty -= $repair->unit_amount;
                 $product->save();
             } else {
-                $repair->status = 2;
+                $repair->status = 3;
             }
 
             $repair->save();

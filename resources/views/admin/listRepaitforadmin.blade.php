@@ -18,6 +18,15 @@
             <div class="container mx-auto">
                 <div class="bg-white p-4 px-4 md:p-8 mb-6 h-full rounded-md">
                     <h1 class="text-center text-2xl font-bold mb-3">รายการแจ้งซ่อม</h1>
+
+                    {{-- new work --}}
+                    <div class="flex w-full justify-center items-center gap-1 m-5">
+                        <input type="text" class="border p-1" placeholder="ค้นหาด้วยชื่อพนักงาน">
+                        <input type="text" class="border p-1" placeholder="ค้นหาด้วยชื่อลูกค้า">
+                        <input type="text" class="border p-1" placeholder="รายละเอียดการเเจ้ง">
+                    </div>
+                    {{--  --}}
+
                     <div class=" overflow-x-auto overflow-y-auto h-[90%]">
                         <table class="text-sm text-center text-black w-full">
                             <thead class="bg-gray-200 top-0">
@@ -39,11 +48,11 @@
                                         <td class="p-2">{{ $repair->employee->name ?? 'กรุณาเลือกพนักงาน' }}</td>
                                         <td class="p-2">{{ $repair->status->status_name ?? 'N/A' }}</td>
                                         <td class="p-2">
-                                            @if ($repair->status_id == 3)
+                                            @if ($repair->status_id == 4)
                                                 <a href="" class="text-[#EEEEEE] px-3 bg-[#686D76]">เรียบร้อย</a>
-                                            @elseif($repair->status_id == 2)
+                                            @elseif($repair->status_id == 3)
                                                 <a href="" class="text-[#EEEEEE] px-3 bg-[#DC5F00]">กำลังซ่อม</a>
-                                            @elseif($repair->status_id == 1)
+                                            @elseif($repair->status_id == 2)
                                                 <a onclick="toggleEditEmployeeModal({{ $repair->repair_id }}, '{{ $repair->repair_detail }}', {{ $repair->employee_id ?? 'null' }})"
                                                     class="text-[#DC5F00] bg-[#EEEEEE]">เปลี่ยนพนักงาน</a>
                                             @else
@@ -71,54 +80,55 @@
                     </button>
                 </div>
                 <h1 class="text-center text-[#373A40] text-2xl font-bold mb-5">เลือกพนักงาน</h1>
-    
-                @if(isset($repair)) 
-                <!-- If $repair data exists -->
-                <form id="repair-form" action="{{ route('repair.update', $repair->repair_id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <div class="mb-4">
-                        <label for="repair_detail"
-                            class="text-gray-800 text-sm mb-2 block">รายละเอียดการแจ้งซ่อม</label>
-                        <input type="text" name="repair_detail" id="repair_detail"
-                            class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
-                            value="{{ old('repair_detail', $repair->repair_detail) }}" required>
-                    </div>
-    
-                    <div class="mb-4">
-                        <label for="employee_id" class="text-gray-800 text-sm mb-2 block">นำพนักงานเพื่อไปซ่อม</label>
-                        <select name="employee_id" id="employee_id"
-                            class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600">
-                            <option value="">เลือกพนักงาน</option>
-                            @foreach ($employees as $employee)
-                                <option value="{{ $employee->id }}"
-                                    {{ $repair->employee_id == $employee->id ? 'selected' : '' }}>
-                                    {{ $employee->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-    
-                    <button type="submit" id="submit-btn"
-                        class="w-full bg-[#DC5F00] hover:bg-[#DC5F00] text-white py-3 rounded-md transition duration-300 ease-in-out">
-                        บันทึก
-                    </button>
-    
-                    <div class="w-full text-center mt-4">
-                        <a href="{{ route('customer.repir') }}"
-                            class="text-[#373A40] text-sm hover:underline">กลับไปยังรายการ</a>
-                    </div>
-                </form>
+
+                @if (isset($repair))
+                    <!-- If $repair data exists -->
+                    <form id="repair-form" action="{{ route('repair.update', $repair->repair_id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="mb-4">
+                            <label for="repair_detail"
+                                class="text-gray-800 text-sm mb-2 block">รายละเอียดการแจ้งซ่อม</label>
+                            <input type="text" name="repair_detail" id="repair_detail"
+                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
+                                value="{{ old('repair_detail', $repair->repair_detail) }}" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="employee_id"
+                                class="text-gray-800 text-sm mb-2 block">นำพนักงานเพื่อไปซ่อม</label>
+                            <select name="employee_id" id="employee_id"
+                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600">
+                                <option value="">เลือกพนักงาน</option>
+                                @foreach ($employees as $employee)
+                                    <option value="{{ $employee->id }}"
+                                        {{ $repair->employee_id == $employee->id ? 'selected' : '' }}>
+                                        {{ $employee->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <button type="submit" id="submit-btn"
+                            class="w-full bg-[#DC5F00] hover:bg-[#DC5F00] text-white py-3 rounded-md transition duration-300 ease-in-out">
+                            บันทึก
+                        </button>
+
+                        <div class="w-full text-center mt-4">
+                            <a href="{{ route('customer.repir') }}"
+                                class="text-[#373A40] text-sm hover:underline">กลับไปยังรายการ</a>
+                        </div>
+                    </form>
                 @else
-                <!-- If $repair data is not available -->
-                <div class="text-center text-gray-500">
-                    ไม่มีข้อมูลที่จะแสดง
-                </div>
+                    <!-- If $repair data is not available -->
+                    <div class="text-center text-gray-500">
+                        ไม่มีข้อมูลที่จะแสดง
+                    </div>
                 @endif
             </div>
         </div>
     </div>
-    
+
 
     <script>
         function toggleEditEmployeeModal(repair_id, repair_detail, employee_id) {

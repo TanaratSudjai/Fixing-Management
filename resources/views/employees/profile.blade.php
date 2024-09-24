@@ -40,8 +40,42 @@
                         <li class="mb-2"><strong>วันที่เข้าทำงาน:</strong> {{ $employee->created_at }}</li>
                         <li class="mb-2"><strong>วันที่ทำงานปัจจุุบัน:</strong> {{ $employee->updated_at }}</li>
                     </ul>
+                    <hr>
+                    <div class="card p-4 bg-white shadow-lg rounded-lg">
+                        <h2 class="text-lg font-semibold mb-4">ประวัติการซ่อมของพนักงาน {{ $employee->name }}</h2>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full table-auto border-collapse border border-gray-300">
+                                <thead>
+                                    <tr class="bg-gray-200">
+                                        <th class="px-2 text-sm blog py-2 border border-gray-300 text-left">รหัสลูกค้า</th>
+                                        <th class="px-2 text-sm blog py-2 border border-gray-300 text-left">รายละเอียด</th>
+                                        <th class="px-2 text-sm blog py-2 border border-gray-300 text-left">สินค้าที่เบิก</th>
+                                        <th class="px-2 text-sm blog py-2 border border-gray-300 text-left">จำนวนเบิก</th>
+                                        <th class="px-2 text-sm blog py-2 border border-gray-300 text-left">สถานะซ่อม</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($workHistory as $history)
+                                        <tr class="bg-white border-b hover:bg-gray-100">
+                                            <td class="px-2 text-sm blog py-2 border border-gray-300">{{ $history->customer->name }}</td>
+                                            <td class="px-2 text-sm blog py-2 border border-gray-300">{{ $history->repair_detail }}</td>
+                                            <td class="px-2 text-sm blog py-2 border border-gray-300">
+                                                {{ $history->product->product_name }}</td>
+                                            <td class="px-2 text-sm blog py-2 border border-gray-300">{{ $history->unit_amount }}</td>
+                                            <td class="px-2 text-sm blog py-2 border border-gray-300">
+                                                {{ $history->status->status_name }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+
+
             </div>
+
+
         </div>
     @endsection
 </body>

@@ -51,7 +51,7 @@ class ManagaementRepirController extends Controller
             $repair = Repir::findOrFail($id);
             $repair->repair_detail = $validatedData['repair_detail'];
             $repair->employee_id = $validatedData['employee_id'] ?? null;
-            $repair->status_id = 1;
+            $repair->status_id = 2;
             $repair->save();
 
             return redirect()->route('customer.repir')->with('success', 'Repair record updated successfully.');
