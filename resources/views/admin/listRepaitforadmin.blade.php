@@ -8,6 +8,8 @@
 
     <title>Repairs List</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 </head>
 
 <body class="bg-[#EEEEEE] font-kanit">
@@ -21,13 +23,16 @@
 
                     {{-- new work --}}
                     <div class="flex w-full justify-center items-center gap-1 m-5">
-                        <input type="text" class="border p-1" placeholder="ค้นหาด้วยชื่อพนักงาน">
-                        <input type="text" class="border p-1" placeholder="ค้นหาด้วยชื่อลูกค้า">
-                        <input type="text" class="border p-1" placeholder="รายละเอียดการเเจ้ง">
+                        <input id="employee-search" type="text" class="border p-1" placeholder="ค้นหาด้วยชื่อพนักงาน"
+                            oninput="searchRepairs()">
+                        <input id="customer-search" type="text" class="border p-1" placeholder="ค้นหาด้วยชื่อลูกค้า"
+                            oninput="searchRepairs()">
+                        <input id="detail-search" type="text" class="border p-1" placeholder="รายละเอียดการเเจ้ง"
+                            oninput="searchRepairs()">
                     </div>
                     {{--  --}}
 
-                    <div class=" overflow-x-auto overflow-y-auto h-[90%]">
+                    <div class="overflow-x-auto overflow-y-auto h-[90%]" id="repair-table">
                         <table class="text-sm text-center text-black w-full">
                             <thead class="bg-gray-200 top-0">
                                 <tr>
@@ -151,7 +156,27 @@
             employeeSelect.value = employee_id || ""; // Pre-select the employee if employee_id is provided
         }
     </script>
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script>
+        
+        function searchRepairs() {
+            const employee = document.getElementById('employee-search').value;
+            const customer = document.getElementById('customer-search').value;
+            const detail = document.getElementById('detail-search').value;
 
+            axios.get('{{ route('repairs.search') }}', {
+                params: {
+                    employee: employee,
+                    customer: customer,
+                    detail: detail
+                }
+            }).then(response => {
+                document.getElementById('repair-table').innerHTML = response.data;
+            }).catch(error => {
+                console.error(error);
+            });
+        }
+    </script>
 
 </body>
 
