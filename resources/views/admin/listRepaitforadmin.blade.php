@@ -18,23 +18,29 @@
     @section('content')
         <div class="p-6 bg-[#EEEEEE]  border h-[92vh] flex justify-center w-full">
             <div class="container mx-auto">
-                <div class="bg-white p-4 px-4 md:p-8 mb-6 h-full rounded-md">
-                    <h1 class="text-center text-2xl font-bold mb-3">รายการแจ้งซ่อม</h1>
+                <div class="bg-white p-4 md:p-8 mb-6 h-full rounded-md shadow-lg">
+                    <h1 class="text-center text-3xl font-bold mb-6">รายการแจ้งซ่อม</h1>
 
-                    {{-- new work --}}
-                    <div class="flex w-full justify-center items-center gap-1 m-5">
-                        <input id="employee-search" type="text" class="border p-1" placeholder="ค้นหาด้วยชื่อพนักงาน"
-                            oninput="searchRepairs()">
-                        <input id="customer-search" type="text" class="border p-1" placeholder="ค้นหาด้วยชื่อลูกค้า"
-                            oninput="searchRepairs()">
-                        <input id="detail-search" type="text" class="border p-1" placeholder="รายละเอียดการเเจ้ง"
-                            oninput="searchRepairs()">
+                    {{-- Search Fields --}}
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 p-4 bg-[#F7F7F7] border border-gray-300 rounded-lg shadow-sm">
+                        <input id="employee-search" type="text"
+                            class="block w-full border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 cursor-pointer ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm py-2 px-4 transition duration-150 hover:ring-gray-400 focus:outline-none"
+                            placeholder="ค้นหาด้วยชื่อพนักงาน" oninput="searchRepairs()">
+
+                        <input id="customer-search" type="text"
+                            class="block w-full border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 cursor-pointer ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm py-2 px-4 transition duration-150 hover:ring-gray-400 focus:outline-none"
+                            placeholder="ค้นหาด้วยชื่อลูกค้า" oninput="searchRepairs()">
+
+                        <input id="detail-search" type="text"
+                            class="block w-full border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 cursor-pointer ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm py-2 px-4 transition duration-150 hover:ring-gray-400 focus:outline-none"
+                            placeholder="รายละเอียดการแจ้ง" oninput="searchRepairs()">
                     </div>
-                    {{--  --}}
 
-                    <div class="overflow-x-auto overflow-y-auto h-[90%]" id="repair-table">
+                    {{-- Repair Table --}}
+                    <div class="overflow-x-auto h-[75vh]" id="repair-table">
                         <table class="text-sm text-center text-black w-full">
-                            <thead class="bg-gray-200 top-0">
+                            <thead class="bg-gray-200">
                                 <tr>
                                     <th class="text-center p-2 px-2 gap-2 w-1/12">รหัสแจ้งซ่อม</th>
                                     <th class="text-center p-2 px-2 gap-2 w-1/12">ชื่อลูกค้า</th>
@@ -44,9 +50,9 @@
                                     <th class="text-center p-2 px-2 gap-2 w-1/12">ดำเนินการ</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-center space-y-2">
+                            <tbody class="even:bg-gray-50">
                                 @foreach ($repairs as $repair)
-                                    <tr class="even:bg-gray-50">
+                                    <tr>
                                         <td class="p-2">{{ $repair->repair_id }}</td>
                                         <td class="p-2">{{ $repair->customer->name }}</td>
                                         <td class="p-2">{{ $repair->repair_detail }}</td>
@@ -54,15 +60,17 @@
                                         <td class="p-2">{{ $repair->status->status_name ?? 'N/A' }}</td>
                                         <td class="p-2">
                                             @if ($repair->status_id == 4)
-                                                <a href="" class="text-[#EEEEEE] px-3 bg-[#686D76]">เรียบร้อย</a>
+                                                <a href="#"
+                                                    class="text-[#EEEEEE] px-3 py-1 rounded bg-[#686D76]">เรียบร้อย</a>
                                             @elseif($repair->status_id == 3)
-                                                <a href="" class="text-[#EEEEEE] px-3 bg-[#DC5F00]">กำลังซ่อม</a>
+                                                <a href="#"
+                                                    class="text-[#EEEEEE] px-3 py-1 rounded bg-[#DC5F00]">กำลังซ่อม</a>
                                             @elseif($repair->status_id == 2)
                                                 <a onclick="toggleEditEmployeeModal({{ $repair->repair_id }}, '{{ $repair->repair_detail }}', {{ $repair->employee_id ?? 'null' }})"
-                                                    class="text-[#DC5F00] bg-[#EEEEEE]">เปลี่ยนพนักงาน</a>
+                                                    class="text-[#DC5F00] bg-[#EEEEEE] px-3 py-1 rounded cursor-pointer">เปลี่ยนพนักงาน</a>
                                             @else
                                                 <a onclick="toggleEditEmployeeModal({{ $repair->repair_id }},'{{ $repair->repair_detail }}')"
-                                                    class="text-[#DC5F00] bg-[#EEEEEE]">เลือกพนักงาน</a>
+                                                    class="text-[#DC5F00] bg-[#EEEEEE] px-3 py-1 rounded cursor-pointer">เลือกพนักงาน</a>
                                             @endif
                                         </td>
                                     </tr>
@@ -75,90 +83,62 @@
         </div>
     @endsection
 
-    <div id="editEmployeeModal" class="fixed hidden w-full bg-opacity-50 backdrop-blur-sm">
-        <div class=" w-full h-[95vh]  flex justify-center items-center">
-            <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-xl font-semibold text-gray-800">แก้ไขสินค้า</h2>
-                    <button onclick="toggleEditEmployeeModal()" class="text-gray-400 hover:text-gray-600">
-                        &times;
-                    </button>
-                </div>
-                <h1 class="text-center text-[#373A40] text-2xl font-bold mb-5">เลือกพนักงาน</h1>
-
-                @if (isset($repair))
-                    <!-- If $repair data exists -->
-                    <form id="repair-form" action="{{ route('repair.update', $repair->repair_id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <div class="mb-4">
-                            <label for="repair_detail"
-                                class="text-gray-800 text-sm mb-2 block">รายละเอียดการแจ้งซ่อม</label>
-                            <input type="text" name="repair_detail" id="repair_detail"
-                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
-                                value="{{ old('repair_detail', $repair->repair_detail) }}" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="employee_id"
-                                class="text-gray-800 text-sm mb-2 block">นำพนักงานเพื่อไปซ่อม</label>
-                            <select name="employee_id" id="employee_id"
-                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600">
-                                <option value="">เลือกพนักงาน</option>
-                                @foreach ($employees as $employee)
-                                    <option value="{{ $employee->id }}"
-                                        {{ $repair->employee_id == $employee->id ? 'selected' : '' }}>
-                                        {{ $employee->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <button type="submit" id="submit-btn"
-                            class="w-full bg-[#DC5F00] hover:bg-[#DC5F00] text-white py-3 rounded-md transition duration-300 ease-in-out">
-                            บันทึก
-                        </button>
-
-                        <div class="w-full text-center mt-4">
-                            <a href="{{ route('customer.repir') }}"
-                                class="text-[#373A40] text-sm hover:underline">กลับไปยังรายการ</a>
-                        </div>
-                    </form>
-                @else
-                    <!-- If $repair data is not available -->
-                    <div class="text-center text-gray-500">
-                        ไม่มีข้อมูลที่จะแสดง
-                    </div>
-                @endif
+    {{-- Modal --}}
+    <div id="editEmployeeModal"
+        class="fixed inset-0 hidden bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-semibold">แก้ไขสินค้า</h2>
+                <button onclick="toggleEditEmployeeModal()" class="text-gray-400 hover:text-gray-600">
+                    &times;
+                </button>
             </div>
+            <h1 class="text-center text-[#373A40] text-2xl font-bold mb-5">เลือกพนักงาน</h1>
+
+            <form id="repair-form" action="{{ route('repair.update', $repair->repair_id) }}" method="POST">
+                @csrf
+                @method('PUT')
+
+                <div class="mb-4">
+                    <label for="repair_detail" class="text-gray-800 text-sm mb-2 block">รายละเอียดการแจ้งซ่อม</label>
+                    <input type="text" name="repair_detail" id="repair_detail"
+                        class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
+                        value="{{ old('repair_detail', $repair->repair_detail) }}" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="employee_id" class="text-gray-800 text-sm mb-2 block">นำพนักงานเพื่อไปซ่อม</label>
+                    <select name="employee_id" id="employee_id"
+                        class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600">
+                        <option value="">เลือกพนักงาน</option>
+                        @foreach ($employees as $employee)
+                            <option value="{{ $employee->id }}"
+                                {{ $repair->employee_id == $employee->id ? 'selected' : '' }}>
+                                {{ $employee->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <button type="submit" id="submit-btn"
+                    class="w-full bg-[#DC5F00] hover:bg-[#DC5F00] text-white py-3 rounded-md transition duration-300 ease-in-out">
+                    บันทึก
+                </button>
+            </form>
         </div>
     </div>
-
 
     <script>
         function toggleEditEmployeeModal(repair_id, repair_detail, employee_id) {
             const modal = document.getElementById('editEmployeeModal');
-            const form = document.getElementById('repair-form'); // Correct form ID
+            modal.classList.toggle('hidden');
 
-            // Toggle modal visibility
-            modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
-
-            // Only if repair_id is provided, set the form action dynamically
-            if (repair_id) {
-                form.action = `/repair/update/${repair_id}`;
-            }
-
-            // Set the value of the repair_detail input field
+            const form = document.getElementById('repair-form');
+            if (repair_id) form.action = `/repair/update/${repair_id}`;
             document.getElementById('repair_detail').value = repair_detail;
-
-            // Set the selected employee in the dropdown
-            const employeeSelect = document.getElementById('employee_id');
-            employeeSelect.value = employee_id || ""; // Pre-select the employee if employee_id is provided
+            document.getElementById('employee_id').value = employee_id || '';
         }
-    </script>
-    <script src="{{ mix('js/app.js') }}"></script>
-    <script>
-        
+
         function searchRepairs() {
             const employee = document.getElementById('employee-search').value;
             const customer = document.getElementById('customer-search').value;
@@ -166,17 +146,17 @@
 
             axios.get('{{ route('repairs.search') }}', {
                 params: {
-                    employee: employee,
-                    customer: customer,
-                    detail: detail
+                    employee,
+                    customer,
+                    detail
                 }
             }).then(response => {
                 document.getElementById('repair-table').innerHTML = response.data;
-            }).catch(error => {
-                console.error(error);
-            });
+            }).catch(error => console.error(error));
         }
     </script>
+
+    <script src="{{ mix('js/app.js') }}"></script>
 
 </body>
 
