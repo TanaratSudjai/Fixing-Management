@@ -25,14 +25,16 @@
 
         <h1 class="text-3xl font-bold text-[#DC5F00] p-4 text-center mb-6 mt-20">รายการแจ้งซ่อม</h1>
 
-        <div class="max-w-3xl mx-auto space-y-4 px-4 pb-20"> <!-- Added padding-bottom for scrolling space -->
+        <div class="max-w-3xl mx-auto space-y-4 px-4 pb-20 custom-scroll"
+            style="max-height: calc(100vh - 140px); overflow-y: auto;">
+
             @foreach ($repairs as $repair)
                 <div class="bg-[#EEEEEE] p-4 shadow-md hover:shadow-lg transition-shadow duration-200 rounded-lg">
                     <div class="flex justify-between items-center mb-2">
                         <h2 class="text-lg font-semibold text-[#686D76]">รหัส: {{ $repair->repair_id }}</h2>
                         <span
                             class="px-2 py-1 text-xs font-semibold rounded-full 
-                        {{ $repair->status_id == 1 ? 'bg-yellow-200 text-yellow-800' : ($repair->status_id == 2 ? 'bg-blue-200 text-blue-800' : 'bg-green-200 text-green-800') }}">
+                    {{ $repair->status_id == 1 ? 'bg-yellow-200 text-yellow-800' : ($repair->status_id == 2 ? 'bg-blue-200 text-blue-800' : 'bg-green-200 text-green-800') }}">
                             {{ $repair->status->status_name ?? 'N/A' }}
                         </span>
                     </div>
@@ -55,6 +57,30 @@
                 </div>
             @endforeach
         </div>
+        <style>
+            body,
+            html {
+                overflow: hidden;
+                height: 100%;
+            }
+
+            .custom-scroll::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            .custom-scroll::-webkit-scrollbar-thumb {
+                background-color: #DC5F00;
+                border-radius: 16px;
+            }
+
+            .custom-scroll::-webkit-scrollbar-track {
+                background-color: #f1f1f1;
+            }
+
+            .custom-scroll div:hover {
+                background-color: #f5f5f5;
+            }
+        </style>
     @endsection
 </body>
 
