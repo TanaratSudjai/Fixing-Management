@@ -95,13 +95,13 @@
         <script>
             function confirmDelete(repairId) {
                 Swal.fire({
-                    title: 'คุณแน่ใจหรือไม่?',
+                    title: 'ยืนยันการยกเลิกหรือไม่?',
                     text: "คุณลูกค้าต้องการยกเลิกรายการนี้หรือไม่ ?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#FF6F00',
                     cancelButtonColor: '#686D76',
-                    confirmButtonText: 'ยืนยันยกเลิก',
+                    confirmButtonText: 'ยืนยันการยกเลิก',
                     cancelButtonText: 'กลับ'
                 }).then((result) => {
                     if (result.isConfirmed) {
