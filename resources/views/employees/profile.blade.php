@@ -8,13 +8,21 @@
     <title>Employee Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
+<style>
+     body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f3f4f6;
+        }
+</style>
 <body>
     @extends('layouts.employ')
     @section('content')
+        <div class="bg-white bg-cover bg-center h-20 shadow-md flex justify-center items-center fixed top-0 w-full z-10">
+            <img src="{{ asset('images/logoo.png') }}" class="w-10 h-10">
+        </div>
         <div class="bg-gray-100 min-h-screen">
 
-            <div class="bg-cover bg-center h-40 sm:h-56 bg-[#686D76]"></div>
+            <div class="bg-cover bg-center h-40 sm:h-56 bg-gray-200"></div>
 
             <div class="relative">
                 <div class="absolute -top-12 left-1/2 transform -translate-x-1/2">
@@ -49,7 +57,8 @@
                                     <tr class="bg-gray-200">
                                         <th class="px-2 text-sm blog py-2 border border-gray-300 text-left">รหัสลูกค้า</th>
                                         <th class="px-2 text-sm blog py-2 border border-gray-300 text-left">รายละเอียด</th>
-                                        <th class="px-2 text-sm blog py-2 border border-gray-300 text-left">สินค้าที่เบิก</th>
+                                        <th class="px-2 text-sm blog py-2 border border-gray-300 text-left">สินค้าที่เบิก
+                                        </th>
                                         <th class="px-2 text-sm blog py-2 border border-gray-300 text-left">จำนวนเบิก</th>
                                         <th class="px-2 text-sm blog py-2 border border-gray-300 text-left">สถานะซ่อม</th>
                                     </tr>
@@ -57,11 +66,14 @@
                                 <tbody>
                                     @foreach ($workHistory as $history)
                                         <tr class="bg-white border-b hover:bg-gray-100">
-                                            <td class="px-2 text-sm blog py-2 border border-gray-300">{{ $history->customer->name }}</td>
-                                            <td class="px-2 text-sm blog py-2 border border-gray-300">{{ $history->repair_detail }}</td>
+                                            <td class="px-2 text-sm blog py-2 border border-gray-300">
+                                                {{ $history->customer->name }}</td>
+                                            <td class="px-2 text-sm blog py-2 border border-gray-300">
+                                                {{ $history->repair_detail }}</td>
                                             <td class="px-2 text-sm blog py-2 border border-gray-300">
                                                 {{ $history->product->product_name }}</td>
-                                            <td class="px-2 text-sm blog py-2 border border-gray-300">{{ $history->unit_amount }}</td>
+                                            <td class="px-2 text-sm blog py-2 border border-gray-300">
+                                                {{ $history->unit_amount }}</td>
                                             <td class="px-2 text-sm blog py-2 border border-gray-300">
                                                 {{ $history->status->status_name }}</td>
                                         </tr>

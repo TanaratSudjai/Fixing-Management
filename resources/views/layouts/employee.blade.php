@@ -12,95 +12,54 @@
         nav {
             font-family: 'Kanit', sans-serif;
         }
+
+        .active-menu {
+            color: #DC5F00;
+        }
     </style>
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
 <body>
-    <nav class="bg-[#373A40] fixed w-full shadow-md">
-        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div class="relative flex h-16 items-center justify-between">
-                <!-- Mobile Menu Button -->
-                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                    <button type="button"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-[#EEEEEE] hover:bg-[#686D76] hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#DC5F00]"
-                        aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
-                        <span class="sr-only">เปิดเมนูหลัก</span>
-                        <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                        </svg>
-                    </button>
-                </div>
+    <footer class="fixed bottom-0 w-full bg-white border-t shadow-md">
+        <div class="flex justify-around items-center py-3 w-full max-w-md mx-auto gap-6">
 
-                <!-- Logo Section -->
-                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                    <div class="flex-shrink-0 items-center">
-                        <img src={{ asset('images/logoo.png') }} alt="Logo" class="w-10 h-8">
-                    </div>
-                    <!-- Main Navigation -->
-                    <div class="hidden sm:ml-6 sm:flex space-x-4">
-                        <a href="{{ route('employee.work') }}"
-                            class="text-[#EEEEEE] px-3 py-2 rounded-md text-sm font-medium hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00]">
-                            รายการแจ้งซ่อม
-                        </a>
-                    </div>
+            <a href="{{ route('employee.work') }}"
+                class="flex flex-col items-center transition-transform duration-300 {{ request()->routeIs('employee.work') ? 'active-menu' : '' }} hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                    class="bi bi-list-columns-reverse" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M0 .5A.5.5 0 0 1 .5 0h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 .5m4 0a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10A.5.5 0 0 1 4 .5m-4 2A.5.5 0 0 1 .5 2h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 4h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 6h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 8h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5" />
+                </svg>
+                <span class="text-sm">รายการเเจ้งซ่อม</span>
+            </a>
 
-                    <div class="hidden sm:ml-6 sm:flex space-x-4">
-                        <a href="{{ route('profile.view') }}"
-                            class="text-[#EEEEEE] px-3 py-2 rounded-md text-sm font-medium hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00]">
-                            โปรไฟล์
-                        </a>
-                    </div>
-                </div>
 
-                <!-- Right Section (User Menu & Logout) -->
-                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <!-- User Menu -->
-                    {{-- <div class="relative">
-                        @if (session('message'))
-                            <div class="alert alert-success text-black p-1 px-3 bg-[#DC5F00] rounded-full ">
-                                <strong class="text-[#EEEEEE]">{{ session('message') }}</strong>
-                            </div>
-                        @endif
-                    </div> --}}
-                    <!-- Logout Button -->
-                    <a href="{{ route('logout') }}" class="text-[#EEEEEE] ml-3 hover:text-[#DC5F00]" role="menuitem">
-                        <button type="button" class="px-3 py-2 rounded-md text-sm font-medium">ออกจากระบบ</button>
-                    </a>
-                </div>
-            </div>
+
+            <a href="{{ route('profile.view') }}"
+                class="flex flex-col items-center transition-transform duration-300 {{ request()->routeIs('profile.view') ? 'active-menu' : '' }} hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                    class="bi bi-person" viewBox="0 0 16 16">
+                    <path
+                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                </svg>
+                <span class="text-sm">โปรไฟล์</span>
+            </a>
+
+
+            <a href="{{ route('logout') }}"
+                class="flex flex-col items-center transition-transform duration-300 {{ request()->routeIs('logout') ? 'active-menu' : '' }} hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                    class="bi bi-box-arrow-right " viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                    <path fill-rule="evenodd"
+                        d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                </svg>
+                <span class="text-sm">ออกจากระบบ</span>
+            </a>
         </div>
-
-        <!-- Mobile menu, hidden by default -->
-        <div class="sm:hidden hidden" id="mobile-menu">
-            <div class="space-y-1 px-2 pb-3 pt-2">
-                <a href="{{ route('employee.work') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
-                    รายการแจ้งซ่อม
-                </a>
-            </div>
-            <div class="space-y-1 px-2 pb-3 pt-2">
-                <a href="{{ route('profile.view') }}"
-                    class="text-[#EEEEEE] px-3 py-2 rounded-md text-sm font-medium hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00]">
-                    โปรไฟล์
-                </a>
-            </div>
-        </div>
-    </nav>
-
-
-    <script>
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', () => {
-            const isMenuOpen = mobileMenu.classList.contains('hidden');
-            mobileMenu.classList.toggle('hidden', !isMenuOpen);
-            mobileMenuButton.setAttribute('aria-expanded', isMenuOpen);
-        });
-    </script>
+    </footer>
 </body>
 
 </html>

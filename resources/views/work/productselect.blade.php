@@ -32,9 +32,10 @@
         }
 
         .card.selected {
-            border-color: #3b82f6;
-            background-color: #eff6ff;
+            border-color: #DC5F00;
+            background-color: #fff7ed;
             transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(220, 95, 0, 0.3);
         }
 
         .card h3 {
@@ -90,6 +91,34 @@
                 margin-top: 20px;
             }
         }
+
+        body,
+        html {
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .custom-scroll {
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background-color: #DC5F00;
+            border-radius: 8px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+        }
+
+        .custom-scroll div:hover {
+            background-color: #f5f5f5;
+        }
     </style>
 </head>
 
@@ -97,7 +126,10 @@
     @extends('layouts.employ')
 
     @section('content')
-        <div class="p-20 h-[100vh] flex justify-center w-full">
+        <div class="bg-white bg-cover bg-center h-20 shadow-md flex justify-center items-center fixed top-0 w-full z-10">
+            <img src="{{ asset('images/logoo.png') }}" class="w-10 h-10">
+        </div>
+        <div class="p-20 h-[100vh] flex justify-center w-full custom-scroll mt-20">
             <div class="container mx-5">
                 <div class="px-4 md:p-8 mb-6 h-[80vh] text-center">
                     <h1 class="text-2xl font-bold mb-6 text-[#373A40]">เลือกสินค้าสำหรับการซ่อม</h1>
@@ -134,7 +166,7 @@
                         </div>
 
                         <button type="submit"
-                            class="submit-btn w-[100px] fixed top-[85%] right-2 bg-[#DC5F00] text-[#EEEEEE] font-bold py-2 px-4 rounded-md hover:bg-[#373A40] focus:outline-none focus:ring-2 focus:ring-[#DC5F00]">
+                            class="mx-16 submit-btn w-[100px] fixed top-[85%] right-2 bg-[#DC5F00] text-[#EEEEEE] font-bold py-2 px-4 rounded-md hover:bg-[#373A40] focus:outline-none focus:ring-2 focus:ring-[#DC5F00]">
                             ยืนยัน
                         </button>
                     </form>
@@ -149,17 +181,13 @@
 
                 cards.forEach(card => {
                     card.addEventListener('click', function() {
-                        // Deselect all cards
+
                         cards.forEach(c => c.classList.remove('selected'));
                         hiddenInputs.forEach(input => input.checked = false);
-
-                        // Select the clicked card
                         this.classList.add('selected');
                         this.querySelector('input[type="radio"]').checked = true;
                     });
                 });
-
-                // Automatically select the card if the radio button is already checked
                 hiddenInputs.forEach(input => {
                     if (input.checked) {
                         input.closest('.card').classList.add('selected');

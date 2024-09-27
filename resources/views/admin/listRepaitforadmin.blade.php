@@ -11,14 +11,42 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{{ mix('js/app.js') }}"></script>
 </head>
+<style>
+    body,
+    html {
+        overflow: hidden;
+        height: 100%;
+    }
 
+    .custom-scroll {
+        max-height: calc(100vh - 140px);
+        overflow-y: auto;
+    }
+
+    .custom-scroll::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .custom-scroll::-webkit-scrollbar-thumb {
+        background-color: #DC5F00;
+        border-radius: 8px;
+    }
+
+    .custom-scroll::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+    }
+
+    .custom-scroll div:hover {
+        background-color: #f5f5f5;
+    }
+</style>
 <body class="bg-[#EEEEEE] font-kanit">
     @extends('layouts.admin')
 
     @section('content')
-        <div class="p-6 bg-[#EEEEEE]  border h-[92vh] flex justify-center w-full">
-            <div class="container mx-auto">
-                <div class="bg-white p-4 md:p-8 mb-6 h-full rounded-md shadow-lg">
+        <div class="p-6 bg-[#EEEEEE]  border h-[92vh] flex justify-center w-full ">
+            <div class="container mx-auto custom-scroll">
+                <div class="bg-white p-4 md:p-8 mb-6 h-full rounded-md shadow-lg ">
                     <h1 class="text-center text-3xl font-bold mb-6">รายการแจ้งซ่อม</h1>
 
                     {{-- Search Fields --}}
@@ -37,8 +65,7 @@
                             placeholder="รายละเอียดการแจ้ง" oninput="searchRepairs()">
                     </div>
 
-                    {{-- Repair Table --}}
-                    <div class="overflow-x-auto h-[75vh]" id="repair-table">
+                    <div id="repair-table" class="custom-scroll">
                         <table class="text-sm text-center text-black w-full">
                             <thead class="bg-gray-200">
                                 <tr>
@@ -50,7 +77,7 @@
                                     <th class="text-center p-2 px-2 gap-2 w-1/12">ดำเนินการ</th>
                                 </tr>
                             </thead>
-                            <tbody class="even:bg-gray-50">
+                            <tbody class="even:bg-gray-50 ">
                                 @foreach ($repairs as $repair)
                                     <tr>
                                         <td class="p-2">{{ $repair->repair_id }}</td>
