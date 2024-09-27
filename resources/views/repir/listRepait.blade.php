@@ -7,6 +7,7 @@
     <title>รายการแจ้งซ่อม</title>
     @vite('resources/css/app.css')
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <style>
@@ -46,8 +47,17 @@
                     </p>
                     <div class="mt-3 text-right">
                         @if ($repair->status_id == 1)
-                            <a href="{{ route('repairs.edit', $repair->repair_id) }}"
-                                class="text-sm font-medium text-[#FFFFFF] border border-[#DC5F00] bg-[#DC5F00] px-3 py-1 rounded-md transition-colors duration-300 hover:bg-[#FF6F00]">แก้ไข</a>
+                            <div class="flex gap-2">
+                                <a href="{{ route('repairs.edit', $repair->repair_id) }}"
+                                    class="text-sm font-medium text-[#FFFFFF] border border-[#DC5F00] bg-[#DC5F00] px-3 py-1 rounded-md transition-colors duration-300 hover:bg-[#FF6F00]">แก้ไข</a>
+                                <form id="delete-form-{{ $repair->repair_id }}"
+                                    action="{{ route('repairscustomer.delete', $repair->repair_id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" onclick="confirmDelete('{{ $repair->repair_id }}')"
+                                        class="text-sm font-medium text-[#FFFFFF] border border-[#686D76] bg-[#686D76] px-3 py-1 rounded-md transition-colors duration-300 hover:bg-[#686D76]">ยกเลิก</button>
+                                </form>
+                            </div>
                         @elseif ($repair->status_id == 2)
                             <span class="text-sm font-medium text-[#4A90E2] px-2 py-1 rounded-md">กำลังดำเนินการ</span>
                         @else
@@ -81,6 +91,25 @@
                 background-color: #f5f5f5;
             }
         </style>
+
+        <script>
+            function confirmDelete(repairId) {
+                Swal.fire({
+                    title: 'คุณแน่ใจหรือไม่?',
+                    text: "คุณลูกค้าต้องการยกเลิกรายการนี้หรือไม่ ?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#FF6F00',
+                    cancelButtonColor: '#686D76',
+                    confirmButtonText: 'ยืนยันยกเลิก',
+                    cancelButtonText: 'กลับ'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('delete-form-' + repairId).submit();
+                    }
+                });
+            }
+        </script>
     @endsection
 </body>
 
