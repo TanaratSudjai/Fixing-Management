@@ -37,10 +37,10 @@ class CreateUsers extends Seeder
         }
 
         DB::table('status')->insert([
-            ['status_name' => 'start'],
-            ['status_name' => 'Pending'],
-            ['status_name' => 'In Progress'],
-            ['status_name' => 'Completed'],
+            ['status_name' => 'รอยืนยัน'],
+            ['status_name' => 'เเจ้งพนักงานเเล้ว'],
+            ['status_name' => 'กำลังดำเนินการ'],
+            ['status_name' => 'ซ่อมเสร็จเเล้ว'],
         ]);
 
     }

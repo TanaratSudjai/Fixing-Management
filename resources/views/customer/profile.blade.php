@@ -8,7 +8,6 @@
     <title>Employee Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Scrollbar Styles (optional) */
         .scrollbar::-webkit-scrollbar {
             width: 10px;
         }
