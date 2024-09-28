@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RepairController;
 
-
-
-
 // Registration Routes
 Route::get('register', [RegistorController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegistorController::class, 'register']);

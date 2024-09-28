@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Log;
 
-
 class RepairController extends Controller
 {
     public function search(Request $request)

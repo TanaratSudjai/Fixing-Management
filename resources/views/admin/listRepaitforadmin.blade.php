@@ -40,6 +40,7 @@
         background-color: #f5f5f5;
     }
 </style>
+
 <body class="bg-[#EEEEEE] font-kanit">
     @extends('layouts.admin')
 
@@ -64,6 +65,8 @@
                             class="block w-full border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 cursor-pointer ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm py-2 px-4 transition duration-150 hover:ring-gray-400 focus:outline-none"
                             placeholder="รายละเอียดการแจ้ง" oninput="searchRepairs()">
                     </div>
+
+
 
                     <div id="repair-table" class="custom-scroll">
                         <table class="text-sm text-center text-black w-full">
@@ -156,30 +159,33 @@
     </div>
 
     <script>
-        function toggleEditEmployeeModal(repair_id, repair_detail, employee_id) {
-            const modal = document.getElementById('editEmployeeModal');
-            modal.classList.toggle('hidden');
-
-            const form = document.getElementById('repair-form');
-            if (repair_id) form.action = `/repair/update/${repair_id}`;
-            document.getElementById('repair_detail').value = repair_detail;
-            document.getElementById('employee_id').value = employee_id || '';
-        }
-
         function searchRepairs() {
-            const employee = document.getElementById('employee-search').value;
-            const customer = document.getElementById('customer-search').value;
-            const detail = document.getElementById('detail-search').value;
+            // Get the search inputs
+            const employeeInput = document.getElementById('employee-search').value.toLowerCase();
+            const customerInput = document.getElementById('customer-search').value.toLowerCase();
+            const detailInput = document.getElementById('detail-search').value.toLowerCase();
 
-            axios.get('{{ route('repairs.search') }}', {
-                params: {
-                    employee,
-                    customer,
-                    detail
+            // Get all table rows in the body
+            const rows = document.querySelectorAll('tbody tr');
+
+            // Loop through each row and hide/show based on the search inputs
+            rows.forEach(row => {
+                const employee = row.children[3].textContent.toLowerCase();
+                const customer = row.children[1].textContent.toLowerCase();
+                const detail = row.children[2].textContent.toLowerCase();
+
+                // Check if the row matches the search criteria
+                const matchesEmployee = employee.includes(employeeInput);
+                const matchesCustomer = customer.includes(customerInput);
+                const matchesDetail = detail.includes(detailInput);
+
+                // If all inputs match, show the row; otherwise, hide it
+                if (matchesEmployee && matchesCustomer && matchesDetail) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
                 }
-            }).then(response => {
-                document.getElementById('repair-table').innerHTML = response.data;
-            }).catch(error => console.error(error));
+            });
         }
     </script>
 
