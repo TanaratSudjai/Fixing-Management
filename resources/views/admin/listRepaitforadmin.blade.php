@@ -46,7 +46,7 @@
 
     @section('content')
         <div class="p-6 bg-[#EEEEEE]  border h-[92vh] flex justify-center w-full ">
-            <div class="container mx-auto custom-scroll">
+            <div class="container mx-auto">
                 <div class="bg-white p-4 md:p-8 mb-6 h-full rounded-md shadow-lg ">
                     <h1 class="text-center text-3xl font-bold mb-6">รายการแจ้งซ่อม</h1>
 
@@ -67,8 +67,7 @@
                     </div>
 
 
-
-                    <div id="repair-table" >
+                    <div id="repair-table" class="custom-scroll">
                         <table class="text-sm text-center text-black w-full">
                             <thead class="bg-gray-200">
                                 <tr>
