@@ -68,7 +68,7 @@
 
 
 
-                    <div id="repair-table" class="custom-scroll">
+                    <div id="repair-table" >
                         <table class="text-sm text-center text-black w-full">
                             <thead class="bg-gray-200">
                                 <tr>
