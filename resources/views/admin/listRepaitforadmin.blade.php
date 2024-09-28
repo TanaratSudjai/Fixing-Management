@@ -9,7 +9,7 @@
     <title>Repairs List</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    
+
 </head>
 <style>
     body,
@@ -107,6 +107,14 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div id="pagination-controls" class="flex justify-center items-center mt-4">
+                            <button onclick="previousPage()"
+                                class="bg-indigo-600 text-white py-2 px-4 rounded-lg mr-2">ก่อนหน้า</button>
+                            <span id="current-page" class="text-gray-800">1</span> /
+                            <span id="total-pages" class="text-gray-800">1</span>
+                            <button onclick="nextPage()"
+                                class="bg-indigo-600 text-white py-2 px-4 rounded-lg ml-2">ถัดไป</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -159,6 +167,9 @@
     </div>
 
     <script>
+        let currentPage = 1;
+        const rowsPerPage = 10;
+
         function searchRepairs() {
             // Get the search inputs
             const employeeInput = document.getElementById('employee-search').value.toLowerCase();
@@ -169,7 +180,7 @@
             const rows = document.querySelectorAll('tbody tr');
 
             // Loop through each row and hide/show based on the search inputs
-            rows.forEach(row => {
+            let filteredRows = Array.from(rows).filter(row => {
                 const employee = row.children[3].textContent.toLowerCase();
                 const customer = row.children[1].textContent.toLowerCase();
                 const detail = row.children[2].textContent.toLowerCase();
@@ -179,17 +190,59 @@
                 const matchesCustomer = customer.includes(customerInput);
                 const matchesDetail = detail.includes(detailInput);
 
-                // If all inputs match, show the row; otherwise, hide it
-                if (matchesEmployee && matchesCustomer && matchesDetail) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
+                return matchesEmployee && matchesCustomer && matchesDetail;
             });
+
+            // Update pagination and show the filtered rows
+            paginate(filteredRows);
+        }
+
+        function paginate(rows) {
+            // Calculate total pages
+            const totalPages = Math.ceil(rows.length / rowsPerPage);
+            document.getElementById('total-pages').textContent = totalPages;
+
+            // Slice the rows for the current page
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const rowsToShow = rows.slice(start, end);
+
+            // Hide all rows first
+            document.querySelectorAll('tbody tr').forEach(row => row.style.display = 'none');
+
+            // Show the sliced rows
+            rowsToShow.forEach(row => row.style.display = '');
+
+            // Update the current page display
+            document.getElementById('current-page').textContent = currentPage;
+
+            // Disable/Enable buttons based on page
+            document.querySelector('button[onclick="previousPage()"]').disabled = currentPage === 1;
+            document.querySelector('button[onclick="nextPage()"]').disabled = currentPage === totalPages;
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                searchRepairs();
+            }
+        }
+
+        function nextPage() {
+            const totalPages = document.getElementById('total-pages').textContent;
+            if (currentPage < totalPages) {
+                currentPage++;
+                searchRepairs();
+            }
+        }
+
+        function submitSearch() {
+            currentPage = 1; // Reset to first page on new search
+            searchRepairs();
         }
     </script>
 
-   
+
 </body>
 
 </html>
