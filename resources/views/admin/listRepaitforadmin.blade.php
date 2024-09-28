@@ -166,6 +166,11 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Call searchRepairs when the page is loaded
+            searchRepairs();
+        });
+        
         let currentPage = 1;
         const rowsPerPage = 10;
 
@@ -178,13 +183,12 @@
             // Get all table rows in the body
             const rows = document.querySelectorAll('tbody tr');
 
-            // Loop through each row and hide/show based on the search inputs
+            // Filter rows based on the search inputs
             let filteredRows = Array.from(rows).filter(row => {
                 const employee = row.children[3].textContent.toLowerCase();
                 const customer = row.children[1].textContent.toLowerCase();
                 const detail = row.children[2].textContent.toLowerCase();
 
-                // Check if the row matches the search criteria
                 const matchesEmployee = employee.includes(employeeInput);
                 const matchesCustomer = customer.includes(customerInput);
                 const matchesDetail = detail.includes(detailInput);
@@ -192,7 +196,7 @@
                 return matchesEmployee && matchesCustomer && matchesDetail;
             });
 
-            // Update pagination and show the filtered rows
+            // Paginate the filtered rows
             paginate(filteredRows);
         }
 
@@ -201,23 +205,28 @@
             const totalPages = Math.ceil(rows.length / rowsPerPage);
             document.getElementById('total-pages').textContent = totalPages;
 
-            // Slice the rows for the current page
+            // Prevent out-of-bound pages
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (currentPage < 1) currentPage = 1;
+
+            // Slice rows for the current page
             const start = (currentPage - 1) * rowsPerPage;
             const end = start + rowsPerPage;
             const rowsToShow = rows.slice(start, end);
 
-            // Hide all rows first
+            // Hide all rows
             document.querySelectorAll('tbody tr').forEach(row => row.style.display = 'none');
 
-            // Show the sliced rows
+            // Show the rows for the current page
             rowsToShow.forEach(row => row.style.display = '');
 
-            // Update the current page display
+            // Update current page display
             document.getElementById('current-page').textContent = currentPage;
 
-            // Disable/Enable buttons based on page
+            // Disable/enable pagination buttons based on the page
             document.querySelector('button[onclick="previousPage()"]').disabled = currentPage === 1;
-            document.querySelector('button[onclick="nextPage()"]').disabled = currentPage === totalPages;
+            document.querySelector('button[onclick="nextPage()"]').disabled = currentPage === totalPages || totalPages ===
+                0;
         }
 
         function previousPage() {
@@ -228,7 +237,7 @@
         }
 
         function nextPage() {
-            const totalPages = document.getElementById('total-pages').textContent;
+            const totalPages = parseInt(document.getElementById('total-pages').textContent);
             if (currentPage < totalPages) {
                 currentPage++;
                 searchRepairs();
@@ -236,7 +245,7 @@
         }
 
         function submitSearch() {
-            currentPage = 1; // Reset to first page on new search
+            currentPage = 1; // Reset to first page on a new search
             searchRepairs();
         }
     </script>
