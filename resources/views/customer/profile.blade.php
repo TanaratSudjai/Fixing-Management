@@ -8,6 +8,11 @@
     <title>Employee Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        html {
+            overflow: hidden;
+            height: 100%;
+        }
+
         .scrollbar::-webkit-scrollbar {
             width: 10px;
         }
@@ -21,6 +26,28 @@
             border-radius: 10px;
             border: 3px solid #f1f1f1;
         }
+
+        .custom-scroll {
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background-color: #DC5F00;
+            border-radius: 8px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+        }
+
+        .custom-scroll div:hover {
+            background-color: #f5f5f5;
+        }
     </style>
 </head>
 
@@ -30,7 +57,7 @@
         <div class="bg-white bg-cover bg-center h-20 shadow-md flex justify-center items-center fixed top-0 w-full z-10">
             <img src="{{ asset('images/logoo.png') }}" class="w-10 h-10">
         </div>
-        <div class=" min-h-screen overflow-x-auto">
+        <div class=" min-h-screen overflow-x-auto  custom-scroll">
             <div class="bg-cover bg-center h-40 sm:h-56 bg-gray-300">
             </div>
             <div class="relative">
@@ -44,7 +71,7 @@
                 <h1 class="text-2xl sm:text-3xl font-semibold">{{ $customer->name }}</h1>
                 <p class="text-gray-500">{{ $customer->email }}</p>
             </div>
-            <div class="px-4 sm:px-6 lg:px-8 mt-8 max-h-screen overflow-y-auto scrollbar">
+            <div class="px-4 sm:px-6 lg:px-8 mt-8 max-h-screen overflow-y-auto scrollbar custom-scroll mb-40">
                 <div class="rounded-lg p-6 max-w-3xl mx-auto bg-[#EEEEEE] shadow-lg">
                     <h2 class="text-xl font-semibold mb-4  text-center">ประวัติการเเจ้งซ่อม</h2>
                     <ul class="text-gray-700 space-y-3 flex flex-col gap-5">

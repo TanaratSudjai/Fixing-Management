@@ -27,7 +27,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $customer = User::where('id', $user->id)->first();
 
-        $countRepair_done = Repir::where('status_id', 3)->where('customer_id', $user->id)->count();
+        $countRepair_done = Repir::where('status_id', 4)->where('customer_id', $user->id)->count();
         $countRepair_inprogress = Repir::where('status_id', 2)->where('customer_id', $user->id)->count();
         $countRepair_pending = Repir::where('status_id', 1)->where('customer_id', $user->id)->count();
 

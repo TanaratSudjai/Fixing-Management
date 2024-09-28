@@ -9,7 +9,7 @@
     <title>Repairs List</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <style>
     body,
@@ -40,6 +40,7 @@
         background-color: #f5f5f5;
     }
 </style>
+
 <body class="bg-[#EEEEEE] font-kanit">
     @extends('layouts.admin')
 
@@ -65,7 +66,7 @@
                             placeholder="รายละเอียดการแจ้ง" oninput="searchRepairs()">
                     </div>
 
-                    <div id="repair-table" class="custom-scroll">
+                    <div id="repair-table">
                         <table class="text-sm text-center text-black w-full">
                             <thead class="bg-gray-200">
                                 <tr>
@@ -148,7 +149,7 @@
                 </div>
 
                 <button type="submit" id="submit-btn"
-                    class="w-full bg-[#DC5F00] hover:bg-[#DC5F00] text-white py-3 rounded-md transition duration-300 ease-in-out">
+                    class="w-full bg-[#DC5F00] hover:bg-[#DC5F00] texqt-white py-3 rounded-md transition duration-300 ease-in-out">
                     บันทึก
                 </button>
             </form>
@@ -183,7 +184,7 @@
         }
     </script>
 
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
 </body>
 
