@@ -46,7 +46,7 @@
 
     @section('content')
         <div class="p-6 bg-[#EEEEEE]  border h-[92vh] flex justify-center w-full ">
-            <div class="container mx-auto custom-scroll">
+            <div class="container mx-auto">
                 <div class="bg-white p-4 md:p-8 mb-6 h-full rounded-md shadow-lg ">
                     <h1 class="text-center text-3xl font-bold mb-6">รายการแจ้งซ่อม</h1>
 
@@ -65,7 +65,6 @@
                             class="block w-full border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 cursor-pointer ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm py-2 px-4 transition duration-150 hover:ring-gray-400 focus:outline-none"
                             placeholder="รายละเอียดการแจ้ง" oninput="searchRepairs()">
                     </div>
-
 
 
                     <div id="repair-table" class="custom-scroll">
