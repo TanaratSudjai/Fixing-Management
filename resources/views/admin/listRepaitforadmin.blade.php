@@ -9,7 +9,7 @@
     <title>Repairs List</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
 </head>
 <style>
     body,
@@ -66,7 +66,9 @@
                             placeholder="รายละเอียดการแจ้ง" oninput="searchRepairs()">
                     </div>
 
-                    <div id="repair-table">
+
+
+                    <div id="repair-table" class="custom-scroll">
                         <table class="text-sm text-center text-black w-full">
                             <thead class="bg-gray-200">
                                 <tr>
@@ -149,7 +151,7 @@
                 </div>
 
                 <button type="submit" id="submit-btn"
-                    class="w-full bg-[#DC5F00] hover:bg-[#DC5F00] texqt-white py-3 rounded-md transition duration-300 ease-in-out">
+                    class="w-full bg-[#DC5F00] hover:bg-[#DC5F00] text-white py-3 rounded-md transition duration-300 ease-in-out">
                     บันทึก
                 </button>
             </form>
@@ -157,35 +159,37 @@
     </div>
 
     <script>
-        function toggleEditEmployeeModal(repair_id, repair_detail, employee_id) {
-            const modal = document.getElementById('editEmployeeModal');
-            modal.classList.toggle('hidden');
-
-            const form = document.getElementById('repair-form');
-            if (repair_id) form.action = `/repair/update/${repair_id}`;
-            document.getElementById('repair_detail').value = repair_detail;
-            document.getElementById('employee_id').value = employee_id || '';
-        }
-
         function searchRepairs() {
-            const employee = document.getElementById('employee-search').value;
-            const customer = document.getElementById('customer-search').value;
-            const detail = document.getElementById('detail-search').value;
+            // Get the search inputs
+            const employeeInput = document.getElementById('employee-search').value.toLowerCase();
+            const customerInput = document.getElementById('customer-search').value.toLowerCase();
+            const detailInput = document.getElementById('detail-search').value.toLowerCase();
 
-            axios.get('{{ route('repairs.search') }}', {
-                params: {
-                    employee,
-                    customer,
-                    detail
+            // Get all table rows in the body
+            const rows = document.querySelectorAll('tbody tr');
+
+            // Loop through each row and hide/show based on the search inputs
+            rows.forEach(row => {
+                const employee = row.children[3].textContent.toLowerCase();
+                const customer = row.children[1].textContent.toLowerCase();
+                const detail = row.children[2].textContent.toLowerCase();
+
+                // Check if the row matches the search criteria
+                const matchesEmployee = employee.includes(employeeInput);
+                const matchesCustomer = customer.includes(customerInput);
+                const matchesDetail = detail.includes(detailInput);
+
+                // If all inputs match, show the row; otherwise, hide it
+                if (matchesEmployee && matchesCustomer && matchesDetail) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
                 }
-            }).then(response => {
-                document.getElementById('repair-table').innerHTML = response.data;
-            }).catch(error => console.error(error));
+            });
         }
     </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-
+   
 </body>
 
 </html>

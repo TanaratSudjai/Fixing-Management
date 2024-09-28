@@ -13,7 +13,7 @@ use App\Http\Controllers\RepirController;
 use Illuminate\Support\Facades\Route;
 // routes/web.php
 
-use App\Http\Controllers\RepairController;
+
 
 
 
@@ -34,7 +34,7 @@ Route::get('/inactive', function () {
 
 // Admin Routes
 Route::middleware('admin')->group(function () {
-    Route::get('/repairs/search', [RepairController::class, 'search'])->name('repairs.search');
+    
     Route::get('/pdf-customer', [PDFController::class, 'Gpdf'])->name('pdf.customer');
 
     // Route::get('/admin/add-employee', [PageController::class, 'adminPageAddEmployee'])->name('employee.add');
