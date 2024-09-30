@@ -14,7 +14,7 @@
 <style>
     body,
     html {
-        /* overflow: hidden; */
+        overflow: hidden;
         height: 100%;
     }
 
@@ -46,7 +46,7 @@
 
     @section('content')
         <div class="p-6 border flex justify-center w-full ">
-            <div class="container mx-auto ">
+            <div class="container mx-auto custom-scroll">
                 <h1 class="text-center text-3xl font-bold mb-2">รายการแจ้งซ่อม</h1>
 
                 {{-- Search Fields --}}
@@ -65,8 +65,8 @@
                         placeholder="รายละเอียดการแจ้ง" oninput="searchRepairs()">
                 </div>
 
-                <div id="repair-table" class="table-auto overflow-y-auto mb-2 p-4 rounded-xl bg-gray-100">
-                    <table class="table-auto text-sm text-center text-black w-full min-w-[600px] custom-scroll rounded-xl">
+                <div id="repair-table" class="table-auto mb-2 p-4 rounded-xl bg-gray-100 ">
+                    <table class="table-auto text-sm text-center text-black w-full min-w-[600px] rounded-xl">
                         <thead class="bg-gray-200 ">
                             <tr>
                                 <th class="text-center p-2 px-2 gap-2 w-1/12">รหัส</th>
@@ -106,7 +106,7 @@
                         </tbody>
                     </table>
 
-                    <div id="pagination-controls" class="sticky bottom-0 left-0 flex justify-center items-center mt-4 ">
+                    <div id="pagination-controls" class="bottom-0 left-0 flex justify-center items-center mt-4 ">
                         <button onclick="previousPage()"
                             class="bg-[#686D76] text-white py-2 px-2 rounded-lg mr-2">ก่อนหน้า</button>
                         <span id="current-page" class="text-gray-800">1</span> /
@@ -195,7 +195,7 @@
         });
 
         let currentPage = 0;
-        const rowsPerPage = 10;
+        const rowsPerPage = 15;
 
         function searchRepairs() {
             // Get the search inputs
