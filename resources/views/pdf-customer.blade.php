@@ -6,7 +6,7 @@
     <title>Customer Report</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'TH Sarabun', 'THSarabunNew', sans-serif, Arial, Helvetica;
             line-height: 1.6;
             color: #333;
             max-width: 800px;
@@ -19,6 +19,7 @@
             margin-bottom: 30px;
         }
         table {
+            font-family: 'TH Sarabun', 'THSarabunNew', sans-serif;
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;

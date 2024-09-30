@@ -69,7 +69,7 @@
                                                                                                                 {{ $product->product_qty }},
                                                                                                                 {{ $product->product_price }}
                                                                                                             )"
-                                                    class="text-[#EEEEEE] px-3 py-1 bg-[#373A40] hover:bg-[#373A40]">แก้ไข</a>
+                                                    class="text-[#EEEEEE] px-3 py-1 bg-[#373A40] hover:bg-[#373A40] cursor-pointer">แก้ไข</a>
 
                                                 <form id="del_form_{{ $product->product_id }}"
                                                     action="{{ route('product.delete', $product->product_id) }}" method="POST"
@@ -221,6 +221,10 @@
 
 
     <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            toggleEditProductModal();
+        });
+
         function showSuccessAlert() {
             Swal.fire({
                 icon: 'success',

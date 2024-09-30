@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -19,13 +19,10 @@
 </style>
 
 <body>
-
-
-
     <nav class="bg-[#373A40]">
-        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-5xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
-                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <div class="absolute inset-y-0 left-0 flex items-center lg:hidden">
                     <button type="button"
                         class="inline-flex items-center justify-center p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                         aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
@@ -41,42 +38,44 @@
                         </svg>
                     </button>
                 </div>
-                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="flex flex-1 items-center justify-center lg:items-stretch lg:justify-start">
                     <div class="flex items-center">
                         <img src="{{ asset('images/logoo.png') }}" class="w-10 h-10">
                     </div>
-                    <div class="hidden sm:ml-6 sm:block">
+                    <div class="hidden md:ml-6 lg:block">
                         <div class="flex space-x-4 justify-center mt-1">
                             <a href="{{ route('admin.dashboard') }}"
-                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center">
+                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center truncate">
                                 แผงควบคุม
                             </a>
                             <a href="{{ route('customer.repir') }}"
-                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center">
+                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center truncate">
                                 รายการแจ้งซ่อม
                             </a>
                             <a onclick="toggleEmployeeModal()"
-                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center">
+                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center cursor-pointer truncate ">
                                 เพิ่มพนักงาน
                             </a>
                             <a onclick="toggleProductModal()"
-                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center">
+                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center cursor-pointer truncate">
                                 เพิ่มสินค้า
                             </a>
                             <a href="{{ route('products.view') }}"
-                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center">
+                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center truncate ">
                                 รายการสินค้า
                             </a>
                             <a href="{{ route('employee.list') }}"
-                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center">
+                                class="px-3 py-2 text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] self-start sm:self-center truncate ">
                                 รายชื่อพนักงาน
                             </a>
                         </div>
+
                     </div>
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <a href="{{ route('logout') }}"
-                        class="text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00]" role="menuitem">
+                    <a href="{{ route('logout') }} "
+                        class="text-[#EEEEEE] hover:text-[#DC5F00] hover:border-b-2 border-[#DC5F00] truncate"
+                        role="menuitem">
                         <button type="button">ออกจากระบบ</button>
                     </a>
                 </div>
@@ -84,33 +83,34 @@
         </div>
 
         <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="sm:hidden hidden" id="mobile-menu">
+        <div class="lg:hidden hidden" id="mobile-menu">
             <div class="space-y-1 px-2 pb-3 pt-2">
                 <a href="{{ route('admin.dashboard') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
+                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white truncate">
                     แผงควบคุม
                 </a>
                 <a href="{{ route('customer.repir') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
+                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white truncate">
                     รายการแจ้งซ่อม
                 </a>
                 <a onclick="toggleEmployeeModal()"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
+                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white truncate cursor-pointer">
                     เพิ่มพนักงาน
                 </a>
                 <a onclick="toggleProductModal()"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
+                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white truncate cursor-pointer">
                     เพิ่มสินค้า
                 </a>
                 <a href="{{ route('products.view') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
+                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white truncate">
                     รายการสินค้า
                 </a>
                 <a href="{{ route('employee.list') }}"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white">
+                    class="block rounded-md px-3 py-2 text-base font-medium text-[#EEEEEE] hover:bg-[#DC5F00] hover:text-white truncate">
                     รายชื่อพนักงาน
                 </a>
             </div>
+
         </div>
     </nav>
 
@@ -198,7 +198,8 @@
                     @csrf
                     <div>
                         <label for="product_name" class="text-gray-800 text-sm mb-2 block">ชื่อสินค้า</label>
-                        <input placeholder="Product Name" type="text" name="product_name" id="product_name" required
+                        <input placeholder="Product Name" type="text" name="product_name" id="product_name"
+                            required
                             class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#DC5F00]">
                     </div>
 
@@ -210,8 +211,8 @@
 
                     <div>
                         <label for="product_qty" class="text-gray-800 text-sm mb-2 block">จำนวน</label>
-                        <input placeholder="Product quantity" type="number" name="product_qty" id="product_qty" required
-                            min="0"
+                        <input placeholder="Product quantity" type="number" name="product_qty" id="product_qty"
+                            required min="0"
                             class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#DC5F00]">
                     </div>
 
@@ -310,7 +311,6 @@
         </script>
     @endif
 
-
     <!-- SweetAlert for Success -->
     @if (session('swal_success'))
         <script>
@@ -330,7 +330,7 @@
                 title: 'สำเร็จ!',
                 text: '{{ session('success') }}',
                 confirmButtonText: 'ตกลง',
-                confirmButtonColor: '#DC5F00',  // Use the same orange color
+                confirmButtonColor: '#DC5F00', // Use the same orange color
             });
         </script>
     @endif
@@ -342,24 +342,26 @@
                 title: 'สำเร็จ!',
                 text: '{{ session('success') }}',
                 confirmButtonText: 'ตกลง',
-                confirmButtonColor: '#DC5F00',  // Use the same orange color
+                confirmButtonColor: '#DC5F00', // Use the same orange color
             });
         </script>
-
     @endif
 
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleEmployeeModal();
+            toggleProductModal();
+        });
+        
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-
 
         mobileMenuButton.addEventListener('click', () => {
             const isMenuOpen = mobileMenu.classList.contains('hidden');
             mobileMenu.classList.toggle('hidden', !isMenuOpen);
             mobileMenuButton.setAttribute('aria-expanded', !isMenuOpen);
         });
-
 
         function toggleEmployeeModal() {
             const modal = document.getElementById('addEmployeeModal');

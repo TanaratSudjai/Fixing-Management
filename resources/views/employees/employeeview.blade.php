@@ -56,7 +56,7 @@
                                             <div class="flex justify-center gap-3">
 
                                                 <a onclick="toggleEditEmployeeModal({{ $employee->id }},'{{ $employee->name }}',)"
-                                                    class="text-[#EEEEEE] px-3 py-1 bg-[#373A40] hover:bg-[#373A40]">แก้ไข</a>
+                                                    class="text-[#EEEEEE] px-3 py-1 bg-[#373A40] hover:bg-[#373A40] cursor-pointer">แก้ไข</a>
 
                                                 <form id="del_form_{{ $employee->id }}"
                                                     action="{{ route('employee.delete', $employee->id) }}" method="POST"
@@ -109,7 +109,7 @@
         <div class=" w-full h-[95vh]  flex justify-center items-center">
             <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-xl font-semibold text-gray-800">แก้ไขพนักงาน</h2>
+                    <h2 class="text-xl font-semibold text-gray-800 cursor">แก้ไขพนักงาน</h2>
                     <button onclick="toggleEditEmployeeModal()" class="text-gray-400 hover:text-gray-600">
                         &times;
                     </button>
@@ -166,6 +166,10 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function (){
+            toggleEditEmployeeModal();
+        });
+
         function toggleEditEmployeeModal(id, name) {
             const modal = document.getElementById('editEmployeeModal');
             const form = document.getElementById('editEmployee-form');
