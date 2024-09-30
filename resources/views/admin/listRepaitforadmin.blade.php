@@ -130,37 +130,42 @@
                         &times;
                     </button>
                 </div>
-            
-                <form id="repair-form" action="{{ route('repair.update', $repair->repair_id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-    
-                    <div class="mb-4">
-                        <label for="repair_detail" class="text-gray-800 text-sm mb-2 block">รายละเอียดการแจ้งซ่อม</label>
-                        <input type="text" name="repair_detail" id="repair_detail"
-                            class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
-                            value="{{ old('repair_detail', $repair->repair_detail) }}" required>
-                    </div>
-    
-                    <div class="mb-4">
-                        <label for="employee_id" class="text-gray-800 text-sm mb-2 block">นำพนักงานเพื่อไปซ่อม</label>
-                        <select name="employee_id" id="employee_id"
-                            class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600">
-                            <option value="">เลือกพนักงาน</option>
-                            @foreach ($employees as $employee)
-                                <option value="{{ $employee->id }}"
-                                    {{ $repair->employee_id == $employee->id ? 'selected' : '' }}>
-                                    {{ $employee->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-    
-                    <button type="submit" id="submit-btn"
-                        class="w-full bg-[#DC5F00] hover:bg-[#DC5F00] text-white py-3 rounded-md transition duration-300 ease-in-out">
-                        บันทึก
-                    </button>
-                </form>
+                @if (isset($repair))
+                    <form id="repair-form" action="{{ route('repair.update', $repair->repair_id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="mb-4">
+                            <label for="repair_detail"
+                                class="text-gray-800 text-sm mb-2 block">รายละเอียดการแจ้งซ่อม</label>
+                            <input type="text" name="repair_detail" id="repair_detail"
+                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
+                                value="{{ old('repair_detail', $repair->repair_detail) }}" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="employee_id"
+                                class="text-gray-800 text-sm mb-2 block">นำพนักงานเพื่อไปซ่อม</label>
+                            <select name="employee_id" id="employee_id"
+                                class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600">
+                                <option value="">เลือกพนักงาน</option>
+                                @foreach ($employees as $employee)
+                                    <option value="{{ $employee->id }}"
+                                        {{ $repair->employee_id == $employee->id ? 'selected' : '' }}>
+                                        {{ $employee->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <button type="submit" id="submit-btn"
+                            class="w-full bg-[#DC5F00] hover:bg-[#DC5F00] text-white py-3 rounded-md transition duration-300 ease-in-out">
+                            บันทึก
+                        </button>
+                    </form>
+                @else
+                    <h1 class="text-center">ไม่มีรายการเเจ้งซ่อม</h1>
+                @endif
             </div>
         </div>
     </div>

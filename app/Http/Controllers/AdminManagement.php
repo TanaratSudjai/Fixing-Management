@@ -33,6 +33,10 @@ class AdminManagement extends Controller
 
             $employees = User::where('status', 2)->get();
 
+            // if (!$repair) {
+            //     return redirect()->back()->with('error', 'ไม่พบรายการซ่อมที่ต้องการแก้ไข');
+            // }
+    
             return view('admin.listRepaitforadmin', compact('repair', 'employees'));
         } catch (Exception $e) {
             Log::error('Error fetching repair record for editing: ' . $e->getMessage());
