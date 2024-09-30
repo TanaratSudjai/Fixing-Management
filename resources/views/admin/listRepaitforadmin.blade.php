@@ -14,7 +14,7 @@
 <style>
     body,
     html {
-        overflow: hidden;
+        /* overflow: hidden; */
         height: 100%;
     }
 
@@ -41,79 +41,78 @@
     }
 </style>
 
-<body class="bg-[#EEEEEE] font-kanit">
+<body class="font-kanit ">
     @extends('layouts.admin')
 
     @section('content')
-        <div class="p-6 bg-[#EEEEEE]  border h-[92vh] flex justify-center w-full ">
-            <div class="container mx-auto">
-                <div class="bg-white p-4 md:p-8 mb-6 rounded-md shadow-lg mb-5">
-                    <h1 class="text-center text-3xl font-bold mb-6">รายการแจ้งซ่อม</h1>
+        <div class="p-6 border flex justify-center w-full ">
+            <div class="container mx-auto ">
+                <h1 class="text-center text-3xl font-bold mb-2">รายการแจ้งซ่อม</h1>
 
-                    {{-- Search Fields --}}
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 p-4 bg-[#F7F7F7] border border-gray-300 rounded-lg shadow-sm">
-                        <input id="employee-search" type="text"
-                            class="block w-full border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 cursor-pointer ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm py-2 px-4 transition duration-150 hover:ring-gray-400 focus:outline-none"
-                            placeholder="ค้นหาด้วยชื่อพนักงาน" oninput="searchRepairs()">
+                {{-- Search Fields --}}
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2 p-2 bg-[#F7F7F7] border border-gray-300 rounded-lg shadow-sm">
+                    <input id="employee-search" type="text"
+                        class="block w-full border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 cursor-pointer ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm py-2 px-4 transition duration-150 hover:ring-gray-400 focus:outline-none"
+                        placeholder="ค้นหาด้วยชื่อพนักงาน" oninput="searchRepairs()">
 
-                        <input id="customer-search" type="text"
-                            class="block w-full border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 cursor-pointer ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm py-2 px-4 transition duration-150 hover:ring-gray-400 focus:outline-none"
-                            placeholder="ค้นหาด้วยชื่อลูกค้า" oninput="searchRepairs()">
+                    <input id="customer-search" type="text"
+                        class="block w-full border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 cursor-pointer ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm py-2 px-4 transition duration-150 hover:ring-gray-400 focus:outline-none"
+                        placeholder="ค้นหาด้วยชื่อลูกค้า" oninput="searchRepairs()">
 
-                        <input id="detail-search" type="text"
-                            class="block w-full border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 cursor-pointer ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm py-2 px-4 transition duration-150 hover:ring-gray-400 focus:outline-none"
-                            placeholder="รายละเอียดการแจ้ง" oninput="searchRepairs()">
-                    </div>
+                    <input id="detail-search" type="text"
+                        class="block w-full border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 cursor-pointer ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm py-2 px-4 transition duration-150 hover:ring-gray-400 focus:outline-none"
+                        placeholder="รายละเอียดการแจ้ง" oninput="searchRepairs()">
+                </div>
 
-                    <div id="repair-table" class="custom-scroll overflow-y-auto ">
-                        <table class="text-sm text-center text-black w-full min-w-[600px]">
-                            <thead class="bg-gray-200">
+                <div id="repair-table" class="table-auto overflow-y-auto mb-2 p-4 rounded-xl bg-gray-100">
+                    <table class="table-auto text-sm text-center text-black w-full min-w-[600px] custom-scroll rounded-xl">
+                        <thead class="bg-gray-200 ">
+                            <tr>
+                                <th class="text-center p-2 px-2 gap-2 w-1/12">รหัส</th>
+                                <th class="text-center p-2 px-2 gap-2 w-1/12">ชื่อลูกค้า</th>
+                                <th class="text-center p-2 px-2 gap-2 w-1/12">รายละเอียด</th>
+                                <th class="text-center p-2 px-2 gap-2 w-1/12">พนักงาน</th>
+                                <th class="text-center p-2 px-2 gap-2 w-1/12">สถานะ</th>
+                                <th class="text-center p-2 px-2 gap-2 w-1/12">ดำเนินการ</th>
+                            </tr>
+                        </thead>
+                        <tbody class="even:bg-gray-100">
+                            @foreach ($repairs as $repair)
                                 <tr>
-                                    <th class="text-center p-2 px-2 gap-2 w-1/12  cols-2">รหัส</th>
-                                    <th class="text-center p-2 px-2 gap-2 w-1/12  cols-2">ชื่อลูกค้า</th>
-                                    <th class="text-center p-2 px-2 gap-2 w-1/12  cols-2">รายละเอียด</th>
-                                    <th class="text-center p-2 px-2 gap-2 w-1/12  cols-2">พนักงาน</th>
-                                    <th class="text-center p-2 px-2 gap-2 w-1/12  cols-2">สถานะ</th>
-                                    <th class="text-center p-2 px-2 gap-2 w-1/12  cols-2">ดำเนินการ</th>
+                                    <td class="p-2">{{ $repair->repair_id }}</td>
+                                    <td class="p-2">{{ $repair->customer->name }}</td>
+                                    <td class="p-2">{{ $repair->repair_detail }}</td>
+                                    <td class="p-2 whitespace-nowrap">{{ $repair->employee->name ?? 'กรุณาเลือกพนักงาน' }}
+                                    </td>
+                                    <td class="p-2">{{ $repair->status->status_name ?? 'N/A' }}</td>
+                                    <td class="p-2 break-keep">
+                                        @if ($repair->status_id == 4)
+                                            <a href="#"
+                                                class="text-[#EEEEEE] px-3 py-1 rounded bg-[#686D76]">เรียบร้อย</a>
+                                        @elseif($repair->status_id == 3)
+                                            <a href="#"
+                                                class="text-[#EEEEEE] px-3 py-1 rounded bg-[#DC5F00]">กำลังซ่อม</a>
+                                        @elseif($repair->status_id == 2)
+                                            <a onclick="toggleEditEmployeeModal({{ $repair->repair_id }}, '{{ $repair->repair_detail }}', {{ $repair->employee_id ?? 'null' }})"
+                                                class="text-[#DC5F00] bg-[#EEEEEE] px-3 py-1 rounded cursor-pointer break-keep whitespace-nowrap">เปลี่ยนพนักงาน</a>
+                                        @else
+                                            <a onclick="toggleEditEmployeeModal({{ $repair->repair_id }},'{{ $repair->repair_detail }}')"
+                                                class="text-[#DC5F00] bg-[#EEEEEE] px-3 py-1 rounded cursor-pointer whitespace-nowrap">เลือกพนักงาน</a>
+                                        @endif
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody class="even:bg-gray-50 ">
-                                @foreach ($repairs as $repair)
-                                    <tr>
-                                        <td class="p-2 ">{{ $repair->repair_id }}</td>
-                                        <td class="p-2">{{ $repair->customer->name }}</td>
-                                        <td class="p-2 ">{{ $repair->repair_detail }}</td>
-                                        <td class="p-2 truncate">{{ $repair->employee->name ?? 'กรุณาเลือกพนักงาน' }}</td>
-                                        <td class="p-2">{{ $repair->status->status_name ?? 'N/A' }}</td>
-                                        <td class="p-2 break-keep">
-                                            @if ($repair->status_id == 4)
-                                                <a href="#"
-                                                    class="text-[#EEEEEE] px-3 py-1 rounded bg-[#686D76] ">เรียบร้อย</a>
-                                            @elseif($repair->status_id == 3)
-                                                <a href="#"
-                                                    class="text-[#EEEEEE] px-3 py-1 rounded bg-[#DC5F00] ">กำลังซ่อม</a>
-                                            @elseif($repair->status_id == 2)
-                                                <a onclick="toggleEditEmployeeModal({{ $repair->repair_id }}, '{{ $repair->repair_detail }}', {{ $repair->employee_id ?? 'null' }})"
-                                                    class="text-[#DC5F00] bg-[#EEEEEE] px-3 py-1 rounded cursor-pointer break-keep truncate">เปลี่ยนพนักงาน</a>
-                                            @else
-                                                <a onclick="toggleEditEmployeeModal({{ $repair->repair_id }},'{{ $repair->repair_detail }}')"
-                                                    class="text-[#DC5F00] bg-[#EEEEEE] px-3 py-1 rounded cursor-pointer break-all">เลือกพนักงาน</a>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                            @endforeach
+                        </tbody>
+                    </table>
 
-                    <div id="pagination-controls" class="flex justify-center items-center mt-4">
+                    <div id="pagination-controls" class="sticky bottom-0 left-0 flex justify-center items-center mt-4 ">
                         <button onclick="previousPage()"
-                            class="bg-indigo-600 text-white py-2 px-4 rounded-lg mr-2">ก่อนหน้า</button>
+                            class="bg-[#686D76] text-white py-2 px-2 rounded-lg mr-2">ก่อนหน้า</button>
                         <span id="current-page" class="text-gray-800">1</span> /
                         <span id="total-pages" class="text-gray-800">1</span>
                         <button onclick="nextPage()"
-                            class="bg-indigo-600 text-white py-2 px-4 rounded-lg ml-2">ถัดไป</button>
+                            class="bg-[#DC5F00] text-white py-2 px-2 rounded-lg ml-2">ถัดไป</button>
                     </div>
                 </div>
             </div>
@@ -195,7 +194,7 @@
             searchRepairs();
         });
 
-        let currentPage = 1;
+        let currentPage = 0;
         const rowsPerPage = 10;
 
         function searchRepairs() {
