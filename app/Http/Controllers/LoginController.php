@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+
 class LoginController extends Controller
 {
     //
@@ -22,26 +23,23 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput();
         }
-
         // Attempt to log the user in
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
-         
-            if ($user->status == 1) {
+            // $userId = Auth::id();
+            session()->put('message', $user->name);
             
-                return redirect()->route('active'); 
-            } else if ($user->status == 0) {
-                
-                return redirect()->route('customer.dashboard'); 
-            }else if($user->status == 2){
-                return redirect()->route('employee.dashboard'); 
-            }
 
-            
+            if ($user->status == 1) {
+                return redirect()->route('admin.dashboard');
+            } else if ($user->status == 0) {
+                return redirect()->route('customer.dashboard');
+            } else if ($user->status == 2) {
+                return redirect()->route('employee.work');
+            }
             return redirect()->route('home');
         }
 
@@ -53,6 +51,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 }

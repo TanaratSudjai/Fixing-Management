@@ -24,7 +24,7 @@ class PageController extends Controller
     }
 
     public function PageAddRepirCustomer(){
-        return view('formRepir');
+        return view('repir.formRepir');
     }
 
     

@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    เเจ้งซ่อมสำหรับลูกค้า
-    <input type="text">
-    <input type="text">
-    <input type="text">
-    <input type="text">
-    <input type="text">
+    
+    <div>
+        @include('layouts.employee')
+    </div>
+
+    <div>
+        @yield('content')
+    </div>
 </body>
 </html>
