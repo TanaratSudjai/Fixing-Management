@@ -41,16 +41,6 @@
             </p>
         </div>
     </div>
-
-    @if ($errors->any())
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'รหัสผ่านไม่ถูกต้อง',
-                html: '{!! implode('<br>', $errors->all()) !!}',
-            })
-        </script>
-    @endif
 </body>
 
 </html>
