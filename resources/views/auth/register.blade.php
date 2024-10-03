@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen p-6">
     <div class="flex items-center justify-center bg-gray-200 w-full min-h-screen px-4 sm:px-0">
         <div class="bg-white p-6 sm:p-10 w-full max-w-xs sm:max-w-md rounded-xl shadow-lg">
             <div class="flex items-center justify-center mb-4 sm:mb-6">
