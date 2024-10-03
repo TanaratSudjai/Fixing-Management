@@ -10,7 +10,7 @@
 </head>
 
 <body class="bg-gray-100 flex justify-center items-center min-h-screen p-6">
-    <div class="p-6 sm:p-10 w-full max-w-xs sm:max-w-md rounded-xl">
+    <div class="ิbg-black sm:p-10 w-full max-w-xs sm:max-w-md rounded-xl">
         <div class="flex items-center justify-center mb-4 sm:mb-6">
             <img src="{{ asset('images/logoo.png') }}" alt="Logo" class="w-20 sm:w-23 h-16 sm:h-20">
         </div>
