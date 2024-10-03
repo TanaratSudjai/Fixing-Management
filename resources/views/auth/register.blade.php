@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body class="bg-gray-100 flex justify-center items-center min-h-screen p-6">
+<body>
     <div class="bg-white p-6 sm:p-10 w-full max-w-xs sm:max-w-md rounded-xl shadow-lg">
         <div class="flex items-center justify-center mb-4 sm:mb-6">
             <img src="{{ asset('images/logoo.png') }}" alt="Logo" class="w-20 sm:w-24 h-16 sm:h-20">
@@ -61,7 +61,7 @@
             </div>
             <div class="w-full text-center">
                 <button
-                    class="mt-8 mb-4 w-full bg-[#DC5F00] hover:bg-[#c55500] text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+                    class="mt-8 mb-4 w-full bg-[#DC5F00] hover:bg-[#c55500] text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline transition duration-200"
                     type="submit">สมัครสมาชิก</button>
                 <a class="hover:underline w-full text-[#DC5F00] font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
                     href="/">
@@ -70,6 +70,7 @@
             </div>
         </form>
     </div>
+
 
 
     <script>
