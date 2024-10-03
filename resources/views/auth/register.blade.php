@@ -4,18 +4,16 @@
 <head>
     <title>Register</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
-     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <div class="flex items-center justify-center bg-gray-200 w-full min-h-screen px-4 sm:px-0">
-        <div class="p-6 sm:p-10 w-full max-w-xs sm:max-w-md rounded-xl">
+        <div class="bg-white p-6 sm:p-10 w-full max-w-xs sm:max-w-md rounded-xl shadow-lg">
             <div class="flex items-center justify-center mb-4 sm:mb-6">
-                <img src="{{ asset('images/logoo.png') }}" alt="Logo" class="w-20 sm:w-23 h-16 sm:h-20">
+                <img src="{{ asset('images/logoo.png') }}" alt="Logo" class="w-20 sm:w-24 h-16 sm:h-20">
             </div>
             <h2 class="text-lg sm:text-xl text-gray-800 text-center mb-8 sm:mb-10">สร้างบัญชี FMS</h2>
             <form method="POST" action="{{ route('register') }}" id="registerForm" enctype="multipart/form-data">
@@ -56,8 +54,7 @@
                                         d="M7 16l-4-4m0 0l4-4m-4 4h18m-8 4l4-4m0 0l-4-4m4 4H3"></path>
                                 </svg>
                                 <p class="mb-2 text-sm text-gray-500"><span
-                                        class="font-semibold">คลิกเพื่ออัปโหลด</span>
-                                    หรือ ลากไฟล์มาที่นี่</p>
+                                        class="font-semibold">คลิกเพื่ออัปโหลด</span> หรือ ลากไฟล์มาที่นี่</p>
                                 <p class="text-xs text-gray-500">PNG, JPG หรือ GIF (ขนาดไม่เกิน 2MB)</p>
                             </div>
                             <input type="file" name="image" id="image" class="hidden" />
@@ -133,7 +130,6 @@
             });
         </script>
     @endif
-
 
 </body>
 
