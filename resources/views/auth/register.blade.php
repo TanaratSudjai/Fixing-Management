@@ -9,34 +9,34 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body>
-    <div class="bg-white p-6 sm:p-10 w-full max-w-xs sm:max-w-md rounded-xl shadow-lg">
-        <div class="flex items-center justify-center mb-4 sm:mb-6">
-            <img src="{{ asset('images/logoo.png') }}" alt="Logo" class="w-20 sm:w-24 h-16 sm:h-20">
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 sm:p-10 w-full max-w-xs sm:max-w-md rounded-xl shadow-lg">
+        <div class="flex items-center justify-center mb-6">
+            <img src="{{ asset('images/logoo.png') }}" alt="Logo" class="w-24 h-24 sm:w-28 sm:h-28">
         </div>
-        <h2 class="text-lg sm:text-xl text-gray-800 text-center mb-8 sm:mb-10">สร้างบัญชี FMS</h2>
+        <h2 class="text-lg sm:text-xl text-gray-800 text-center mb-6">สร้างบัญชี FMS</h2>
         <form method="POST" action="{{ route('register') }}" id="registerForm" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
                 <label class="block text-gray-600 mb-1" for="name">ชื่อผู้ใช้</label>
-                <input class="border border-gray-300 rounded-xl p-2 w-full focus:border-orange-500 outline-none"
+                <input class="border border-gray-300 rounded-xl p-3 w-full focus:border-orange-500 outline-none"
                     type="text" id="name" name="name" value="{{ old('name') }}"
                     placeholder="ป้อนชื่อของคุณ" required />
             </div>
             <div class="mb-4">
                 <label class="block text-gray-600 mb-1" for="email">อีเมล</label>
-                <input class="border border-gray-300 rounded-xl p-2 w-full focus:border-orange-500 outline-none"
+                <input class="border border-gray-300 rounded-xl p-3 w-full focus:border-orange-500 outline-none"
                     type="email" id="email" name="email" value="{{ old('email') }}"
                     placeholder="ป้อนอีเมลของคุณ" required />
             </div>
             <div class="mb-4">
                 <label class="block text-gray-600 mb-1" for="password">รหัสผ่าน</label>
-                <input class="border border-gray-300 rounded-xl p-2 w-full focus:border-orange-500 outline-none"
+                <input class="border border-gray-300 rounded-xl p-3 w-full focus:border-orange-500 outline-none"
                     type="password" id="password" name="password" placeholder="ป้อนรหัสผ่านของคุณ" required />
             </div>
             <div class="mb-4">
                 <label class="block text-gray-600 mb-1" for="password_confirmation">ยืนยันรหัสผ่าน</label>
-                <input class="border border-gray-300 rounded-xl p-2 w-full focus:border-orange-500 outline-none"
+                <input class="border border-gray-300 rounded-xl p-3 w-full focus:border-orange-500 outline-none"
                     type="password" id="password_confirmation" name="password_confirmation"
                     placeholder="ยืนยันรหัสผ่านของคุณ" required />
             </div>
@@ -61,17 +61,15 @@
             </div>
             <div class="w-full text-center">
                 <button
-                    class="mt-8 mb-4 w-full bg-[#DC5F00] hover:bg-[#c55500] text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline transition duration-200"
+                    class="mt-6 mb-4 w-full bg-[#DC5F00] hover:bg-[#c55500] text-white font-bold py-3 px-4 rounded-xl focus:outline-none focus:shadow-outline transition duration-200"
                     type="submit">สมัครสมาชิก</button>
-                <a class="hover:underline w-full text-[#DC5F00] font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+                <a class="hover:underline w-full text-[#DC5F00] font-bold py-3 px-4 rounded-xl focus:outline-none focus:shadow-outline"
                     href="/">
                     เข้าสู่ระบบ
                 </a>
             </div>
         </form>
     </div>
-
-
 
     <script>
         document.getElementById('registerForm').addEventListener('submit', function(event) {
@@ -121,11 +119,7 @@
             Swal.fire({
                 icon: 'error',
                 title: 'Email นี้มีผู้ใช้ไปแล้ว',
-                html: `
-                    @foreach ($errors->all() as $error)
-                        <p>{{ $error }}</p>
-                    @endforeach
-                `,
+                html: `@foreach ($errors->all() as $error) <p>{{ $error }}</p> @endforeach`,
             });
         </script>
     @endif
