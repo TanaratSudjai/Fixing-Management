@@ -37,7 +37,7 @@
         </form>
         <div class="flex items-center justify-center w-full">
             <div class="flex items-center justify-center w-[150px]">
-                <p class="w-full text-gray-600 mt-6 flex justify-between text-md sm:text-sm">ยังไม่มีบัญชี?  <a href="/register" class="text-xs sm:text-sm hover:underline hover:text-[#DC5F00]">สมัครสมาชิก</a></p>
+                <p class="w-full text-gray-600 mt-6 flex justify-between sm:text-sm">ยังไม่มีบัญชี?  <a href="/register" class="text-xs sm:text-sm hover:underline hover:text-[#DC5F00]">สมัครสมาชิก</a></p>
             </div>
         </div>
     </div>
