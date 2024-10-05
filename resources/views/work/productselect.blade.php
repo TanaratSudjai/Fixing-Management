@@ -143,7 +143,7 @@
 
                         <div class="card-container grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                             @foreach ($product as $item)
-                                <div class="card p-4 border border-[#686D76] rounded-md shadow-md text-[#373A40] bg-[#EEEEEE]"
+                                <div class="card p-4 border border-[#686D76] rounded-md shadow-md text-[#373A40] bg-[#EEEEEE] mb-6"
                                     data-id="{{ $item->product_id }}">
                                     <div class="flex justify-center">
                                         @if ($item->product_image)
@@ -155,6 +155,7 @@
                                     </div>
                                     <h3 class="font-bold text-lg mb-1">{{ $item->product_name }}</h3>
                                     <p class="mb-1">รหัสสินค้า: {{ $item->product_id }}</p>
+                                    <p class="mb-1">ราคาสินค้า: {{ $item->product_price }}</p>
                                     <p class="mb-2">จำนวนที่มีอยู่: {{ $item->product_qty }}</p>
                                     <input type="radio" name="product_id" value="{{ $item->product_id }}" class="hidden"
                                         {{ $repair->product_id == $item->product_id ? 'checked' : '' }}>

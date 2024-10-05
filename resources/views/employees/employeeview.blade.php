@@ -72,8 +72,17 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div id="pagination-controls" class="bottom-0 left-0 flex justify-center items-center mt-4 ">
+                            <button onclick="previousPage()"
+                                class="bg-[#686D76] text-white py-2 px-2 rounded-lg mr-2">ก่อนหน้า</button>
+                            <span id="current-page" class="text-gray-800">1</span> /
+                            <span id="total-pages" class="text-gray-800">1</span>
+                            <button onclick="nextPage()"
+                                class="bg-[#DC5F00] text-white py-2 px-2 rounded-lg ml-2">ถัดไป</button>
+                        </div>
                     </div>
                 @endif
+                
             </div>
         </div>
     </div>
@@ -168,6 +177,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function (){
             toggleEditEmployeeModal();
+            searchRepairs();
+            paginate(Array.from(rows));
         });
 
         function toggleEditEmployeeModal(id, name) {
@@ -181,6 +192,59 @@
             }
 
             document.getElementById('name').value = name;
+        }
+        let currentPage = 0;
+        const rowsPerPage = 8;
+
+        function searchRepairs() {
+
+            const rows = document.querySelectorAll('tbody tr');
+            paginate(Array.from(rows));
+        }
+
+        function paginate(rows) {
+            const totalPages = Math.ceil(rows.length / rowsPerPage);
+            document.getElementById('total-pages').textContent = totalPages;
+
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (currentPage < 1) currentPage = 1;
+
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const rowsToShow = rows.slice(start, end);
+
+            document.querySelectorAll('tbody tr').forEach(row => row.style.display = 'none');
+
+            // Show the rows for the current page
+            rowsToShow.forEach(row => row.style.display = '');
+
+            // Update current page display
+            document.getElementById('current-page').textContent = currentPage;
+
+            // Disable/enable pagination buttons based on the page
+            document.querySelector('button[onclick="previousPage()"]').disabled = currentPage === 1;
+            document.querySelector('button[onclick="nextPage()"]').disabled = currentPage === totalPages || totalPages ===
+                0;
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                searchRepairs();
+            }
+        }
+
+        function nextPage() {
+            const totalPages = parseInt(document.getElementById('total-pages').textContent);
+            if (currentPage < totalPages) {
+                currentPage++;
+                searchRepairs();
+            }
+        }
+
+        function submitSearch() {
+            currentPage = 1; // Reset to first page on a new search
+            searchRepairs();
         }
     </script>
 </body>
