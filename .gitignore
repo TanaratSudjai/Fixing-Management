@@ -9,6 +9,7 @@
 .env.example
 .env.backup
 .env.production
+.env.example
 Homestead.json
 Homestead.yaml
 auth.json
