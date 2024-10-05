@@ -139,7 +139,7 @@
                                 class="text-gray-800 text-sm mb-2 block">รายละเอียดการแจ้งซ่อม</label>
                             <input type="text" name="repair_detail" id="repair_detail"
                                 class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
-                                value="{{ old('repair_detail', $repair->repair_detail) }}" required>
+                                value="{{ old('repair_detail', $repair->repair_detail) }}" readonly>
                         </div>
 
                         <div class="mb-4">
