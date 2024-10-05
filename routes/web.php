@@ -36,6 +36,7 @@ Route::get('/inactive', function () {
 Route::middleware('admin')->group(function () {
     
     Route::get('/pdf-customer', [PDFController::class, 'Gpdf'])->name('pdf.customer');
+    Route::get('/pdf-receipt', [PDFController::class, 'bill_pdf'])->name('pdf.receipt');
 
     // Route::get('/admin/add-employee', [PageController::class, 'adminPageAddEmployee'])->name('employee.add');
     Route::post('/admin/add-employee', [AdminController::class, 'AddEmployee'])->name('admin.addEmployee');
@@ -82,6 +83,8 @@ Route::middleware('employee')->group(function () {
     Route::put('/repair/{id}/statusupdate', [EmployeeManagement::class, 'updateStatus'])->name('repair.updateStatus');
     Route::put('/repair/{id}/statusupdatedone', [EmployeeManagement::class, 'done'])->name('repair.done');
 
-    // -------------
+    Route::put('/repair/{id}/bill', [PDFController::class, 'bill_pdf'])->name('repair.bill');
+
+    //-------------
     Route::get('/profile/employee/view', [ProfileController::class, 'getProfile'])->name('profile.view');
 });

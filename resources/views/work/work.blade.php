@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work Repair List</title>
-     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <style>
         body {
@@ -55,7 +55,6 @@
                         รายการการซ่อม
                     </h1>
 
-                    <!-- รายการที่ยังไม่ได้แจ้งลูกค้า -->
                     <div class="space-y-4 mt-8">
                         <h2 class="text-xl font-bold mb-4 mt-2 text-[#373A40] underline decoration-[#DC5F00]">
                             รายการที่ยังไม่ได้แจ้งลูกค้า</h2>
@@ -93,11 +92,24 @@
                                 </div>
                                 <div class="p-4 border-t border-[#686D76] bg-gray-50 text-right">
                                     @if ($repair->product != null)
-                                        <form action="{{ route('repair.updateStatus', $repair->repair_id) }}" method="POST"
+                                        <form action="{{ route('repair.bill', $repair->repair_id) }}" method="POST"
                                             class="inline">
                                             @csrf
                                             @method('PUT')
                                             <input type="hidden" name="status_id" value="3">
+
+                                            <button type="submit" name="download"
+                                                class="bg-black hover:bg-[#E55C00] text-white font-bold py-2 px-4 rounded-full transition-all">
+                                                พิมพ์ใบเสร็จ
+                                            </button>
+                                        </form>
+
+                                        <form action="{{ route('repair.updateStatus', $repair->repair_id) }}"
+                                            method="POST" class="inline">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="status_id" value="3">
+
                                             <button type="submit"
                                                 class="bg-[#DC5F00] hover:bg-[#E55C00] text-white font-bold py-2 px-4 rounded-full transition-all">
                                                 เเจ้งลูกค้า
