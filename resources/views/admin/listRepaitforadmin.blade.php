@@ -147,7 +147,7 @@
                                 class="text-gray-800 text-sm mb-2 block">นำพนักงานเพื่อไปซ่อม</label>
                             <select name="employee_id" id="employee_id"
                                 class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600">
-                                <option value="">เลือกพนักงาน</option>
+                                
                                 @foreach ($employees as $employee)
                                     <option value="{{ $employee->id }}"
                                         {{ $repair->employee_id == $employee->id ? 'selected' : '' }}>
